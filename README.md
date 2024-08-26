@@ -10,7 +10,7 @@
 
 > An app to manage your screen time, assign Tasks and set personal goals. Works on Android with Desktop support in the works.
 
-## Note: This is fully Multiplatform version of old [Reluct app](https://github.com/ApimorLabs/Reluct)
+## Note: This is fully Multiplatform version of old [Reluct app](https://github.com/ApimorLabs/Reluct). It is still in migration phase
 
 ### ✨ Documentation
 
@@ -61,9 +61,64 @@
 | 🔐 Immutability   | [Kotlinx Immutable Collections](https://github.com/Kotlin/kotlinx.collections.immutable)                                                                                                                                                 |
 | 🔧 Supplementary  | [Accompanist](https://github.com/google/accompanist)                                                                                                                                                                                     |
 
-## Issues
+## 🐞 Issues
 
 If you encounter any issues you simply file them with the relevant details [here](https://github.com/ApimorLabs/ReluctMultiplatform/issues/new/choose)
+
+## 📂 Folder Structure
+
+* `/composeApp` contains the Compose Multiplatform code and is the starting point for targets.
+  It contains several subfolders:
+  - `commonMain` is for code that’s common for all targets.
+  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the
+    folder name.
+    For example, if you want to use Android Context for the Android parts of your Kotlin app,
+    `androidMain` would be the right folder for such calls.
+
+* `/common` contains all the common code and is a starting template for any modules that you may add
+  to this project.
+
+* `/tooling` contains all the necessary tools you would need during build
+  It contains the following:
+  - `/checks` contains [detekt](https://github.com/detekt/detekt) configuration files
+  - `/desktop` contains the icons needed for building an installer for desktop targets
+  - `/proguard-config` contains proguard configuration files for both desktop and android
+  - `/plugins` contains custom gradle convention plugins that simplify module configuration
+
+* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
+  you need this entry point for your iOS app. This is also where you should add SwiftUI code for
+  your project.
+  It needs to be set up for use.
+
+### ⛏️ Understanding `/tooling/plugins`
+
+This contains all the code for the custom plugins used in this project.
+These plugins help with `build.gradle.kts` boilerplate code that can be annoying to configure
+
+Their uses are as follows:
+
+- `ComposeMultiplatformAppPlugin` used to configure the main app module `composeApp`.
+  It contains code for android setup, Compose Multiplatform and the necessary libraries already
+  configured
+- `ComposeMultiplatformLibPlugin` used to configure all library sub-modules that will also contain
+  Compose code
+  Necessary libraries already installed too.
+- `KotlinMultiplatformLibPlugin` used to configure all library sub-modules.
+  Configured for `koin` and basic Android core libraries
+- `DetektConventionPlugin` used to configure `detekt` code analysis in the project
+  level `build.gradle.kts`
+
+## 🎬 Github Actions
+
+This project contains Github Actions set up in `/.github/workflows`
+
+- `code-check-pipeline.yml` contains code for running `detekt` for code analysis.
+  You can also set up other linters and unit tests inside this file
+- `ci-cd-pipeline.yml` contains code for CI/CD integrations.
+  You make sure you have provided the required secrets for the signing stage of the Android app.
+  The secrets needed include `KEYSTORE_FILE`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`.
+  Learn more about adding these keys from [here](ilharp/sign-android-release@v1)
+  and [here](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
 
 ## 📃 Important Analysis
 
@@ -362,17 +417,6 @@ class ManageProducts(billing: BillingApi) {
 }
 ```
 Writing business logic once can be very beneficial for products that have a lot of business logic and depend on native platform development.
-
-### 4. Broken tests
-
-Some of the Unit tests in this project are broken. Why?
-This project first started as an Android only project with some unit tests already written. Upon migration  migration to Kotlin Multiplatform I had
-to rewrite all tests so they can be platform agnostic. This meant replacing all Junit with Kotlin-test, removing Hilt in favor of Koin and avoiding the use of Mockk.
-During the migration refactoring became quite tricky and time consuming for something I was doing on in my spare time.
-Android studio and Intellij IDEs became quite unstable with bugs like [KT48148](https://youtrack.jetbrains.com/issue/KT-48148/HMPP-Gradle-Unresolved-reference-to-any-class-from-kotlinxcoroutines-package-when-using) that
-made IDE assisted refactoring impossible I quickly gave up and just YOLOed into feature completion. Tooling is still not great and refactoring tests is still tricky but
-I am working on it in the [repair-tests](https://youtrack.jetbrains.com/issue/KT-48148/HMPP-Gradle-Unresolved-reference-to-any-class-from-kotlinxcoroutines-package-when-using) branch.
-Any help will be appreciated.
 
 ## ✅ TODO
 
