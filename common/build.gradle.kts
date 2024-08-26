@@ -15,5 +15,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.template.common"
+    namespace = "work.racka.reluct.common"
 }
