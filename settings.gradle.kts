@@ -1,4 +1,4 @@
-rootProject.name = "ComposeMultiplatformTemplate"
+rootProject.name = "Reluct"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
