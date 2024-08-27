@@ -36,5 +36,6 @@ dependencyResolutionManagement {
 include(
     ":composeApp",
     ":common",
-    ":data-model"
+    ":data-model",
+    ":data-source"
 )
