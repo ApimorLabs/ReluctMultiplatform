@@ -3,6 +3,21 @@ plugins {
     alias(libs.plugins.sqldelight)
 }
 
+sqldelight {
+    databases {
+        create("ReluctDatabase") {
+            packageName.set("work.racka.reluct.data.source.database")
+            srcDirs.setFrom("src/commonMain/sqldelight")
+            schemaOutputDirectory.set(
+                file("src/commonMain/sqldelight/work/racka/reluct/data/source/database/files")
+            )
+            version = 1
+            verifyMigrations.set(true)
+            dialect(libs.sqldelight.sqlite.dialect)
+        }
+    }
+}
+
 kotlin {
     sourceSets {
         val commonMain by getting {

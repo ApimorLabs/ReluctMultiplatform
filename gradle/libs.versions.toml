@@ -167,6 +167,7 @@ sqldelight_runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sq
 sqldelight_coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 sqldelight_android_driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight_sqlite_driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight_sqlite_dialect = { module = "app.cash.sqldelight:sqlite-3-24-dialect", version.ref = "sqldelight" }
 turbine_test = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 leakcanary_android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 
