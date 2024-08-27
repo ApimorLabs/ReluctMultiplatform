@@ -1,4 +1,4 @@
-package work.racka.reluct.data.source.database.util
+package work.racka.reluct.data.source.util
 
 internal object Constants {
     const val RELUCT_DATABASE = "reluct_data.db"
