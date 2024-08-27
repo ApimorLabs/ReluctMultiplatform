@@ -8,5 +8,5 @@ enum class Sku(
     ),
     InAppPurchase(
         type = "inapp"
-    );
+    )
 }

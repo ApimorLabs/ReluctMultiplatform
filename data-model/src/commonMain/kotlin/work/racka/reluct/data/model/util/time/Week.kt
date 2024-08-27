@@ -33,7 +33,7 @@ enum class Week(
     SUNDAY(
         isoDayNumber = DayOfWeek.SUNDAY.isoDayNumber,
         dayAcronym = "Sun"
-    );
+    )
 }
 
 object WeekUtils {

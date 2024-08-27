@@ -1,7 +1,7 @@
 package work.racka.reluct.data.model.domain.auth
 
 enum class EmailResult {
-    VALID, BLANK, INVALID;
+    VALID, BLANK, INVALID
 }
 
 enum class PasswordResult {

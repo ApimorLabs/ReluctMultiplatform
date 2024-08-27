@@ -1,6 +1,5 @@
 package work.racka.reluct.data.model.util
 
-
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 

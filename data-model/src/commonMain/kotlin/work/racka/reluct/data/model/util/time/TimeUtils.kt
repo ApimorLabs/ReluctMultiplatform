@@ -73,7 +73,7 @@ object TimeUtils {
         if (!showShortIntervalAsDay) {
             return if (today.year == localDT.year) {
                 "${localDT.dayOfWeek.toDayOfWeekShortenedString()}, " +
-                        "${localDT.month.toMonthShortenedString()} ${localDT.dayOfMonth}"
+                    "${localDT.month.toMonthShortenedString()} ${localDT.dayOfMonth}"
             } else {
                 "${localDT.month.toMonthShortenedString()} ${localDT.dayOfMonth}, ${localDT.year}"
             }
@@ -96,7 +96,7 @@ object TimeUtils {
             }
             else -> {
                 "${date.dayOfWeek.toDayOfWeekShortenedString()}, " +
-                        "${date.month.toMonthShortenedString()} ${date.dayOfMonth}"
+                    "${date.month.toMonthShortenedString()} ${date.dayOfMonth}"
             }
         }
     }
