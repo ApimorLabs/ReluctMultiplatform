@@ -6,6 +6,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                //Projects
+                implementation(project(":data-model"))
+                implementation(project(":data-source"))
+
+                // Normal deps
                 implementation(libs.koin.compose)
                 implementation(libs.koin.compose.viewmodel)
                 implementation(libs.lifecycle.viewmodel)
