@@ -40,6 +40,11 @@ internal fun Project.configureKMP() {
             }
         }*/
 
+        // Setup test libraries for all KMP modules
+        sourceSets.commonTest.dependencies {
+            implementation(libs.findLibrary("kotlin-test").get())
+        }
+
         sourceSets.all {
             languageSettings {
                 listOf(

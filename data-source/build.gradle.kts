@@ -31,11 +31,10 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                //implementation(libs.koin.test)
+                implementation(libs.koin.test)
                 implementation(libs.coroutines.test)
                 implementation(libs.turbine.test)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
 
