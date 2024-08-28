@@ -3,6 +3,10 @@ name: Build Pipeline
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - deploy
   pull_request:
     types: [ opened, synchronize, reopened ]
     branches:
