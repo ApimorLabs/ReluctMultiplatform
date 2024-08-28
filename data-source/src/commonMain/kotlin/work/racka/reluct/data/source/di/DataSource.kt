@@ -1,5 +1,6 @@
 package work.racka.reluct.data.source.di
 
+import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -9,6 +10,8 @@ import work.racka.reluct.data.source.database.dao.screentime.LimitsDao
 import work.racka.reluct.data.source.database.dao.screentime.LimitsDaoImpl
 import work.racka.reluct.data.source.database.dao.tasks.TasksDao
 import work.racka.reluct.data.source.database.dao.tasks.TasksDaoImpl
+import work.racka.reluct.data.source.settings.MultiplatformSettings
+import work.racka.reluct.data.source.settings.MultiplatformSettingsImpl
 
 object DataSource {
     fun KoinApplication.install() = apply {
@@ -16,6 +19,7 @@ object DataSource {
     }
 
     private fun sharedModule(): Module = module {
+        /** Database **/
         single<TasksDao> {
             TasksDaoImpl(
                 dispatcher = CoroutineDispatchers.background,
@@ -34,6 +38,12 @@ object DataSource {
                 dispatcher = CoroutineDispatchers.background,
                 databaseWrapper = get()
             )
+        }
+
+        /** Settings **/
+        single<MultiplatformSettings> {
+            val settings = Settings()
+            MultiplatformSettingsImpl(settings = settings)
         }
     }
 }

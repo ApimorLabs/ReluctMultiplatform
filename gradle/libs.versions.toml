@@ -52,7 +52,7 @@ accompanist = "0.27.0"
 androidx-workmanager = "2.9.0"
 
 # Preference
-multiplatform-settings = "0.9" # TODO: Update settings
+multiplatform-settings = "1.1.1"
 
 # Linter
 ktlint_gradle = "11.0.0"

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform.lib)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.kotlinSeriazation)
 }
 
 sqldelight {
@@ -24,8 +25,12 @@ kotlin {
             dependencies {
                 implementation(project(":data-model"))
 
+                implementation(libs.kotlinx.serialization.core)
+                implementation(libs.coroutines.core)
                 implementation(libs.sqldelight.runtime)
                 implementation(libs.sqldelight.coroutines)
+                implementation(libs.multiplatform.settings.core)
+                implementation(libs.multiplatform.settings.noArg)
             }
         }
 
@@ -34,6 +39,7 @@ kotlin {
                 implementation(libs.koin.test)
                 implementation(libs.coroutines.test)
                 implementation(libs.turbine.test)
+                implementation(libs.multiplatform.settings.test)
                 implementation(kotlin("test"))
             }
         }
