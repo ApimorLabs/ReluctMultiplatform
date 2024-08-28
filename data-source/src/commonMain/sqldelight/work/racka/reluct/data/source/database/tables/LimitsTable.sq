@@ -1,0 +1,81 @@
+import kotlin.Boolean;
+
+CREATE TABLE IF NOT EXISTS LimitsTable (
+packageName TEXT NOT NULL PRIMARY KEY,
+timeLimit INTEGER NOT NULL,
+isADistractingApp INTEGER AS Boolean DEFAULT 0 NOT NULL,
+isPaused INTEGER AS Boolean DEFAULT 0 NOT NULL,
+overridden INTEGER AS Boolean DEFAULT 0 NOT NULL
+);
+
+insertApp:
+INSERT OR IGNORE INTO LimitsTable(
+packageName, timeLimit, isADistractingApp, isPaused, overridden
+) VALUES ?;
+
+getApp:
+SELECT * FROM LimitsTable
+WHERE packageName = :packageName;
+
+getDistractingApps:
+SELECT * FROM LimitsTable
+WHERE isADistractingApp = 1;
+
+isDistractingApp:
+SELECT isADistractingApp FROM LimitsTable
+WHERE packageName = :packageName AND isADistractingApp = 1;
+
+removeApp:
+DELETE FROM LimitsTable
+WHERE packageName = :packageName;
+
+removeAllApps:
+DELETE FROM LimitsTable;
+
+setTimeLimit {
+    UPDATE LimitsTable
+    SET timeLimit = :timeLimit
+    WHERE packageName = :packageName;
+
+    INSERT OR IGNORE INTO LimitsTable(
+    packageName, timeLimit, isADistractingApp, isPaused, overridden)
+    VALUES (:packageName, :timeLimit, 0, 0, 0);
+}
+
+togglePausedApp {
+    UPDATE LimitsTable
+    SET isPaused = :isPaused
+    WHERE packageName = :packageName;
+
+    INSERT OR IGNORE INTO LimitsTable(
+    packageName, timeLimit, isADistractingApp, isPaused, overridden)
+    VALUES (:packageName, 0, 0, :isPaused, 0);
+}
+
+toggleDistractingApp {
+    UPDATE LimitsTable
+    SET isADistractingApp = :isDistracting
+    WHERE packageName = :packageName;
+
+    INSERT OR IGNORE INTO LimitsTable(
+    packageName, timeLimit, isADistractingApp, isPaused, overridden)
+    VALUES (:packageName, 0, :isDistracting, 0, 0);
+}
+
+toggleLimitOverride:
+UPDATE LimitsTable
+SET overridden = :overridden
+WHERE packageName = :packageName;
+
+getPausedApps:
+SELECT * FROM LimitsTable
+WHERE isPaused = 1;
+
+isAppPaused:
+SELECT isPaused FROM LimitsTable
+WHERE packageName = :packageName;
+
+resumeAllApps:
+UPDATE LimitsTable
+SET isPaused = 0, overridden = 0
+WHERE isPaused = 1 OR overridden = 1;
