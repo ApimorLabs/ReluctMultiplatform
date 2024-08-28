@@ -19,7 +19,6 @@ object DataSource {
     }
 
     private fun sharedModule(): Module = module {
-
         /** Database **/
         single<TasksDao> {
             TasksDaoImpl(
