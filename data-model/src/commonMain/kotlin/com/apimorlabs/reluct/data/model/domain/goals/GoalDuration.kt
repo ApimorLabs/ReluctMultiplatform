@@ -1,7 +1,7 @@
 package com.apimorlabs.reluct.data.model.domain.goals
 
-import kotlinx.collections.immutable.ImmutableList
 import com.apimorlabs.reluct.data.model.util.time.Week
+import kotlinx.collections.immutable.ImmutableList
 
 data class GoalDuration(
     val goalInterval: GoalInterval,

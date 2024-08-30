@@ -1,13 +1,13 @@
 package com.apimorlabs.reluct.data.source.di
 
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
-import org.koin.core.module.Module
-import org.koin.dsl.module
 import com.apimorlabs.reluct.data.source.database.ReluctDatabase
 import com.apimorlabs.reluct.data.source.database.adapters.GoalsTableAdapter
 import com.apimorlabs.reluct.data.source.database.adapters.TasksTableAdapter
 import com.apimorlabs.reluct.data.source.database.dao.DatabaseWrapper
 import com.apimorlabs.reluct.data.source.util.Constants
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import java.io.File
 
 internal actual fun platformModule(): Module = module {

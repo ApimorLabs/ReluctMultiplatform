@@ -1,9 +1,5 @@
 package com.apimorlabs.reluct.data.source.di
 
-import com.russhwolf.settings.Settings
-import org.koin.core.KoinApplication
-import org.koin.core.module.Module
-import org.koin.dsl.module
 import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDao
 import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDaoImpl
 import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsDao
@@ -12,6 +8,10 @@ import com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDao
 import com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDaoImpl
 import com.apimorlabs.reluct.data.source.settings.MultiplatformSettings
 import com.apimorlabs.reluct.data.source.settings.MultiplatformSettingsImpl
+import com.russhwolf.settings.Settings
+import org.koin.core.KoinApplication
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 object DataSource {
     fun KoinApplication.install() = apply {
