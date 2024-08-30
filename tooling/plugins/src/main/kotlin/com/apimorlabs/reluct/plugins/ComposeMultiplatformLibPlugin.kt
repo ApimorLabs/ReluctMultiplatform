@@ -61,7 +61,7 @@ class ComposeMultiplatformLibPlugin : Plugin<Project> {
                 implementation(libs.findLibrary("koin-compose-viewmodel").get())
 
                 implementation(libs.findLibrary("lifecycle-viewmodel").get())
-                implementation(libs.findLibrary("navigation-compose").get())
+                implementation(libs.findLibrary("jetbrains_navigation_compose").get())
             }
 
             sourceSets["desktopMain"].dependencies {
