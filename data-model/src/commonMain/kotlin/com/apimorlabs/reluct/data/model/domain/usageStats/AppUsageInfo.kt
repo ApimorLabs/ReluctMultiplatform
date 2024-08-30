@@ -1,6 +1,6 @@
 package com.apimorlabs.reluct.data.model.domain.usageStats
 
-import javax.swing.Icon
+import com.apimorlabs.reluct.data.model.domain.appInfo.Icon
 
 data class AppUsageInfo(
     val packageName: String,

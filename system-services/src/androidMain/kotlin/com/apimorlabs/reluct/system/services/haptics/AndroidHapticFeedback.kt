@@ -1,8 +1,11 @@
 package com.apimorlabs.reluct.system.services.haptics
 
 import android.content.Context
-import android.os.*
-import com.apimorlabs.reluct.system.services.haptics.HapticFeedback
+import android.os.Build
+import android.os.CombinedVibration
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 
 internal class AndroidHapticFeedback(private val context: Context) : HapticFeedback {
     override fun tick() {
@@ -47,7 +50,11 @@ internal class AndroidHapticFeedback(private val context: Context) : HapticFeedb
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibrationEffect = VibrationEffect.startComposition()
                 .addPrimitive(VibrationEffect.Composition.PRIMITIVE_QUICK_RISE, 1f)
-                .addPrimitive(VibrationEffect.Composition.PRIMITIVE_QUICK_FALL, 1f, QUICK_FALL_DELAY)
+                .addPrimitive(
+                    VibrationEffect.Composition.PRIMITIVE_QUICK_FALL,
+                    1f,
+                    QUICK_FALL_DELAY
+                )
                 .addPrimitive(VibrationEffect.Composition.PRIMITIVE_THUD, 1f)
                 .compose()
             vibrate(DEFAULT_LONG_VIBRATE_DURATION, vibrationEffect)

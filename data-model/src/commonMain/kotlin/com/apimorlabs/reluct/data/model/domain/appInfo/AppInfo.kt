@@ -3,11 +3,11 @@ package com.apimorlabs.reluct.data.model.domain.appInfo
 data class AppInfo(
     val packageName: String,
     val appName: String,
-    val appIcon: com.apimorlabs.reluct.data.model.domain.appInfo.Icon,
+    val appIcon: Icon,
 ) {
     override fun equals(other: Any?): Boolean {
         return other?.let { item ->
-            item is com.apimorlabs.reluct.data.model.domain.appInfo.AppInfo && item.appName == this.appName && item.packageName == this.packageName
+            item is AppInfo && item.appName == this.appName && item.packageName == this.packageName
         } ?: false
     }
 

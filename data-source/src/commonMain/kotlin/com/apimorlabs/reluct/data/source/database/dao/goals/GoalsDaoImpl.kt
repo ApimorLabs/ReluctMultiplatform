@@ -6,10 +6,10 @@ import app.cash.sqldelight.coroutines.mapToOneOrNull
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import work.racka.reluct.data.source.database.dao.DatabaseWrapper
-import work.racka.reluct.data.source.database.dao.goals.GoalsHelpers.insertAllGoalsToDb
-import work.racka.reluct.data.source.database.dao.goals.GoalsHelpers.insertGoalToDb
-import work.racka.reluct.data.source.database.models.GoalDbObject
+import com.apimorlabs.reluct.data.source.database.dao.DatabaseWrapper
+import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsHelpers.insertAllGoalsToDb
+import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsHelpers.insertGoalToDb
+import com.apimorlabs.reluct.data.source.database.models.GoalDbObject
 
 internal class GoalsDaoImpl(
     private val dispatcher: CoroutineDispatcher,

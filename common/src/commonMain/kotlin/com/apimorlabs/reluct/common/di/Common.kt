@@ -1,6 +1,6 @@
 package com.apimorlabs.reluct.common.di
 
-import org.koin.compose.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.*
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf

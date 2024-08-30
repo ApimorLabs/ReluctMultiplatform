@@ -1,5 +1,5 @@
 package com.apimorlabs.reluct.data.source.database.dao
 
-import work.racka.reluct.data.source.database.ReluctDatabase
+import com.apimorlabs.reluct.data.source.database.ReluctDatabase
 
 internal class DatabaseWrapper(val instance: ReluctDatabase?)

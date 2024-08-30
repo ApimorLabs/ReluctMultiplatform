@@ -1,8 +1,8 @@
 package com.apimorlabs.reluct.data.source.database.dao.screentime
 
-import work.racka.reluct.data.source.database.models.LimitsDbObject
-import work.racka.reluct.data.source.database.tables.LimitsTable
-import work.racka.reluct.data.source.database.tables.LimitsTableQueries
+import com.apimorlabs.reluct.data.source.database.models.LimitsDbObject
+import com.apimorlabs.reluct.data.source.database.tables.LimitsTable
+import com.apimorlabs.reluct.data.source.database.tables.LimitsTableQueries
 
 internal object LimitsHelpers {
     fun LimitsTableQueries.insertAppToDb(limit: LimitsDbObject) {

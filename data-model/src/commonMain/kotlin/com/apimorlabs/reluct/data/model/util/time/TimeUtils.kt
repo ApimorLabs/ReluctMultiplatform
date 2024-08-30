@@ -2,10 +2,10 @@ package com.apimorlabs.reluct.data.model.util.time
 
 import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
-import work.racka.reluct.data.model.util.time.TimeConstants.HOURLY_MINUTES_SECONDS
-import work.racka.reluct.data.model.util.time.TimeConstants.MILLIS_PER_HOUR
-import work.racka.reluct.data.model.util.time.TimeConstants.MILLIS_PER_MINUTE
-import work.racka.reluct.data.model.util.time.TimeConstants.MILLIS_PER_SECOND
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.HOURLY_MINUTES_SECONDS
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.MILLIS_PER_HOUR
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.MILLIS_PER_MINUTE
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.MILLIS_PER_SECOND
 import java.util.*
 import kotlin.math.abs
 
@@ -27,7 +27,7 @@ object TimeUtils {
         originalTimeZoneId: String,
     ): LocalDateTime {
         val timeZone = TimeZone.of(originalTimeZoneId)
-        val localDateTime = dateTime.toLocalDateTime()
+        val localDateTime = LocalDateTime.parse(dateTime)
         val instant = localDateTime.toInstant(timeZone)
 
         /**

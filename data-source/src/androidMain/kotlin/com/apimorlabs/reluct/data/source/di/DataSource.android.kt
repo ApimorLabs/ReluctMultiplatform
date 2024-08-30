@@ -4,11 +4,11 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import work.racka.reluct.data.source.database.ReluctDatabase
-import work.racka.reluct.data.source.database.adapters.GoalsTableAdapter
-import work.racka.reluct.data.source.database.adapters.TasksTableAdapter
-import work.racka.reluct.data.source.database.dao.DatabaseWrapper
-import work.racka.reluct.data.source.util.Constants
+import com.apimorlabs.reluct.data.source.database.ReluctDatabase
+import com.apimorlabs.reluct.data.source.database.adapters.GoalsTableAdapter
+import com.apimorlabs.reluct.data.source.database.adapters.TasksTableAdapter
+import com.apimorlabs.reluct.data.source.database.dao.DatabaseWrapper
+import com.apimorlabs.reluct.data.source.util.Constants
 
 internal actual fun platformModule(): Module = module {
     single<DatabaseWrapper> {

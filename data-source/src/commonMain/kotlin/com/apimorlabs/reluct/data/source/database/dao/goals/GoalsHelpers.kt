@@ -1,11 +1,11 @@
 package com.apimorlabs.reluct.data.source.database.dao.goals
 
-import work.racka.reluct.data.model.domain.goals.GoalInterval
-import work.racka.reluct.data.model.domain.goals.GoalType
-import work.racka.reluct.data.model.util.time.Week
-import work.racka.reluct.data.source.database.models.GoalDbObject
-import work.racka.reluct.data.source.database.tables.GoalsTable
-import work.racka.reluct.data.source.database.tables.GoalsTableQueries
+import com.apimorlabs.reluct.data.model.domain.goals.GoalInterval
+import com.apimorlabs.reluct.data.model.domain.goals.GoalType
+import com.apimorlabs.reluct.data.model.util.time.Week
+import com.apimorlabs.reluct.data.source.database.models.GoalDbObject
+import com.apimorlabs.reluct.data.source.database.tables.GoalsTable
+import com.apimorlabs.reluct.data.source.database.tables.GoalsTableQueries
 
 object GoalsHelpers {
 

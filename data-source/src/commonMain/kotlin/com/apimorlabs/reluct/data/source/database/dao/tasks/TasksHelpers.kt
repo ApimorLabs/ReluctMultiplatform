@@ -1,11 +1,11 @@
 package com.apimorlabs.reluct.data.source.database.dao.tasks
 
-import work.racka.reluct.data.source.database.models.TaskDbObject
-import work.racka.reluct.data.source.database.models.TaskLabelDbObject
-import work.racka.reluct.data.source.database.tables.TaskLabelsTable
-import work.racka.reluct.data.source.database.tables.TaskLabelsTableQueries
-import work.racka.reluct.data.source.database.tables.TasksTable
-import work.racka.reluct.data.source.database.tables.TasksTableQueries
+import com.apimorlabs.reluct.data.source.database.models.TaskDbObject
+import com.apimorlabs.reluct.data.source.database.models.TaskLabelDbObject
+import com.apimorlabs.reluct.data.source.database.tables.TaskLabelsTable
+import com.apimorlabs.reluct.data.source.database.tables.TaskLabelsTableQueries
+import com.apimorlabs.reluct.data.source.database.tables.TasksTable
+import com.apimorlabs.reluct.data.source.database.tables.TasksTableQueries
 
 internal object TasksHelpers {
 

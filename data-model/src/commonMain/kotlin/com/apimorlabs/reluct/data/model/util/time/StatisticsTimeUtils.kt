@@ -1,11 +1,11 @@
 package com.apimorlabs.reluct.data.model.util.time
 
 import kotlinx.datetime.*
-import work.racka.reluct.data.model.util.time.TimeConstants.DAILY_HOURS
-import work.racka.reluct.data.model.util.time.TimeConstants.DAYS_OF_WEEK
-import work.racka.reluct.data.model.util.time.TimeConstants.HOURLY_MINUTES_SECONDS
-import work.racka.reluct.data.model.util.time.TimeConstants.MINUTE_MILLIS
-import work.racka.reluct.data.model.util.time.TimeUtils.plus
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.DAILY_HOURS
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.DAYS_OF_WEEK
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.HOURLY_MINUTES_SECONDS
+import com.apimorlabs.reluct.data.model.util.time.TimeConstants.MINUTE_MILLIS
+import com.apimorlabs.reluct.data.model.util.time.TimeUtils.plus
 
 object StatisticsTimeUtils {
 

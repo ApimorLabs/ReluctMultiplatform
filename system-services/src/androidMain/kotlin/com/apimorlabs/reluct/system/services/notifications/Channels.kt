@@ -2,7 +2,7 @@ package com.apimorlabs.reluct.system.services.notifications
 
 import android.content.Context
 import androidx.core.app.NotificationManagerCompat
-import work.racka.reluct.system.services.R
+import com.apimorlabs.reluct.system.services.R
 
 object Channels {
     fun getAppAlertsChannel(context: Context) = NotificationChannelInfo(

@@ -1,7 +1,7 @@
 package com.apimorlabs.reluct.data.source.database.dao.goals
 
 import kotlinx.coroutines.flow.Flow
-import work.racka.reluct.data.source.database.models.GoalDbObject
+import com.apimorlabs.reluct.data.source.database.models.GoalDbObject
 
 interface GoalsDao {
     suspend fun insertGoal(goal: GoalDbObject)

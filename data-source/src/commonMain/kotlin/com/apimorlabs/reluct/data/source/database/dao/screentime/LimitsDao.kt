@@ -1,7 +1,7 @@
 package com.apimorlabs.reluct.data.source.database.dao.screentime
 
 import kotlinx.coroutines.flow.Flow
-import work.racka.reluct.data.source.database.models.LimitsDbObject
+import com.apimorlabs.reluct.data.source.database.models.LimitsDbObject
 
 interface LimitsDao {
     /**

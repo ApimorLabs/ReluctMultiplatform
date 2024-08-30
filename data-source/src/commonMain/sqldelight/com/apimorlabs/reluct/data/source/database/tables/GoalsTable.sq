@@ -2,9 +2,9 @@ import kotlin.Boolean;
 import kotlin.String;
 import kotlin.collections.List;
 import kotlin.ranges.LongRange;
-import work.racka.reluct.data.model.domain.goals.GoalType;
-import work.racka.reluct.data.model.util.time.Week;
-import work.racka.reluct.data.model.domain.goals.GoalInterval;
+import com.apimorlabs.reluct.data.model.domain.goals.GoalType;
+import com.apimorlabs.reluct.data.model.util.time.Week;
+import com.apimorlabs.reluct.data.model.domain.goals.GoalInterval;
 
 CREATE TABLE IF NOT EXISTS GoalsTable (
 id TEXT NOT NULL PRIMARY KEY,

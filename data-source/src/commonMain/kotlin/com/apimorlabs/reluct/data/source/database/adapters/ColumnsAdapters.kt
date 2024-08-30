@@ -1,7 +1,7 @@
 package com.apimorlabs.reluct.data.source.database.adapters
 
 import app.cash.sqldelight.ColumnAdapter
-import work.racka.reluct.data.model.util.time.Week
+import com.apimorlabs.reluct.data.model.util.time.Week
 
 internal val listOfStringAdapter = object : ColumnAdapter<List<String>, String> {
     override fun decode(databaseValue: String): List<String> =

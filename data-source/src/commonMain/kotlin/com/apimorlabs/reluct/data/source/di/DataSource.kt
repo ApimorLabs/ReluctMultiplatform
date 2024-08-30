@@ -4,14 +4,14 @@ import com.russhwolf.settings.Settings
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import work.racka.reluct.data.source.database.dao.goals.GoalsDao
-import work.racka.reluct.data.source.database.dao.goals.GoalsDaoImpl
-import work.racka.reluct.data.source.database.dao.screentime.LimitsDao
-import work.racka.reluct.data.source.database.dao.screentime.LimitsDaoImpl
-import work.racka.reluct.data.source.database.dao.tasks.TasksDao
-import work.racka.reluct.data.source.database.dao.tasks.TasksDaoImpl
-import work.racka.reluct.data.source.settings.MultiplatformSettings
-import work.racka.reluct.data.source.settings.MultiplatformSettingsImpl
+import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDao
+import com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDaoImpl
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsDao
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsDaoImpl
+import com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDao
+import com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDaoImpl
+import com.apimorlabs.reluct.data.source.settings.MultiplatformSettings
+import com.apimorlabs.reluct.data.source.settings.MultiplatformSettingsImpl
 
 object DataSource {
     fun KoinApplication.install() = apply {

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.flow.update
-import work.racka.reluct.data.source.database.models.GoalDbObject
+import com.apimorlabs.reluct.data.source.database.models.GoalDbObject
 import com.apimorlabs.reluct.data.source.testData.GoalsTestData
 
 class FakeGoalsDao : GoalsDao {

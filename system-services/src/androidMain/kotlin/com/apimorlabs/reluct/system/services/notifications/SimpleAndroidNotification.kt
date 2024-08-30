@@ -12,7 +12,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.graphics.drawable.IconCompat
-import com.apimorlabs.reluct.system.services.notifications.NotificationData
 
 class SimpleAndroidNotification(
     private val context: Context,

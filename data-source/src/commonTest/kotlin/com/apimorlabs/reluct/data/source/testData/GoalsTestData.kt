@@ -1,8 +1,8 @@
 package com.apimorlabs.reluct.data.source.testData
 
-import work.racka.reluct.data.model.domain.goals.GoalInterval
-import work.racka.reluct.data.model.domain.goals.GoalType
-import work.racka.reluct.data.source.database.models.GoalDbObject
+import com.apimorlabs.reluct.data.model.domain.goals.GoalInterval
+import com.apimorlabs.reluct.data.model.domain.goals.GoalType
+import com.apimorlabs.reluct.data.source.database.models.GoalDbObject
 
 object GoalsTestData {
     val goalsDbObjects = listOf(

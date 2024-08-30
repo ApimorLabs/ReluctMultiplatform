@@ -6,12 +6,12 @@ import app.cash.sqldelight.coroutines.mapToOneOrDefault
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import work.racka.reluct.data.source.database.dao.DatabaseWrapper
-import work.racka.reluct.data.source.database.dao.screentime.LimitsHelpers.getAppFromDb
-import work.racka.reluct.data.source.database.dao.screentime.LimitsHelpers.getDistractingAppsFromDb
-import work.racka.reluct.data.source.database.dao.screentime.LimitsHelpers.getPausedAppsFromDb
-import work.racka.reluct.data.source.database.dao.screentime.LimitsHelpers.insertAppToDb
-import work.racka.reluct.data.source.database.models.LimitsDbObject
+import com.apimorlabs.reluct.data.source.database.dao.DatabaseWrapper
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsHelpers.getAppFromDb
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsHelpers.getDistractingAppsFromDb
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsHelpers.getPausedAppsFromDb
+import com.apimorlabs.reluct.data.source.database.dao.screentime.LimitsHelpers.insertAppToDb
+import com.apimorlabs.reluct.data.source.database.models.LimitsDbObject
 
 internal class LimitsDaoImpl(
     private val dispatcher: CoroutineDispatcher,

@@ -1,6 +1,6 @@
 package com.apimorlabs.reluct.system.services.notifications
 
-import work.racka.reluct.data.model.domain.appInfo.Icon
+import com.apimorlabs.reluct.data.model.domain.appInfo.Icon
 
 data class NotificationData(
     val iconProvider: Icon?,

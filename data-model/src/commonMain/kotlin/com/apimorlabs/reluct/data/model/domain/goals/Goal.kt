@@ -8,7 +8,7 @@ data class Goal(
     val name: String,
     val description: String,
     val isActive: Boolean,
-    val relatedApps: ImmutableList<com.apimorlabs.reluct.data.model.domain.appInfo.AppInfo>,
+    val relatedApps: ImmutableList<AppInfo>,
     val targetValue: Long,
     val currentValue: Long,
     val goalDuration: GoalDuration,
