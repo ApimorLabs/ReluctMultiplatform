@@ -16,5 +16,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.reluct.data.model"
+    namespace = "com.apimorlabs.reluct.data.model"
 }

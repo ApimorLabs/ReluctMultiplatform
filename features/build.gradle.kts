@@ -20,5 +20,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.reluct.features"
+    namespace = "com.apimorlabs.reluct.features"
 }

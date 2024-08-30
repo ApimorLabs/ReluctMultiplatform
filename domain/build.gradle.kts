@@ -17,5 +17,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.reluct.domain"
+    namespace = "com.apimorlabs.reluct.domain"
 }

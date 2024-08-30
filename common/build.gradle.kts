@@ -23,5 +23,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.reluct.common"
+    namespace = "com.apimorlabs.reluct.common"
 }
