@@ -6,7 +6,7 @@ internal object Versions {
     val TARGET_SDK = 34
     val VERSION_CODE = 1
     val VERSION_NAME = "1.0.0"
-    val PACKAGE_NAME = "work.racka.reluct"
+    val PACKAGE_NAME = "com.apimorlabs.reluct"
     val DESKTOP_VERSION = "1.0.0"
     val DESKTOP_PACKAGE_NAME = "Reluct"
 }

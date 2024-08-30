@@ -7,10 +7,10 @@ plugins {
 sqldelight {
     databases {
         create("ReluctDatabase") {
-            packageName.set("work.racka.reluct.data.source.database")
+            packageName.set("com.apimorlabs.reluct.data.source.database")
             srcDirs.setFrom("src/commonMain/sqldelight")
             schemaOutputDirectory.set(
-                file("src/commonMain/sqldelight/work/racka/reluct/data/source/database/files")
+                file("src/commonMain/sqldelight/com/apimorlabs/reluct/data/source/database/files")
             )
             version = 1
             verifyMigrations.set(true)
@@ -65,5 +65,5 @@ kotlin {
 }
 
 android {
-    namespace = "work.racka.reluct.data.source"
+    namespace = "com.apimorlabs.reluct.data.source"
 }

@@ -27,19 +27,19 @@ gradlePlugin {
     plugins {
         register("composeMultiplatformAppPlugin") {
             id = libs.plugins.compose.multiplatform.app.get().pluginId
-            implementationClass = "work.racka.reluct.plugins.ComposeMultiplatformAppPlugin"
+            implementationClass = "com.apimorlabs.reluct.plugins.ComposeMultiplatformAppPlugin"
         }
         register("composeMultiplatformLibPlugin") {
             id = libs.plugins.compose.multiplatform.lib.get().pluginId
-            implementationClass = "work.racka.reluct.plugins.ComposeMultiplatformLibPlugin"
+            implementationClass = "com.apimorlabs.reluct.plugins.ComposeMultiplatformLibPlugin"
         }
         register("kotlinMultiplatformLibPlugin") {
             id = libs.plugins.kotlin.multiplatform.lib.get().pluginId
-            implementationClass = "work.racka.reluct.plugins.KotlinMultiplatformLibPlugin"
+            implementationClass = "com.apimorlabs.reluct.plugins.KotlinMultiplatformLibPlugin"
         }
         register("detektPlugin") {
             id = libs.plugins.detekt.setup.get().pluginId
-            implementationClass = "work.racka.reluct.plugins.DetektConventionPlugin"
+            implementationClass = "com.apimorlabs.reluct.plugins.DetektConventionPlugin"
         }
     }
 }

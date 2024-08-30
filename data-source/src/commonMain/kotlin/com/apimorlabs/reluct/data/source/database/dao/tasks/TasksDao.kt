@@ -1,8 +1,8 @@
 package com.apimorlabs.reluct.data.source.database.dao.tasks
 
 import kotlinx.coroutines.flow.Flow
-import work.racka.reluct.data.source.database.models.TaskDbObject
-import work.racka.reluct.data.source.database.models.TaskLabelDbObject
+import com.apimorlabs.reluct.data.source.database.models.TaskDbObject
+import com.apimorlabs.reluct.data.source.database.models.TaskLabelDbObject
 
 interface TasksDao {
 
