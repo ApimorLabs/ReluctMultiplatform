@@ -37,5 +37,8 @@ include(
     ":composeApp",
     ":common",
     ":data-model",
-    ":data-source"
+    ":data-source",
+    ":domain",
+    ":features",
+    ":system-services"
 )
