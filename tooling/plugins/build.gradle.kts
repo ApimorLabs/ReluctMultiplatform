@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "work.racka.template.plugins"
+group = "com.apimorlabs.reluct.plugins"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17

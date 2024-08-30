@@ -1,6 +1,6 @@
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import work.racka.reluct.common.di.KoinMain
+import com.apimorlabs.reluct.common.di.KoinMain
 
 fun main() {
     KoinMain.init()

@@ -14,7 +14,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
-import work.racka.reluct.common.sources.MyViewModel
+import com.apimorlabs.reluct.common.sources.MyViewModel
 
 @Composable
 @Preview
