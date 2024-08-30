@@ -9,6 +9,9 @@ kotlin {
                 //Projects
                 implementation(project(":data-model"))
                 implementation(project(":data-source"))
+                implementation(project(":domain"))
+                implementation(project(":features"))
+                implementation(project(":system-services"))
 
                 // Normal deps
                 implementation(libs.koin.compose)
