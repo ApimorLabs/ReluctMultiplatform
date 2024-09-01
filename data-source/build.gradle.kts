@@ -46,6 +46,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
+                implementation(libs.palette)
                 implementation(libs.sqldelight.android.driver)
             }
         }
