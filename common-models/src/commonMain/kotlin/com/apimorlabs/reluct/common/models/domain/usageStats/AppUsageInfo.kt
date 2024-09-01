@@ -1,6 +1,6 @@
 package com.apimorlabs.reluct.common.models.domain.usageStats
 
-import com.apimorlabs.reluct.data.model.domain.appInfo.Icon
+import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
 
 data class AppUsageInfo(
     val packageName: String,
