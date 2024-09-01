@@ -67,10 +67,12 @@ internal class AndroidUsageDataManager(
             val currentTime = Clock.System.now().toEpochMilliseconds()
             // UsageEvents.Event.ACTIVITY_RESUMED was added in Android Q but it still maps to the
             // old UsageEvents.Event.MOVE_TO_FOREGROUND event that's why we suppress it.
+
             @SuppressLint("InlinedApi")
             val eventsFromSameApp = e0.eventType == UsageEvents.Event.ACTIVITY_RESUMED &&
                 e1.eventType == UsageEvents.Event.ACTIVITY_PAUSED &&
                 e0.className == e1.className
+
             @SuppressLint("InlinedApi")
             val appActive = (i + 1 == allEvents.lastIndex) &&
                 (e1.eventType == UsageEvents.Event.ACTIVITY_RESUMED) &&

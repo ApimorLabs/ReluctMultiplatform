@@ -13,7 +13,6 @@ import com.apimorlabs.reluct.data.source.R
 const val APP_INFO_LOG = "APP_INFO_LOG"
 
 internal fun getAppIcon(context: Context, packageName: String): Icon {
-
     // Quite dangerous, but should only happen if the drawable is not found
     var appIcon: Drawable =
         ResourcesCompat.getDrawable(context.resources, R.drawable.default_app_icon, null)!!
@@ -34,7 +33,7 @@ internal fun getAppIcon(context: Context, packageName: String): Icon {
 internal fun getAppName(context: Context, packageName: String): String {
     var appName = packageName
     try {
-        //Timber.d("PackageName: $packageName")
+        // Timber.d("PackageName: $packageName")
         val newContext =
             context.createPackageContext(packageName, Context.CONTEXT_IGNORE_SECURITY)
         val packageManager = newContext.packageManager
@@ -45,7 +44,7 @@ internal fun getAppName(context: Context, packageName: String): String {
                     PackageManager.ApplicationInfoFlags.of(PackageManager.GET_META_DATA.toLong())
                 )
             } else {
-                //@Suppress("DEPRECATION")
+                // @Suppress("DEPRECATION")
                 packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
             }
         }
@@ -69,7 +68,7 @@ internal fun isSystemApp(context: Context, packageName: String): Boolean {
             PackageManager.ApplicationInfoFlags.of(PackageManager.GET_META_DATA.toLong())
         )
     } else {
-        //@Suppress("DEPRECATION")
+        // @Suppress("DEPRECATION")
         packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
     }
     return appInfo.flags == ApplicationInfo.FLAG_SYSTEM
