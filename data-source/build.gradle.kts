@@ -23,7 +23,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":data-model"))
+                implementation(project(":common-models"))
 
                 implementation(libs.kotlinx.serialization.core)
                 implementation(libs.coroutines.core)
