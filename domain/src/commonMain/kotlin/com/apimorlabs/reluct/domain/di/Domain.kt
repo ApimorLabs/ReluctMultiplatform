@@ -7,11 +7,9 @@ import org.koin.dsl.module
 object Domain {
     fun KoinApplication.install() = apply {
         modules(sharedModule(), platformModule())
-
     }
 
     private fun sharedModule(): Module = module {
-
     }
 }
 
