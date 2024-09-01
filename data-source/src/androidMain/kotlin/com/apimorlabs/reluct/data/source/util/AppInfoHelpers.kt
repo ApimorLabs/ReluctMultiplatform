@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import androidx.core.content.res.ResourcesCompat
-import com.apimorlabs.reluct.data.model.domain.appInfo.Icon
+import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
 import com.apimorlabs.reluct.data.source.R
 
 const val APP_INFO_LOG = "APP_INFO_LOG"

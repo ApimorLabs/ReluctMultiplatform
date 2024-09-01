@@ -7,7 +7,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //Projects
-                implementation(project(":data-model"))
+                implementation(project(":common-models"))
                 implementation(project(":data-source"))
                 implementation(project(":domain"))
                 implementation(project(":features"))
