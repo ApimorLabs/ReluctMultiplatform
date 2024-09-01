@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.data.model.util
+package com.apimorlabs.reluct.common.models.util
 
 import java.util.UUID
 

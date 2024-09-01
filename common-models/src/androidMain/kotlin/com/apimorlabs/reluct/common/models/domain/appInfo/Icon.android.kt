@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.data.model.domain.appInfo
+package com.apimorlabs.reluct.common.models.domain.appInfo
 
 import android.graphics.drawable.Drawable
 
