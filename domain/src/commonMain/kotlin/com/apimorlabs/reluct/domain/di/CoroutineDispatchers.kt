@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.data.source.di
+package com.apimorlabs.reluct.domain.di
 
 import kotlinx.coroutines.CoroutineDispatcher
 
