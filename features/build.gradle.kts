@@ -10,6 +10,7 @@ kotlin {
                 implementation(project(":common-models"))
                 implementation(project(":data-source"))
                 implementation(project(":domain"))
+                implementation(project(":system-services"))
 
                 // Normal deps
                 implementation(libs.coroutines.core)
