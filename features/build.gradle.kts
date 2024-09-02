@@ -8,7 +8,7 @@ kotlin {
             dependencies {
                 //Projects
                 implementation(project(":common-models"))
-                implementation(project(":data-source"))
+                implementation(project(":domain"))
 
                 // Normal deps
                 implementation(libs.koin.compose)
