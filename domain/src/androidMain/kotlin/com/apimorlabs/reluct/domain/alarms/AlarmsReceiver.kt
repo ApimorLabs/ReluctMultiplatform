@@ -56,7 +56,7 @@ internal class AlarmsReceiver : BroadcastReceiver(), KoinComponent {
                             category = NotificationCompat.CATEGORY_REMINDER
                         )
                         val channelInfo = context.getTaskReminderNotificationInfo()
-                        // TODO: Remember to fix this
+                        // TODO1: Remember to fix this
                         val uriString = "TaskDetailsDestination.taskDetailsDeepLink(data.id)"
                         val pendingIntent = AlarmReminderNotifications
                             .openNotificationPendingIntent(context, uriString)
@@ -66,7 +66,7 @@ internal class AlarmsReceiver : BroadcastReceiver(), KoinComponent {
                             channelInfo = channelInfo,
                             onNotificationClick = { pendingIntent },
                             onRequestPermission = {
-                                // TODO: Request Permission
+                                // TODO1: Request Permission
                             }
                         )
                         notification.show()

@@ -29,7 +29,7 @@ internal fun hasSystemFlag(
                 PackageManager.ApplicationInfoFlags.of(PackageManager.GET_META_DATA.toLong())
             )
         } else {
-            //@Suppress("DEPRECATION")
+            // @Suppress("DEPRECATION")
             getApplicationInfo(packageName, PackageManager.GET_META_DATA)
         }
     }

@@ -27,7 +27,7 @@ internal class AndroidGetInstalledApps(
                     PackageManager.ApplicationInfoFlags.of(PackageManager.GET_META_DATA.toLong())
                 )
             } else {
-                //@Suppress("DEPRECATION")
+                // @Suppress("DEPRECATION")
                 getInstalledApplications(PackageManager.GET_META_DATA)
             }
         }
