@@ -63,7 +63,7 @@ class ActiveGoalsViewModel(
             getGoals.getActiveGoals(factor = limitFactor).collectLatest { goals ->
                 goalsListState.update { state ->
                     newDataPresent = (state.goals.firstOrNull()?.id != goals.firstOrNull()?.id) &&
-                            (state.goals.lastOrNull()?.id != goals.lastOrNull()?.id)
+                        (state.goals.lastOrNull()?.id != goals.lastOrNull()?.id)
                     GoalsListState.Data(goalsData = goals, newDataPresent = newDataPresent)
                 }
             }

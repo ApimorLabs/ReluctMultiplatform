@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform.lib)
+    alias(libs.plugins.compose.multiplatform.lib)
 }
 
 kotlin {
@@ -12,9 +12,6 @@ kotlin {
                 implementation(project(":domain"))
 
                 // Normal deps
-                implementation(libs.koin.compose)
-                implementation(libs.koin.compose.viewmodel)
-                implementation(libs.lifecycle.viewmodel)
                 implementation(libs.coroutines.core)
             }
         }
