@@ -6,7 +6,7 @@ import org.koin.dsl.module
 
 object Features {
     fun KoinApplication.install() = apply {
-        modules(sharedModule(), tasksModule())
+        modules(sharedModule(), tasksModule(), goalsModule())
     }
 
     private fun sharedModule(): Module = module {
