@@ -2,10 +2,10 @@ package com.apimorlabs.reluct.features.di
 
 import com.apimorlabs.reluct.features.tasks.addEdit.AddEditTaskViewModel
 import com.apimorlabs.reluct.features.tasks.completed.CompletedTasksViewModel
+import com.apimorlabs.reluct.features.tasks.details.TaskDetailsViewModel
 import com.apimorlabs.reluct.features.tasks.pending.PendingTasksViewModel
 import com.apimorlabs.reluct.features.tasks.search.SearchTasksViewModel
 import com.apimorlabs.reluct.features.tasks.statistics.TasksStatisticsViewModel
-import com.apimorlabs.reluct.features.tasks.details.TaskDetailsViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
