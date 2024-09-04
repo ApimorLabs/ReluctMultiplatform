@@ -3,6 +3,9 @@ package com.apimorlabs.reluct.features.di
 import com.apimorlabs.reluct.features.dashboard.DashboardOverviewViewModel
 import com.apimorlabs.reluct.features.dashboard.DashboardStatisticsViewModel
 import com.apimorlabs.reluct.features.onboarding.OnBoardingViewModel
+import com.apimorlabs.reluct.features.screenTime.limits.ScreenTimeLimitsViewModel
+import com.apimorlabs.reluct.features.screenTime.statistics.AppScreenTimeStatsViewModel
+import com.apimorlabs.reluct.features.screenTime.statistics.ScreenTimeStatsViewModel
 import com.apimorlabs.reluct.features.settings.AppSettingsViewModel
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
@@ -12,7 +15,7 @@ import org.koin.dsl.module
 
 object Features {
     fun KoinApplication.install() = apply {
-        modules(sharedModule(), tasksModule(), goalsModule())
+        modules(platformModule(), sharedModule(), tasksModule(), goalsModule())
     }
 
     private fun sharedModule(): Module = module {
@@ -20,30 +23,28 @@ object Features {
         viewModelOf(::OnBoardingViewModel)
 
         // Dashboard
-        viewModel {
-            DashboardOverviewViewModel(
-                getTasksUseCase = get(),
-                modifyTasksUsesCase = get(),
-                getUsageStats = get(),
-                getGoals = get(),
-                modifyGoals = get(),
-                screenTimeServices = get()
-            )
-        }
-
-        viewModel {
-            DashboardStatisticsViewModel(
-                screenTimeStatsViewModel = get(),
-                tasksStatsViewModel = get()
-            )
-        }
+        viewModelOf(::DashboardOverviewViewModel)
+        viewModelOf(::DashboardStatisticsViewModel)
 
         // Settings
-        viewModel {
-            AppSettingsViewModel(
-                settings = get(),
-                screenTimeServices = get()
+        viewModelOf(::AppSettingsViewModel)
+
+        // Screen Time
+        viewModelOf(::ScreenTimeLimitsViewModel)
+
+        viewModelOf(::ScreenTimeStatsViewModel)
+
+        viewModel { (packageName: String) ->
+            AppScreenTimeStatsViewModel(
+                packageName = packageName,
+                getAppUsageInfo = get(),
+                manageAppTimeLimit = get(),
+                manageDistractingApps = get(),
+                managePausedApps = get(),
+                getWeekRangeFromOffset = get()
             )
         }
     }
 }
+
+internal expect fun platformModule(): Module

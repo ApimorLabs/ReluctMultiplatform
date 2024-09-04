@@ -25,6 +25,14 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.savedstate)
+                implementation(libs.koin.androidx.workmanager)
+                implementation(libs.androidx.workmanager)
+            }
+        }
     }
 }
 

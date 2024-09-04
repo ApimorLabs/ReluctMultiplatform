@@ -2,9 +2,9 @@ package com.apimorlabs.reluct.features.dashboard
 
 import androidx.lifecycle.ViewModel
 import com.apimorlabs.reluct.common.models.domain.tasks.Task
+import com.apimorlabs.reluct.features.screenTime.states.ScreenTimeStatsState
+import com.apimorlabs.reluct.features.screenTime.states.events.ScreenTimeStatsEvents
 import com.apimorlabs.reluct.features.screenTime.statistics.ScreenTimeStatsViewModel
-import com.apimorlabs.reluct.features.screenTime.statistics.states.ScreenTimeStatsEvents
-import com.apimorlabs.reluct.features.screenTime.statistics.states.allStats.ScreenTimeStatsState
 import com.apimorlabs.reluct.features.tasks.states.TasksStatisticsState
 import com.apimorlabs.reluct.features.tasks.states.events.TasksEvents
 import com.apimorlabs.reluct.features.tasks.statistics.TasksStatisticsViewModel
