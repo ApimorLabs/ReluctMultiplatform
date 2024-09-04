@@ -88,11 +88,11 @@ internal class ScreenTimeLimitService : Service(), KoinComponent {
                 overlayView = viewModel?.let { vm ->
                     AppLimitedOverlayView(
                         applicationContext,
-                        viewModel = vm,
+                        /*viewModel = vm,
                         exit = {
                             goHome()
                             removeOverlayView()
-                        }
+                        }*/
                     ).getView()
                 }
                 overlayLifecycleOwner.attachToView(overlayView)
@@ -142,7 +142,8 @@ internal class ScreenTimeLimitService : Service(), KoinComponent {
         }
     }
 
-    private fun goHome() {
+    // Make private in the future if it has no use outside this class
+    fun goHome() {
         goneHome = true
         try {
             Intent(Intent.ACTION_MAIN).apply {
