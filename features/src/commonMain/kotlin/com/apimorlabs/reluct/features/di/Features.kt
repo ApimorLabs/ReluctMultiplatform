@@ -3,6 +3,7 @@ package com.apimorlabs.reluct.features.di
 import com.apimorlabs.reluct.features.dashboard.DashboardOverviewViewModel
 import com.apimorlabs.reluct.features.dashboard.DashboardStatisticsViewModel
 import com.apimorlabs.reluct.features.onboarding.OnBoardingViewModel
+import com.apimorlabs.reluct.features.settings.AppSettingsViewModel
 import org.koin.core.KoinApplication
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
@@ -34,6 +35,14 @@ object Features {
             DashboardStatisticsViewModel(
                 screenTimeStatsViewModel = get(),
                 tasksStatsViewModel = get()
+            )
+        }
+
+        // Settings
+        viewModel {
+            AppSettingsViewModel(
+                settings = get(),
+                screenTimeServices = get()
             )
         }
     }
