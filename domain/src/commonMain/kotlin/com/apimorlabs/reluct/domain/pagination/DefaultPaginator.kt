@@ -2,11 +2,11 @@ package com.apimorlabs.reluct.domain.pagination
 
 class DefaultPaginator<Key, Item>(
     private val initialKey: Key,
-    private inline val onLoadUpdated: (Boolean) -> Unit,
-    private inline val onRequest: suspend (nextKey: Key) -> Result<Collection<Item>>,
-    private inline val getNextKey: suspend (currentItems: Collection<Item>) -> Key,
-    private inline val onError: suspend (e: Throwable?) -> Unit,
-    private inline val onSuccess: suspend (items: Collection<Item>) -> Unit,
+    private val onLoadUpdated: (Boolean) -> Unit,
+    private val onRequest: suspend (nextKey: Key) -> Result<Collection<Item>>,
+    private val getNextKey: suspend (currentItems: Collection<Item>) -> Key,
+    private val onError: suspend (e: Throwable?) -> Unit,
+    private val onSuccess: suspend (items: Collection<Item>) -> Unit,
 ) : Paginator<Key, Item> {
 
     var currentKey = initialKey

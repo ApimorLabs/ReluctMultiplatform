@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.LocalDateTime
 
 internal class ModifyTaskUseCaseImpl(
     private val dao: TasksDao,
@@ -40,7 +40,7 @@ internal class ModifyTaskUseCaseImpl(
             haptics.click()
             task.reminderLocalDateTime?.let { dateTimeString ->
                 manageTasksAlarms
-                    .setAlarm(taskId = task.id, dateTime = dateTimeString.toLocalDateTime())
+                    .setAlarm(taskId = task.id, dateTime = LocalDateTime.parse(dateTimeString))
             }
         }
     }
@@ -63,7 +63,7 @@ internal class ModifyTaskUseCaseImpl(
             } else {
                 task.reminderDateAndTime?.let { dateTimeString ->
                     manageTasksAlarms
-                        .setAlarm(taskId = task.id, dateTime = dateTimeString.toLocalDateTime())
+                        .setAlarm(taskId = task.id, dateTime = LocalDateTime.parse(dateTimeString))
                 }
             }
         }

@@ -6,6 +6,12 @@ kotlin {
         val commonMain by getting {
             dependencies { implementation(project(":common")) }
         }
+
+        val desktopMain by getting {
+            dependencies {
+                implementation(libs.coroutines.swing)
+            }
+        }
     }
 }
 android {

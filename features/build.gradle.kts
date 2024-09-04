@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform.lib)
+    alias(libs.plugins.compose.multiplatform.lib)
 }
 
 kotlin {
@@ -9,11 +9,28 @@ kotlin {
                 //Projects
                 implementation(project(":common-models"))
                 implementation(project(":data-source"))
+                implementation(project(":domain"))
+                implementation(project(":system-services"))
 
                 // Normal deps
-                implementation(libs.koin.compose)
-                implementation(libs.koin.compose.viewmodel)
-                implementation(libs.lifecycle.viewmodel)
+                implementation(libs.coroutines.core)
+            }
+        }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.koin.test)
+                implementation(libs.coroutines.test)
+                implementation(libs.turbine.test)
+                implementation(kotlin("test"))
+            }
+        }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.savedstate)
+                implementation(libs.koin.androidx.workmanager)
+                implementation(libs.androidx.workmanager)
             }
         }
     }
