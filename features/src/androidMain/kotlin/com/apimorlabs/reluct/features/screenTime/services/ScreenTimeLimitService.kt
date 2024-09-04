@@ -11,15 +11,15 @@ import android.view.WindowManager
 import androidx.compose.ui.platform.ComposeView
 import com.apimorlabs.reluct.features.R
 import com.apimorlabs.reluct.features.screenTime.statistics.AppScreenTimeStatsViewModel
+import com.apimorlabs.reluct.features.screenTime.ui.overlay.AppLimitedOverlayView
+import com.apimorlabs.reluct.features.screenTime.ui.overlay.LimitsOverlayParams
+import com.apimorlabs.reluct.features.screenTime.ui.overlay.OverlayLifecycleOwner
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
-import com.apimorlabs.reluct.features.screenTime.ui.overlay.AppLimitedOverlayView
-import com.apimorlabs.reluct.features.screenTime.ui.overlay.LimitsOverlayParams
-import com.apimorlabs.reluct.features.screenTime.ui.overlay.OverlayLifecycleOwner
 
 internal class ScreenTimeLimitService : Service(), KoinComponent {
 
@@ -111,7 +111,7 @@ internal class ScreenTimeLimitService : Service(), KoinComponent {
 
     private fun removeOverlayView() {
         overlayView?.let { view ->
-            //viewModel?.destroy() // Destroy ViewModel
+            // viewModel?.destroy() // Destroy ViewModel
             viewModel = null
             view.disposeComposition() // Remove Composition
             windowManager?.removeView(view)

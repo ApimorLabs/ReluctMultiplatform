@@ -4,7 +4,6 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.net.toUri
 import com.apimorlabs.reluct.common.models.domain.usageStats.AppUsageStats
@@ -62,7 +61,7 @@ internal class AndroidScreenTimeServices(
                 // Check if the app doesn't violate limits
                 // Check if the app doesn't violate limits
                 val limitParamChecks = (isFocusModeOn && appLimits.isADistractingAp) ||
-                        appLimits.isPaused || appPastLimit
+                    appLimits.isPaused || appPastLimit
                 if (!appLimits.overridden && limitParamChecks) {
                     ScreenTimeServices.BlockState.Blocked(appLimits.appInfo.packageName)
                 } else {

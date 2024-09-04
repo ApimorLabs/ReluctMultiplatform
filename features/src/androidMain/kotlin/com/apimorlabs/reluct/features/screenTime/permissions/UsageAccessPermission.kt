@@ -21,7 +21,7 @@ internal object UsageAccessPermission {
         context: Context
     ): Boolean {
         val appOps: AppOpsManager = context.getSystemService(Context.APP_OPS_SERVICE)
-                as AppOpsManager
+            as AppOpsManager
         val mode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             appOps.unsafeCheckOpNoThrow(
                 AppOpsManager.OPSTR_GET_USAGE_STATS,

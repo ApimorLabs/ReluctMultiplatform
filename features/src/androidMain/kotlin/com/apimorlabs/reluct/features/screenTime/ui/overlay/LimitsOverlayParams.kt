@@ -13,7 +13,7 @@ object LimitsOverlayParams {
             WindowManager.LayoutParams.MATCH_PARENT,
             overlayLayoutFlag,
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             PixelFormat.TRANSLUCENT
         )
     }
