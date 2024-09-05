@@ -37,6 +37,7 @@ include(
     ":composeApp",
     ":common",
     ":common-models",
+    ":compose-ui",
     ":data-source",
     ":domain",
     ":features",
