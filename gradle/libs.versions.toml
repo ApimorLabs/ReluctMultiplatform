@@ -106,7 +106,7 @@ lifecycle_compose_runtime = { module = "androidx.lifecycle:lifecycle-runtime-com
 viewmodel_core = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 viewmodel_compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 savedstate = { module = "androidx.savedstate:savedstate-ktx", version.ref = "androidx-savedstate" }
-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle"}
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 jetbrains_lifecycle_runtime = { module = "org.jebrains.androidx.lifecycle:lifecycle-runtime", version.ref = "jetbrains-androidx-lifecycle" }
 jetbrains_lifecycle_common = { module = "org.jebrains.androidx.lifecycle:lifecycle-common", version.ref = "jetbrains-androidx-lifecycle" }
 jetbrains_lifecycle_viewmodel = { module = "org.jebrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "jetbrains-androidx-lifecycle" }
@@ -196,15 +196,15 @@ ktlint_rule_twitter_compose = { module = "com.twitter.compose.rules:ktlint", ver
 detekt_rule_twitter_compose = { module = "com.twitter.compose.rules:detekt", version.ref = "linter_twitter_compose" }
 
 # Java only
-jna_core = { module = "net.java.dev.jna:jna", version.ref = "jna"}
-jna_platform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna"}
+jna_core = { module = "net.java.dev.jna:jna", version.ref = "jna" }
+jna_platform = { module = "net.java.dev.jna:jna-platform", version.ref = "jna" }
 
 # Build logic dependencies
 android-desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugaring" }
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 compose-compiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-plugin"}
+jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-plugin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -213,11 +213,12 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSeriazation = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight"}
-detektGradle = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+detektGradle = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 
 ## Gradle Convention custom plugins
-compose-multiplatform-app = {id = "plugin.template.compose.multiplatform.app" }
-compose-multiplatform-lib = {id = "plugin.template.compose.multiplatform.lib" }
-kotlin-multiplatform-lib = {id = "plugin.template.kotlin.multiplatform.lib" }
-detekt-setup = {id = "plugin.template.detekt.setup" }
+compose-multiplatform-app = { id = "plugin.template.compose.multiplatform.app" }
+compose-multiplatform-lib = { id = "plugin.template.compose.multiplatform.lib" }
+kotlin-multiplatform-lib = { id = "plugin.template.kotlin.multiplatform.lib" }
+detekt-setup = { id = "plugin.template.detekt.setup" }

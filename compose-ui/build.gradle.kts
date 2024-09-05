@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.compose.multiplatform.lib)
+    alias(libs.plugins.moko.resources)
 }
 
 kotlin {
@@ -10,6 +11,8 @@ kotlin {
                 implementation(project(":common-models"))
 
                 // Normal deps
+                api(libs.moko.resources.core)
+                api(libs.moko.resources.compose)
                 implementation(compose.materialIconsExtended)
                 implementation(compose.animation)
                 implementation(compose.animationGraphics)
@@ -22,4 +25,13 @@ kotlin {
 
 android {
     namespace = "com.apimorlabs.reluct.compose.ui"
+    sourceSets["main"].apply {
+        assets.srcDir(layout.buildDirectory.file("generated/moko/androidMain/assets"))
+        res.srcDir(layout.buildDirectory.file("generated/moko/androidMain/res"))
+    }
+}
+
+multiplatformResources {
+    resourcesPackage.set("com.apimorlabs.reluct.compose.ui")
+    resourcesClassName.set("SRes")
 }
