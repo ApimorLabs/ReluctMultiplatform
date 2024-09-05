@@ -7,10 +7,14 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 //Projects
-                implementation(project(":domain"))
+                implementation(project(":common-models"))
 
                 // Normal deps
                 implementation(compose.materialIconsExtended)
+                implementation(compose.animation)
+                implementation(compose.animationGraphics)
+                implementation(libs.coroutines.core)
+                implementation(libs.kmpalette.core)
             }
         }
     }

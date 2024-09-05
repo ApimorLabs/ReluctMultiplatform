@@ -63,6 +63,7 @@ detekt = "1.23.6"
 # Extras
 lottie = "5.0.3"
 palette = "1.0.0"
+kmpalette = "3.1.0"
 desugaring = "1.1.8"
 jna = "5.12.1"
 
@@ -134,6 +135,15 @@ accompanist_system_ui_controller = { module = "com.google.accompanist:accompanis
 junit_core = { group = "junit", name = "junit", version.ref = "junit" }
 #junit_test = { module = "androidx.test.ext:junit", version.ref = "junit_test" }
 #junit_test_ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "junit_test" }
+
+# Color Palette
+kmpalette-core = { module = "com.kmpalette:kmpalette-core", version.ref = "kmpalette" }
+# Optional source libraries
+kmpalette-extensions-base64 = { module = "com.kmpalette:extensions-base64", version.ref = "kmpalette" }
+kmpalette-extensions-bytearray = { module = "com.kmpalette:extensions-bytearray", version.ref = "kmpalette" }
+kmpalette-extensions-libres = { module = "com.kmpalette:extensions-libres", version.ref = "kmpalette" }
+kmpalette-extensions-network = { module = "com.kmpalette:extensions-network", version.ref = "kmpalette" }
+kmpalette-extensions-file = { module = "com.kmpalette:extensions-file", version.ref = "kmpalette" }
 
 # Helpers and Extras
 coil_compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-image" }
