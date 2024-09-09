@@ -1,9 +1,6 @@
 package com.apimorlabs.reluct.compose.ui.util
 
-import android.graphics.drawable.Drawable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.core.graphics.drawable.toBitmap
 
 /**
  * Returns ARGB color value

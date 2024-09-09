@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.compose.multiplatform.lib)
-    alias(libs.plugins.moko.resources)
 }
 
 kotlin {
@@ -15,10 +14,12 @@ kotlin {
                 api(libs.moko.resources.compose)
                 api(libs.kmpalette.core)
                 api(libs.kmpalette.extensions.bytearray)
+                implementation(compose.components.resources)
                 implementation(compose.materialIconsExtended)
                 implementation(compose.animation)
                 implementation(compose.animationGraphics)
                 implementation(libs.coroutines.core)
+                implementation(libs.sketch.compose)
             }
         }
     }
@@ -32,7 +33,8 @@ android {
     }
 }
 
-multiplatformResources {
-    resourcesPackage.set("com.apimorlabs.reluct.compose.ui")
-    resourcesClassName.set("SRes")
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "com.apimorlabs.reluct.compose.ui"
 }
+

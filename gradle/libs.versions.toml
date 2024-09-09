@@ -48,6 +48,7 @@ turbine = "0.7.0"
 leakcanary = "2.9.1"
 
 # Helper libs
+sketch = "4.0.0-alpha08"
 coil-image = "2.1.0"
 accompanist = "0.27.0"
 androidx-workmanager = "2.9.0"
@@ -146,6 +147,9 @@ kmpalette-extensions-network = { module = "com.kmpalette:extensions-network", ve
 kmpalette-extensions-file = { module = "com.kmpalette:extensions-file", version.ref = "kmpalette" }
 
 # Helpers and Extras
+sketch_compose = { module = "io.github.panpf.sketch4:sketch-compose", version.ref = "sketch" }
+sketch_compose_resources = { module = "io.github.panpf.sketch4:sketch-compose-resources", version.ref = "sketch" }
+sketch_extensions_compose_resources = { module = "io.github.panpf.sketch4:sketch-extensions-compose-resources", version.ref = "sketch" }
 coil_compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-image" }
 lottie_compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 coil_svg = { module = "io.coil-kt:coil-svg", version.ref = "coil-image" }
@@ -205,6 +209,7 @@ android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref 
 compose-compiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 jetbrains-compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-plugin" }
+moko-resources-gradlePlugin = { module = "dev.icerock.moko:resources-generator", version.ref = "moko-resources" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
