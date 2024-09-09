@@ -7,15 +7,21 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.apimorlabs.reluct.compose.ui.util.fontResources
+import com.apimorlabs.reluct.compose.ui.Res
+import com.apimorlabs.reluct.compose.ui.lexenddeca_bold
+import com.apimorlabs.reluct.compose.ui.lexenddeca_light
+import com.apimorlabs.reluct.compose.ui.lexenddeca_medium
+import com.apimorlabs.reluct.compose.ui.lexenddeca_regular
+import com.apimorlabs.reluct.compose.ui.lexenddeca_thin
+import org.jetbrains.compose.resources.Font
 
 @Composable
 private fun myFonts() = FontFamily(
-    fontResources("lexenddeca_bold.ttf", weight = FontWeight.Bold, style = FontStyle.Normal),
-    fontResources("lexenddeca_light.ttf", weight = FontWeight.Light, style = FontStyle.Normal),
-    fontResources("lexenddeca_medium.ttf", weight = FontWeight.Medium, style = FontStyle.Normal),
-    fontResources("lexenddeca_regular.ttf", weight = FontWeight.Normal, style = FontStyle.Normal),
-    fontResources("lexenddeca_thin.ttf", weight = FontWeight.Thin, style = FontStyle.Normal)
+    Font(Res.font.lexenddeca_bold, weight = FontWeight.Bold, style = FontStyle.Normal),
+    Font(Res.font.lexenddeca_light, weight = FontWeight.Light, style = FontStyle.Normal),
+    Font(Res.font.lexenddeca_medium, weight = FontWeight.Medium, style = FontStyle.Normal),
+    Font(Res.font.lexenddeca_regular, weight = FontWeight.Normal, style = FontStyle.Normal),
+    Font(Res.font.lexenddeca_thin, weight = FontWeight.Thin, style = FontStyle.Normal)
 )
 
 // Set of Material typography styles to start with
