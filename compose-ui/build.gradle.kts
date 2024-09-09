@@ -10,8 +10,6 @@ kotlin {
                 implementation(project(":common-models"))
 
                 // Normal deps
-                api(libs.moko.resources.core)
-                api(libs.moko.resources.compose)
                 api(libs.kmpalette.core)
                 api(libs.kmpalette.extensions.bytearray)
                 implementation(compose.components.resources)
@@ -20,6 +18,7 @@ kotlin {
                 implementation(compose.animationGraphics)
                 implementation(libs.coroutines.core)
                 implementation(libs.sketch.compose)
+                implementation(libs.sketch.compose.resources)
             }
         }
     }
