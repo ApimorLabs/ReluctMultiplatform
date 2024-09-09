@@ -10,6 +10,8 @@ import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import androidx.core.content.res.ResourcesCompat
 import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
+import com.apimorlabs.reluct.common.models.util.getBitmap
+import com.apimorlabs.reluct.common.models.util.toByteArrayUncompressed
 import com.apimorlabs.reluct.features.R
 import com.apimorlabs.reluct.system.services.notifications.Channels.getAppAlertsChannel
 import com.apimorlabs.reluct.system.services.notifications.NotificationData
@@ -21,7 +23,7 @@ internal object UsageAccessPermission {
         context: Context
     ): Boolean {
         val appOps: AppOpsManager = context.getSystemService(Context.APP_OPS_SERVICE)
-            as AppOpsManager
+                as AppOpsManager
         val mode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             appOps.unsafeCheckOpNoThrow(
                 AppOpsManager.OPSTR_GET_USAGE_STATS,
@@ -42,7 +44,8 @@ internal object UsageAccessPermission {
     fun requestUsageAccessNotification(context: Context): SimpleAndroidNotification {
         val drawable =
             ResourcesCompat.getDrawable(context.resources, R.drawable.ic_twotone_report_24, null)
-        val icon = drawable?.let { Icon(it) }
+        val icon =
+            drawable?.let { Icon(it.getBitmap()?.toByteArrayUncompressed() ?: byteArrayOf()) }
         val notificationData = NotificationData(
             iconProvider = icon,
             title = context.getString(R.string.no_usage_access_notif_title),

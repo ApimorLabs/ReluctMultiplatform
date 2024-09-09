@@ -10,6 +10,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.res.ResourcesCompat
 import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
+import com.apimorlabs.reluct.common.models.util.getBitmap
+import com.apimorlabs.reluct.common.models.util.toByteArrayUncompressed
 import com.apimorlabs.reluct.features.R
 import com.apimorlabs.reluct.system.services.notifications.Channels.getAppAlertsChannel
 import com.apimorlabs.reluct.system.services.notifications.NotificationChannelInfo
@@ -46,7 +48,7 @@ object ScreenTimeServiceNotification {
     fun overlayPermissionNotification(context: Context): SimpleAndroidNotification {
         val drawable =
             ResourcesCompat.getDrawable(context.resources, R.drawable.ic_twotone_report_24, null)
-        val icon = drawable?.let { Icon(it) }
+        val icon = drawable?.let { Icon(it.getBitmap()?.toByteArrayUncompressed() ?: ByteArray(0)) }
         val notificationData = NotificationData(
             iconProvider = icon,
             title = context.getString(R.string.overlay_perm_notif_title),

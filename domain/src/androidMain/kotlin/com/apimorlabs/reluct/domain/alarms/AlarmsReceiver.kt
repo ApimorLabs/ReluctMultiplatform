@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.content.res.ResourcesCompat
 import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
+import com.apimorlabs.reluct.common.models.util.getBitmap
+import com.apimorlabs.reluct.common.models.util.toByteArrayUncompressed
 import com.apimorlabs.reluct.domain.R
 import com.apimorlabs.reluct.domain.alarms.AlarmReminderNotifications.getTaskReminderNotificationInfo
 import com.apimorlabs.reluct.domain.usecases.tasks.GetTasksUseCase
@@ -43,7 +45,11 @@ internal class AlarmsReceiver : BroadcastReceiver(), KoinComponent {
                             R.drawable.ic_baseline_fact_check_24,
                             null
                         )
-                        val icon = drawable?.let { Icon(it) }
+                        val icon = drawable?.let {
+                            Icon(
+                                it.getBitmap()?.toByteArrayUncompressed() ?: byteArrayOf()
+                            )
+                        }
                         val notificationData = NotificationData(
                             iconProvider = icon,
                             title = context.getString(R.string.task_reminder_title, data.title),

@@ -1,3 +1,3 @@
 package com.apimorlabs.reluct.common.models.domain.appInfo
 
-expect class Icon
+class Icon(val icon: ByteArray)
