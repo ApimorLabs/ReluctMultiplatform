@@ -33,10 +33,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.apimorlabs.reluct.compose.ui.SRes
+import com.apimorlabs.reluct.compose.ui.Res
+import com.apimorlabs.reluct.compose.ui.back_icon
 import com.apimorlabs.reluct.compose.ui.theme.Dimens
 import com.apimorlabs.reluct.compose.ui.theme.Shapes
-import dev.icerock.moko.resources.compose.stringResource
+import org.jetbrains.compose.resources.stringResource
 
 /**
  * Collapsing Toolbar that can be used in a topBar slot of Scaffold.
@@ -130,7 +131,7 @@ fun CollapsingToolbarBase(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = stringResource(SRes.strings.back_icon),
+                            contentDescription = stringResource(Res.string.back_icon),
                             tint = MaterialTheme.colorScheme.onSecondaryContainer
                         )
                     }

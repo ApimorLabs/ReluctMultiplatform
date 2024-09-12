@@ -41,10 +41,6 @@ actual fun MultiplatformDialog(
     }
 }
 
-/**
- * Can not provide default values for [contentColor] & [containerColor] from MaterialTheme
- * Because of: https://github.com/JetBrains/compose-jb/issues/1407
- */
 @Composable
 actual fun MultiplatformAlertDialog(
     onCloseDialog: () -> Unit,

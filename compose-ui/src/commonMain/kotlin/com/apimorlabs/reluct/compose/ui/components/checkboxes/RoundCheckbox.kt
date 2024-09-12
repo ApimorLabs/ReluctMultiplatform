@@ -15,8 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import com.apimorlabs.reluct.compose.ui.SRes
-import dev.icerock.moko.resources.compose.stringResource
+import com.apimorlabs.reluct.compose.ui.Res
+import com.apimorlabs.reluct.compose.ui.checkbox_checked
+import com.apimorlabs.reluct.compose.ui.checkbox_unchecked
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun RoundCheckbox(
@@ -40,7 +42,7 @@ internal fun RoundCheckbox(
             Icon(
                 modifier = modifier,
                 imageVector = Icons.Rounded.CheckCircleOutline,
-                contentDescription = stringResource(SRes.strings.checkbox_checked)
+                contentDescription = stringResource(Res.string.checkbox_checked)
             )
         }
 
@@ -52,7 +54,7 @@ internal fun RoundCheckbox(
             Icon(
                 modifier = modifier,
                 imageVector = Icons.Rounded.RadioButtonUnchecked,
-                contentDescription = stringResource(SRes.strings.checkbox_unchecked)
+                contentDescription = stringResource(Res.string.checkbox_unchecked)
             )
         }
     }
