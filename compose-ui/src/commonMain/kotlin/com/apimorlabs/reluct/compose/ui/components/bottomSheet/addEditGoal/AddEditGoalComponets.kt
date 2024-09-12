@@ -51,7 +51,7 @@ import com.apimorlabs.reluct.compose.ui.Res
 import com.apimorlabs.reluct.compose.ui.app_screen_time_goal_type
 import com.apimorlabs.reluct.compose.ui.app_time_limit
 import com.apimorlabs.reluct.compose.ui.choose_days_txt
-import com.apimorlabs.reluct.compose.ui.components.bottomSheet.addEditTask.DateTimePills
+import com.apimorlabs.reluct.compose.ui.components.datetime.DateTimePills
 import com.apimorlabs.reluct.compose.ui.components.buttons.ReluctButton
 import com.apimorlabs.reluct.compose.ui.components.cards.date.SelectedDaysOfWeekViewer
 import com.apimorlabs.reluct.compose.ui.components.numberPicker.HoursNumberPicker

@@ -29,6 +29,8 @@
     <string name="app_logo">Application Logo</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="made_with_text">Made with ❤️ from Tanzania 🇹🇿</string>
+    <string name="time_picker">Time Picker</string>
+    <string name="date_picker">Date Picker</string>
 
     <!-- Navigation Destination Names    -->
     <string name="dashboard_destination_text">Dashboard</string>
