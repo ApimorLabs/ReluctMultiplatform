@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.apimorlabs.reluct.common.sources.MyViewModel
+import com.apimorlabs.reluct.compose.ui.theme.ReluctAppTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.viewmodel.koinViewModel
@@ -23,7 +24,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    ReluctAppTheme {
         KoinContext {
             val controller = rememberNavController()
             NavHost(

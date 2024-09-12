@@ -6,6 +6,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":common"))
+                implementation(project(":compose-ui"))
                 implementation(compose.materialIconsExtended)
             }
         }
