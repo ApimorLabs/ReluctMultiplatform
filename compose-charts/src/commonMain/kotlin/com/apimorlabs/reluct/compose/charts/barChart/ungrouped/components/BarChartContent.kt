@@ -87,7 +87,7 @@ internal fun BarChartContent(
     var boxHeight by remember { mutableStateOf(0.dp) }
 
     // Index and Offset of each bar
-    val barAreas = remember {
+    val barAreas = remember(barsParameters) {
         mutableMapOf<Int, Rect>()
     }
 
@@ -155,7 +155,6 @@ internal fun BarChartContent(
                             }
                         )
                     }
-
             ) {
                 yTextLayoutResult = textMeasure.measure(
                     text = AnnotatedString(
