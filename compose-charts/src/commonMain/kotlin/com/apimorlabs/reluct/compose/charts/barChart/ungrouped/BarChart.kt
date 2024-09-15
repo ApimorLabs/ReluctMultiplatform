@@ -46,7 +46,7 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
  * @see LegendPosition
  */
 @Composable
-fun GroupedBarChart(
+fun BarChart(
     modifier: Modifier = Modifier,
     chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
@@ -66,7 +66,10 @@ fun GroupedBarChart(
     spaceBetweenBars: Dp = ChartDefaultValues.spaceBetweenBars,
     spaceBetweenGroups: Dp = ChartDefaultValues.spaceBetweenGroups,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
-    barCornerRadius: Dp = ChartDefaultValues.barCornerRadius
+    barCornerRadius: Dp = ChartDefaultValues.barCornerRadius,
+    selectedBarColor: Color = ChartDefaultValues.selectedBarColor,
+    selectedBarIndex: Int? = null,
+    onBarClicked: (index: Int) -> Unit = {}
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         when (legendPosition) {
@@ -103,7 +106,10 @@ fun GroupedBarChart(
                     barWidth = barWidth,
                     spaceBetweenBars = spaceBetweenBars,
                     spaceBetweenGroups = spaceBetweenGroups,
-                    barCornerRadius = barCornerRadius
+                    barCornerRadius = barCornerRadius,
+                    selectedBarColor = selectedBarColor,
+                    selectedBarIndex = selectedBarIndex,
+                    onBarClicked = onBarClicked
                 )
             }
 
@@ -125,7 +131,10 @@ fun GroupedBarChart(
                     spaceBetweenBars = spaceBetweenBars,
                     spaceBetweenGroups = spaceBetweenGroups,
                     modifier = Modifier.weight(1f),
-                    barCornerRadius = barCornerRadius
+                    barCornerRadius = barCornerRadius,
+                    selectedBarColor = selectedBarColor,
+                    selectedBarIndex = selectedBarIndex,
+                    onBarClicked = onBarClicked
                 )
 
                 LazyRow(
@@ -162,7 +171,10 @@ fun GroupedBarChart(
                     barWidth = barWidth,
                     spaceBetweenBars = spaceBetweenBars,
                     spaceBetweenGroups = spaceBetweenGroups,
-                    barCornerRadius = barCornerRadius
+                    barCornerRadius = barCornerRadius,
+                    selectedBarColor = selectedBarColor,
+                    selectedBarIndex = selectedBarIndex,
+                    onBarClicked = onBarClicked
                 )
 
             }

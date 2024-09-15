@@ -4,6 +4,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -20,7 +21,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.AnnotatedString
@@ -56,6 +59,9 @@ internal fun BarChartContent(
     spaceBetweenBars: Dp,
     spaceBetweenGroups: Dp,
     barCornerRadius: Dp,
+    selectedBarColor: Color,
+    selectedBarIndex: Int?,
+    onBarClicked: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
 
@@ -79,6 +85,11 @@ internal fun BarChartContent(
     //initial height set at 0.dp
     var boxWidth by remember { mutableStateOf(0.dp) }
     var boxHeight by remember { mutableStateOf(0.dp) }
+
+    // Index and Offset of each bar
+    val barAreas = remember {
+        mutableMapOf<Int, Rect>()
+    }
 
     // get local density from composable
     val density = LocalDensity.current
@@ -131,7 +142,19 @@ internal fun BarChartContent(
         ) {
 
             Canvas(
-                Modifier.width(maxWidth).fillMaxHeight()
+                modifier = Modifier.width(maxWidth).fillMaxHeight()
+                    .pointerInput(Unit) {
+                        // Detect taps on bars
+                        detectTapGestures(
+                            onTap = { offset ->
+                                barAreas.forEach { (index, rect) ->
+                                    if (rect.contains(offset)) {
+                                        onBarClicked(index)
+                                    }
+                                }
+                            }
+                        )
+                    }
 
             ) {
                 yTextLayoutResult = textMeasure.measure(
@@ -149,7 +172,15 @@ internal fun BarChartContent(
                     maxWidth = maxWidth,
                     height = maxHeight.dp,
                     animatedProgress = animatedProgress,
-                    barCornerRadius = barCornerRadius
+                    barCornerRadius = barCornerRadius,
+                    selectedBarColor = selectedBarColor,
+                    selectedBarIndex = selectedBarIndex,
+                    provideBarAreas = { area ->
+                        barAreas.apply {
+                            clear()
+                            putAll(area)
+                        }
+                    }
                 )
 
                 xAxisDrawing(

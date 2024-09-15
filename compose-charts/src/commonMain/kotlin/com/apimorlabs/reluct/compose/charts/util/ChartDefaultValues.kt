@@ -46,6 +46,7 @@ internal object ChartDefaultValues {
     val spaceBetweenGroups = 40.dp
     const val IS_SHOW_GRID = true
     val gridColor = Color.Gray
+    val selectedBarColor = Color.Blue
     const val ANIMATED_CHART = true
     val backgroundLineWidth = 1.dp
     const val SHOW_BACKGROUND_WITH_SPACER = true
