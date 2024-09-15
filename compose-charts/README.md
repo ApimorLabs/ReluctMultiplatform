@@ -7,12 +7,15 @@ The library contains several chart composables for usage in <strong>Kotlin Multi
 Currently supported platforms are <strong>Desktop</strong> <strong>Android</strong> <strong>IOS </strong> and <strong>Web </strong></strong>
 </div>
 
-This is chart library by [TheChance101](https://github.com/TheChance101/AAY-chart)
+## **NOTE**
+- This is a chart library by [TheChance101](https://github.com/TheChance101/AAY-chart)
 
-- It is embedded in this project that it is easier to maintain and fix bugs.
+- It is embedded in this project so that it is easier to maintain and fix bugs.
 
 - The developer has not updated the library since 28th Sep 2023 as the time of writing this on 12th
   Sep 2024
+
+- I have added an UNGROUPED bar chart separate from the grouped one for my needs
 
 ## How to use?
 
@@ -82,24 +85,24 @@ fun LineChartSample() {
 }
 ```
 
-2. Show Bar Chart in Jetpack Compose:
+2. Show Grouped Bar Chart in Jetpack Compose:
 
 ```kotlin
 @Composable
-fun BarChartSample() {
+fun GroupedBarChartSample() {
 
-    val testBarParameters: List<BarParameters> = listOf(
-        BarParameters(
+    val testBarParameters: List<GBarParameters> = listOf(
+        GBarParameters(
             dataName = "Completed",
             data = listOf(0.6, 10.6, 80.0, 50.6, 44.0, 100.6, 10.0),
             barColor = Color(0xFF6C3428)
         ),
-        BarParameters(
+        GBarParameters(
             dataName = "Completed",
             data = listOf(50.0, 30.6, 77.0, 69.6, 50.0, 30.6, 80.0),
             barColor = Color(0xFFBA704F),
         ),
-        BarParameters(
+        GBarParameters(
             dataName = "Completed",
             data = listOf(100.0, 99.6, 60.0, 80.6, 10.0, 100.6, 55.99),
             barColor = Color(0xFFDFA878),
@@ -107,7 +110,7 @@ fun BarChartSample() {
     )
 
     Box(Modifier.fillMaxSize()) {
-        BarChart(
+        GroupedBarChart(
             chartParameters = testBarParameters,
             gridColor = Color.DarkGray,
             xAxisData = listOf("2016", "2017", "2018", "2019", "2020", "2021", "2022"),
@@ -130,7 +133,55 @@ fun BarChartSample() {
 }
 ```
 
-3. Show Pie Chart in Jetpack Compose:
+3. Show Un-Grouped Bar Chart in Jetpack Compose:
+
+```kotlin
+@Composable
+fun BarChartSample() {
+
+    val testBarParameters: List<BarParameters> = listOf(
+        BarParameters(
+            dataName = "January",
+            data = 23.5,
+            barColor = Color(0xFF6C3428)
+        ),
+        BarParameters(
+            dataName = "June",
+            data = 60.7,
+            barColor = Color(0xFFBA704F),
+        ),
+        BarParameters(
+            dataName = "December",
+            data = 58.0,
+            barColor = Color(0xFFDFA878),
+        ),
+    )
+
+    Box(Modifier.fillMaxSize()) {
+        BarChart(
+            chartParameters = testBarParameters,
+            gridColor = Color.DarkGray,
+            xAxisData = listOf("January", "June", "December"),
+            isShowGrid = true,
+            animateChart = true,
+            showGridWithSpacer = true,
+            yAxisStyle = TextStyle(
+                fontSize = 14.sp,
+                color = Color.DarkGray,
+            ),
+            xAxisStyle = TextStyle(
+                fontSize = 14.sp,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.W400
+            ),
+            yAxisRange = 15,
+            barWidth = 20.dp
+        )
+    }
+}
+```
+
+4. Show Pie Chart in Jetpack Compose:
 
 ```kotlin
 @Composable
@@ -168,7 +219,7 @@ fun PieChartSample() {
 }
 ```
 
-4. Show Donut Chart in Jetpack Compose:
+5. Show Donut Chart in Jetpack Compose:
 
 ```kotlin
 @Composable
@@ -209,7 +260,7 @@ fun DonutChartSample() {
 }
 ```
 
-5. Show Radar Chart in Jetpack Compose:
+6. Show Radar Chart in Jetpack Compose:
 
 ```kotlin
 @Composable

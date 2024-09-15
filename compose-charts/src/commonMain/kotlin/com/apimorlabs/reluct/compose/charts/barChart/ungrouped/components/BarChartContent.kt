@@ -1,5 +1,4 @@
-package com.apimorlabs.reluct.compose.charts.barChart.components
-
+package com.apimorlabs.reluct.compose.charts.barChart.ungrouped.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
@@ -56,8 +55,8 @@ internal fun BarChartContent(
     barWidth: Dp,
     spaceBetweenBars: Dp,
     spaceBetweenGroups: Dp,
+    barCornerRadius: Dp,
     modifier: Modifier = Modifier,
-    barCornerRadius: Dp
 ) {
 
     val textMeasure = rememberTextMeasurer()
@@ -185,11 +184,11 @@ internal fun BarChartContent(
 }
 
 private fun List<BarParameters>.getUpperValue(): Double {
-    return this.flatMap { item -> item.data }.maxOrNull()?.plus(1.0) ?: 0.0
+    return this.maxOfOrNull { item -> item.data }?.plus(1.0) ?: 0.0
 }
 
 private fun List<BarParameters>.getLowerValue(): Double {
-    return this.flatMap { item -> item.data }.minOrNull() ?: 0.0
+    return this.minOfOrNull { item -> item.data } ?: 0.0
 }
 
 private fun CoroutineScope.collectToSnapShotFlow(

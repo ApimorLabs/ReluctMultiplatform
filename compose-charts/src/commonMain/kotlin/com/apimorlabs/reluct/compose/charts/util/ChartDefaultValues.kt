@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
+import com.apimorlabs.reluct.compose.charts.barChart.model.GBarParameters
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.GridOrientation
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
@@ -24,13 +25,22 @@ internal object ChartDefaultValues {
         )
     )
 
-    val barParameters: List<BarParameters> = listOf(
-        BarParameters(
+    val gBarParameters: List<GBarParameters> = listOf(
+        GBarParameters(
             dataName = "revenue",
             data = emptyList(),
             barColor = Color.Blue,
         )
     )
+
+    val barParameters: List<BarParameters> = listOf(
+        BarParameters(
+            dataName = "revenue",
+            data = 0.0,
+            barColor = Color.Blue,
+        )
+    )
+
     val barWidth = 30.dp
     val spaceBetweenBars = 10.dp
     val spaceBetweenGroups = 40.dp
@@ -57,6 +67,6 @@ internal object ChartDefaultValues {
     const val showyAxis = true
 
     val gridOrientation = GridOrientation.HORIZONTAL
-    val legendPosition = LegendPosition.TOP
+    val legendPosition = LegendPosition.DISAPPEAR
     val barCornerRadius = 0.dp
 }

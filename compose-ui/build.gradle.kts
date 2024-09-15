@@ -8,6 +8,7 @@ kotlin {
             dependencies {
                 //Projects
                 implementation(project(":common-models"))
+                implementation(project(":compose-charts"))
 
                 // Normal deps
                 api(libs.kmpalette.core)

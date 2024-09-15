@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.compose.charts.barChart.components
+package com.apimorlabs.reluct.compose.charts.barChart.grouped.components
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
@@ -11,10 +11,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
-import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
+import com.apimorlabs.reluct.compose.charts.barChart.model.GBarParameters
 
-internal fun DrawScope.drawBarGroups(
-    barsParameters: List<BarParameters>,
+internal fun DrawScope.drawGroupedBarGroups(
+    barsParameters: List<GBarParameters>,
     upperValue: Double,
     barWidth: Dp,
     xRegionWidth: Dp,

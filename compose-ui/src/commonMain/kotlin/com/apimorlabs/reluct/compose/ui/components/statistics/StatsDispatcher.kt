@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.compose.ui.statsHelpers
+package com.apimorlabs.reluct.compose.ui.components.statistics
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

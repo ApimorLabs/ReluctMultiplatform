@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.compose.charts.barChart
+package com.apimorlabs.reluct.compose.charts.barChart.ungrouped
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,8 +12,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.apimorlabs.reluct.compose.charts.barChart.components.BarChartContent
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.components.BarChartContent
 import com.apimorlabs.reluct.compose.charts.baseComponets.ChartDescription
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
@@ -46,7 +46,7 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
  * @see LegendPosition
  */
 @Composable
-fun BarChart(
+fun GroupedBarChart(
     modifier: Modifier = Modifier,
     chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
