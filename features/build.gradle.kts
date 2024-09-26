@@ -8,6 +8,7 @@ kotlin {
             dependencies {
                 //Projects
                 implementation(project(":common-models"))
+                implementation(project(":compose-ui"))
                 implementation(project(":data-source"))
                 implementation(project(":domain"))
                 implementation(project(":system-services"))

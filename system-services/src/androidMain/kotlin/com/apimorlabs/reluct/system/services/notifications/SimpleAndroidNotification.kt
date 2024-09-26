@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.graphics.drawable.IconCompat
+import com.apimorlabs.reluct.system.services.util.IconUtils.toDrawable
 
 class SimpleAndroidNotification(
     private val context: Context,
@@ -51,7 +52,7 @@ class SimpleAndroidNotification(
         notificationManager: NotificationManagerCompat
     ): Notification {
         channelInfo.createNotificationChannel(notificationManager)
-        val bitmap = notificationData.iconProvider?.let { getBitmap(it.icon) }
+        val bitmap = notificationData.iconProvider?.let { getBitmap(it.toDrawable(context)) }
         val iconCompat = bitmap?.let { IconCompat.createWithBitmap(bitmap) }
         val builder = NotificationCompat.Builder(context, channelInfo.channelId)
             .apply {

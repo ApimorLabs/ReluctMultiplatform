@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.detekt.setup) apply false
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.kotlinSeriazation) apply false
+    alias(libs.plugins.moko.resources) apply false
 }
 
 allprojects {

@@ -4,7 +4,12 @@ plugins {
 kotlin {
     sourceSets {
         val commonMain by getting {
-            dependencies { implementation(project(":common")) }
+            dependencies {
+                implementation(project(":common"))
+                implementation(project(":compose-ui"))
+                implementation(project(":compose-charts"))
+                implementation(compose.materialIconsExtended)
+            }
         }
 
         val desktopMain by getting {

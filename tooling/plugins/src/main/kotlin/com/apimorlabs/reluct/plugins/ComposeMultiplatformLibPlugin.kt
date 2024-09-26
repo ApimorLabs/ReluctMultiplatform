@@ -51,10 +51,11 @@ class ComposeMultiplatformLibPlugin : Plugin<Project> {
             sourceSets.commonMain.dependencies {
                 implementation(composeExt.dependencies.runtime)
                 implementation(composeExt.dependencies.foundation)
-                implementation(composeExt.dependencies.material)
+                implementation(composeExt.dependencies.material3)
                 implementation(composeExt.dependencies.ui)
                 implementation(composeExt.dependencies.components.resources)
                 implementation(composeExt.dependencies.components.uiToolingPreview)
+                api(libs.findLibrary("kotlinx_collections_immutable").get())
 
                 api(libs.findLibrary("koin-core").get())
                 implementation(libs.findLibrary("koin-compose").get())
