@@ -17,6 +17,8 @@ import com.apimorlabs.reluct.compose.charts.barChart.model.GBarParameters
 import com.apimorlabs.reluct.compose.charts.baseComponets.ChartDescription
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 /**
  * Composable function to render a bar chart with an optional legend.
@@ -48,9 +50,9 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 @Composable
 fun GroupedBarChart(
     modifier: Modifier = Modifier,
-    chartParameters: List<GBarParameters> = ChartDefaultValues.gBarParameters,
+    chartParameters: ImmutableList<GBarParameters> = ChartDefaultValues.gBarParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
-    xAxisData: List<String> = emptyList(),
+    xAxisData: ImmutableList<String> = persistentListOf(),
     isShowGrid: Boolean = ChartDefaultValues.IS_SHOW_GRID,
     animateChart: Boolean = ChartDefaultValues.ANIMATED_CHART,
     showGridWithSpacer: Boolean = ChartDefaultValues.SHOW_BACKGROUND_WITH_SPACER,
@@ -77,7 +79,6 @@ fun GroupedBarChart(
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 ) {
-
                     items(chartParameters) { details ->
                         ChartDescription(
                             chartColor = details.barColor,
@@ -134,7 +135,6 @@ fun GroupedBarChart(
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 ) {
-
                     items(chartParameters) { details ->
                         ChartDescription(
                             chartColor = details.barColor,
@@ -164,9 +164,7 @@ fun GroupedBarChart(
                     spaceBetweenGroups = spaceBetweenGroups,
                     barCornerRadius = barCornerRadius
                 )
-
             }
         }
-
     }
 }

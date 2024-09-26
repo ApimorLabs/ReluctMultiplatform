@@ -15,11 +15,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.common.models.domain.tasks.TaskLabel
 import com.apimorlabs.reluct.compose.ui.Res
+import com.apimorlabs.reluct.compose.ui.components.cards.taskLabelEntry.TaskLabelPill
 import com.apimorlabs.reluct.compose.ui.no_selected_labels_text
 import com.apimorlabs.reluct.compose.ui.theme.Dimens
 import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
-import com.apimorlabs.reluct.compose.ui.components.cards.taskLabelEntry.TaskLabelPill
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

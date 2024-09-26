@@ -49,9 +49,9 @@ actual fun MultiplatformAlertDialog(
     text: @Composable () -> Unit,
     confirmButton: @Composable () -> Unit,
     dismissButton: @Composable () -> Unit,
+    modifier: Modifier,
     containerColor: Color,
     contentColor: Color,
-    modifier: Modifier,
     icon: @Composable () -> Unit,
     shape: Shape,
     properties: MultiplatformDialogProperties

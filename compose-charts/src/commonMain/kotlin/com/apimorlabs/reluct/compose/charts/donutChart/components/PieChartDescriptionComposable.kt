@@ -13,14 +13,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.compose.charts.baseComponets.ChartDescription
 import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 internal fun PieChartDescriptionComposable(
-    pieChartData: List<PieChartData>,
-    descriptionStyle: TextStyle = TextStyle.Default,
-    modifier: Modifier = Modifier
+    pieChartData: ImmutableList<PieChartData>,
+    modifier: Modifier = Modifier,
+    descriptionStyle: TextStyle = TextStyle.Default
 ) {
-
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(24.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -29,7 +29,6 @@ internal fun PieChartDescriptionComposable(
             .padding(bottom = 16.dp),
         contentPadding = PaddingValues(16.dp)
     ) {
-
         items(pieChartData) { details ->
             ChartDescription(
                 chartColor = details.color,

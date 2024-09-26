@@ -33,9 +33,12 @@ internal fun DrawScope.circleWithRectAndText(
     chartRectangleWithText(x, y, line.lineColor, textMeasure, info)
 }
 
-
 private fun DrawScope.chartRectangleWithText(
-    x: Dp, y: Double, color: Color, textMeasurer: TextMeasurer, infoText: Double,
+    x: Dp,
+    y: Double,
+    color: Color,
+    textMeasurer: TextMeasurer,
+    infoText: Double,
 ) {
     val rectSize = Size(50.dp.toPx(), 30.dp.toPx())
     val rectTopLeft = Offset(
@@ -73,5 +76,4 @@ private fun DrawScope.chartRectangleWithText(
             topLeft = textOffset
         )
     }
-
 }

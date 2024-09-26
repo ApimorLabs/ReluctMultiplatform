@@ -8,7 +8,6 @@ internal fun DrawScope.drawRadarNet(
     netLinesStyle: NetLinesStyle,
     config: RadarChartConfig
 ) {
-
     val netCornersPoints = config.netCornersPoints
     val stepsStartPoints = config.stepsStartPoints
     val stepsEndPoints = config.stepsEndPoints
@@ -31,7 +30,5 @@ internal fun DrawScope.drawRadarNet(
                 cap = netLinesStyle.netLinesStrokeCap,
             )
         }
-
     }
-
 }

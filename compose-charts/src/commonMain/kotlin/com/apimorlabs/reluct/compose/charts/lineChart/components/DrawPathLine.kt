@@ -10,7 +10,6 @@ import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
 
-
 internal fun DrawScope.drawPathLineWrapper(
     lineParameter: LineParameters,
     strokePath: Path,
@@ -22,8 +21,11 @@ internal fun DrawScope.drawPathLineWrapper(
     }
     clipRect(right = size.width * animatedProgress.value) {
         drawPath(
-            path = strokePath, color = lineParameter.lineColor, style = Stroke(
-                width = 3.dp.toPx(), cap = StrokeCap.Round
+            path = strokePath,
+            color = lineParameter.lineColor,
+            style = Stroke(
+                width = 3.dp.toPx(),
+                cap = StrokeCap.Round
             )
         )
     }

@@ -67,14 +67,6 @@ fun App() {
                 ) {
                     DetailsScreen(
                         modifier = Modifier.fillMaxSize().padding(16.dp),
-                        listOfPeople = listOf(
-                            "Robinson",
-                            "Gray",
-                            "Luis",
-                            "Daniel",
-                            "Jose",
-                            "Juan"
-                        ),
                         onGoBack = { controller.popBackStack() }
                     )
                 }

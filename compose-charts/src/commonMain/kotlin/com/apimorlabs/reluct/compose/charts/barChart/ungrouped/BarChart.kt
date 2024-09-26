@@ -18,6 +18,8 @@ import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.LabelValu
 import com.apimorlabs.reluct.compose.charts.baseComponets.ChartDescription
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 /**
  * Composable function to render a bar chart with an optional legend.
@@ -36,8 +38,10 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
  * @param showYAxis Flag to determine whether to display the Y-axis (default is true).
  * @param showXAxisLabels Flag to determine whether to display the X-axis labels (default is true).
  * @param showYAxisLabels Flag to determine whether to display the Y-axis labels (default is true).
- * @param showIntervalLines Flag to determine whether to display the Interval lines for Y-axis labels (default is false).
- * @param xAxisDrawLocation Flag to determine where to draw X-axis line labels (default is [LabelValueDrawer.DrawLocation.XAxis]).
+ * @param showIntervalLines Flag to determine whether to display the Interval lines for Y-axis labels
+ * (default is false).
+ * @param xAxisDrawLocation Flag to determine where to draw X-axis line labels
+ * (default is [LabelValueDrawer.DrawLocation.XAxis]).
  * @param barsSpacingFactor The factor by which the bars are spaced. Should be between 0.0f - 1f (default is 0.1).
  * @param legendPosition Position of the legend within the chart (default is [LegendPosition.TOP]).
  * @param barCornerRadius radius of the bar corner in the chart (default is 10dp).
@@ -48,9 +52,9 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 @Composable
 fun BarChart(
     modifier: Modifier = Modifier,
-    chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
+    chartParameters: ImmutableList<BarParameters> = ChartDefaultValues.barParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
-    xAxisData: List<String> = emptyList(),
+    xAxisData: ImmutableList<String> = persistentListOf(),
     animateChart: Boolean = ChartDefaultValues.ANIMATED_CHART,
     descriptionStyle: TextStyle = ChartDefaultValues.descriptionDefaultStyle,
     yAxisStyle: TextStyle = ChartDefaultValues.axesStyle,
@@ -79,7 +83,6 @@ fun BarChart(
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 ) {
-
                     items(chartParameters) { details ->
                         ChartDescription(
                             chartColor = details.barColor,
@@ -140,7 +143,6 @@ fun BarChart(
                         .fillMaxWidth()
                         .padding(bottom = 16.dp)
                 ) {
-
                     items(chartParameters) { details ->
                         ChartDescription(
                             chartColor = details.barColor,
@@ -172,9 +174,7 @@ fun BarChart(
                     xAxisLabelDrawLocation = xAxisDrawLocation,
                     onBarClicked = onBarClicked
                 )
-
             }
         }
-
     }
 }

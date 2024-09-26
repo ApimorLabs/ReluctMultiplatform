@@ -50,7 +50,7 @@ fun HighlightedText(
                         textDecoration = highlightTextDecoration,
                         shadow = textStyle.shadow,
 
-                        ),
+                    ),
                     start = 0,
                     end = fullText.lastIndex
                 )
@@ -74,7 +74,7 @@ fun HighlightedText(
                             textDecoration = highlightTextDecoration,
                             shadow = textStyle.shadow,
 
-                            ),
+                        ),
                         start = startIndex,
                         end = endIndex
                     )

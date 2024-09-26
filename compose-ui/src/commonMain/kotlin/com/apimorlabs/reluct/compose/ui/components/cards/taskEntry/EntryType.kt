@@ -4,5 +4,5 @@ enum class EntryType {
     PendingTask,
     TasksWithOverdue,
     CompletedTask,
-    Statistics;
+    Statistics
 }

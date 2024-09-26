@@ -1,6 +1,5 @@
 package com.apimorlabs.reluct.compose.charts.barChart.grouped.components
 
-
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -35,15 +34,16 @@ import com.apimorlabs.reluct.compose.charts.baseComponets.xAxisDrawing
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues.specialChart
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataValid
 import com.apimorlabs.reluct.compose.charts.util.formatToThousandsMillionsBillions
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun GroupedBarChartContent(
-    barsParameters: List<GBarParameters>,
+    barsParameters: ImmutableList<GBarParameters>,
     gridColor: Color,
-    xAxisData: List<String>,
+    xAxisData: ImmutableList<String>,
     isShowGrid: Boolean,
     animateChart: Boolean,
     showGridWithSpacer: Boolean,
@@ -59,7 +59,6 @@ internal fun GroupedBarChartContent(
     barCornerRadius: Dp,
     modifier: Modifier = Modifier,
 ) {
-
     val textMeasure = rememberTextMeasurer()
 
     val animatedProgress = remember(barsParameters) {
@@ -77,7 +76,7 @@ internal fun GroupedBarChartContent(
     var xRegionWidthWithoutSpacing by remember { mutableStateOf(0.dp) }
     var xRegionWidth by remember { mutableStateOf(0.dp) }
 
-    //initial height set at 0.dp
+    // initial height set at 0.dp
     var boxWidth by remember { mutableStateOf(0.dp) }
     var boxHeight by remember { mutableStateOf(0.dp) }
 
@@ -85,19 +84,19 @@ internal fun GroupedBarChartContent(
     val density = LocalDensity.current
 
     checkIfDataValid(xAxisData = xAxisData, gBarParameters = barsParameters)
-    Box(modifier = modifier.fillMaxSize().onGloballyPositioned {
-        boxWidth = with(density) {
-            it.size.width.toDp()
+    Box(
+        modifier = modifier.fillMaxSize().onGloballyPositioned {
+            boxWidth = with(density) {
+                it.size.width.toDp()
+            }
+            boxHeight = with(density) {
+                it.size.height.toDp()
+            }
         }
-        boxHeight = with(density) {
-            it.size.height.toDp()
-        }
-    }
     ) {
         Canvas(
             modifier = Modifier.fillMaxSize()
         ) {
-
             val spacingY = (boxHeight / 10)
             xRegionWidth =
                 ((barWidth + spaceBetweenBars) * barsParameters.size) + spaceBetweenGroups
@@ -130,7 +129,6 @@ internal fun GroupedBarChartContent(
                 .padding(start = yTextLayoutResult + (yTextLayoutResult / 2))
                 .horizontalScroll(rememberScrollState())
         ) {
-
             Canvas(
                 Modifier.width(maxWidth).fillMaxHeight()
 
@@ -166,10 +164,8 @@ internal fun GroupedBarChartContent(
         }
     }
 
-
     LaunchedEffect(barsParameters, animateChart) {
         if (animateChart) {
-
             collectToSnapShotFlow(barsParameters) {
                 upperValue = it.getUpperValue()
                 lowerValue = it.getLowerValue()
@@ -193,7 +189,8 @@ private fun List<GBarParameters>.getLowerValue(): Double {
 }
 
 private fun CoroutineScope.collectToSnapShotFlow(
-    linesParameters: List<GBarParameters>, makeUpdateData: (List<GBarParameters>) -> Unit
+    linesParameters: List<GBarParameters>,
+    makeUpdateData: (List<GBarParameters>) -> Unit
 ) {
     this.launch {
         snapshotFlow {

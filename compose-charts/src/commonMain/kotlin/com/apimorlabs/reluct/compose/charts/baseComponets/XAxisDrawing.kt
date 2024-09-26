@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import com.apimorlabs.reluct.compose.charts.util.formatToThousandsMillionsBillions
 
-
 internal fun <T> DrawScope.xAxisDrawing(
     xAxisData: List<T>,
     textMeasure: TextMeasurer,
@@ -63,7 +62,6 @@ internal fun <T> DrawScope.xAxisDrawing(
     }
 
     xAxisData.forEachIndexed { index, dataPoint ->
-
 
         val xLength =
             (xRegionWidthWithoutSpacing / 3) + (index * (xRegionWidth))

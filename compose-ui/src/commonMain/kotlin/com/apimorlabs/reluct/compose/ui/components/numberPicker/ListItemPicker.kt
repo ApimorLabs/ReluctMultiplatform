@@ -78,7 +78,7 @@ fun <T> ListItemPicker(
             val index = list.indexOf(value)
             val offsetRange = remember(value, list) {
                 -((list.count() - 1) - index) * halfNumbersColumnHeightPx to
-                        index * halfNumbersColumnHeightPx
+                    index * halfNumbersColumnHeightPx
             }
             updateBounds(offsetRange.first, offsetRange.second)
         }
@@ -172,11 +172,11 @@ fun <T> ListItemPicker(
                         modifier = baseLabelModifier
                             .alpha(
                                 (
-                                        maxOf(
-                                            minimumAlpha,
-                                            1 - abs(coercedAnimatedOffset) / halfNumbersColumnHeightPx
-                                        )
-                                        )
+                                    maxOf(
+                                        minimumAlpha,
+                                        1 - abs(coercedAnimatedOffset) / halfNumbersColumnHeightPx
+                                    )
+                                    )
                             )
                     )
                     if (indexOfElement < list.count() - 1) {

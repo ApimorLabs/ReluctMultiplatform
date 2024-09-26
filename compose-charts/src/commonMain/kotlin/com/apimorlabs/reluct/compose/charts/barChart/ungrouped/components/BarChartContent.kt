@@ -33,15 +33,16 @@ import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.LabelValu
 import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.XAxisDrawer
 import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.YAxisDrawer
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataValid
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun BarChartContent(
-    barsParameters: List<BarParameters>,
+    barsParameters: ImmutableList<BarParameters>,
     gridColor: Color,
-    xAxisData: List<String>,
+    xAxisData: ImmutableList<String>,
     animateChart: Boolean,
     yAxisStyle: TextStyle,
     xAxisStyle: TextStyle,
@@ -59,7 +60,6 @@ internal fun BarChartContent(
     onBarClicked: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     val xAxisTextMeasure = rememberTextMeasurer()
     val yAxisTextMeasure = rememberTextMeasurer()
 
@@ -179,7 +179,7 @@ internal fun BarChartContent(
              *  APIs we have to use Android's `nativeCanvas` which seems to be drawn behind
              *  Compose canvas.
              */
-            val (xAxisArea, yAxisArea) = axisAreas(
+                val (xAxisArea, yAxisArea) = axisAreas(
                 totalSize = size,
                 withYAxisLabels = showYAxisLabels,
                 xAxisDrawer = xAxisDrawer,
@@ -215,10 +215,8 @@ internal fun BarChartContent(
         }
     }
 
-
     LaunchedEffect(barsParameters, animateChart) {
         if (animateChart) {
-
             collectToSnapShotFlow(barsParameters) {
                 upperValue = it.getUpperValue()
                 lowerValue = it.getLowerValue()
@@ -242,7 +240,8 @@ private fun List<BarParameters>.getLowerValue(): Double {
 }
 
 private fun CoroutineScope.collectToSnapShotFlow(
-    linesParameters: List<BarParameters>, makeUpdateData: (List<BarParameters>) -> Unit
+    linesParameters: List<BarParameters>,
+    makeUpdateData: (List<BarParameters>) -> Unit
 ) {
     this.launch {
         snapshotFlow {

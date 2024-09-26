@@ -1,6 +1,5 @@
 package com.apimorlabs.reluct.compose.charts.radarChart
 
-
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import com.apimorlabs.reluct.compose.charts.radarChart.model.RadarChartConfig
@@ -15,7 +14,6 @@ internal fun calculateRadarConfig(
     numLines: Int,
     scalarSteps: Int
 ): RadarChartConfig {
-
     val netCornersPoints = mutableListOf<Offset>()
     val stepsStartPoints = mutableListOf<Offset>()
     val stepsEndPoints = mutableListOf<Offset>()
@@ -48,7 +46,12 @@ internal fun calculateRadarConfig(
     }
 
     return RadarChartConfig(
-        center, netCornersPoints, stepsEndPoints, stepsStartPoints, polygonPoints, labelsPoints
+        center,
+        netCornersPoints,
+        stepsEndPoints,
+        stepsStartPoints,
+        polygonPoints,
+        labelsPoints
     )
 }
 
@@ -60,7 +63,6 @@ private fun getCircumferencePointOffset(
     center.x + radius * cos(angle).toFloat(),
     center.y + radius * sin(angle).toFloat()
 )
-
 
 internal fun getPolygonShapeEndPoints(
     values: List<Double>,

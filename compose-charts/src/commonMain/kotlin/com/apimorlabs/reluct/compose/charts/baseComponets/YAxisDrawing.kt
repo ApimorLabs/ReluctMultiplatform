@@ -11,7 +11,8 @@ import androidx.compose.ui.unit.times
 import com.apimorlabs.reluct.compose.charts.util.formatToThousandsMillionsBillions
 
 internal fun DrawScope.yAxisDrawing(
-    upperValue: Float, lowerValue: Float,
+    upperValue: Float,
+    lowerValue: Float,
     textMeasure: TextMeasurer,
     spacing: Dp,
     yAxisStyle: TextStyle,
@@ -25,7 +26,7 @@ internal fun DrawScope.yAxisDrawing(
     val dataRange = if (isFromBarChart) upperValue else upperValue - lowerValue
     val dataStep = dataRange / yAxisRange
 
-    (0..yAxisRange).forEach { i ->
+    for (i in 0..yAxisRange) {
         val yValue = if (isFromBarChart) {
             dataStep * i
         } else {

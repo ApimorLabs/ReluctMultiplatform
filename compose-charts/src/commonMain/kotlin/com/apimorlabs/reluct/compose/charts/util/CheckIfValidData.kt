@@ -14,23 +14,23 @@ internal fun checkIfDataValid(
         if (barParameters.isEmpty()) {
             val data = gBarParameters.map { it.data }
             data.forEach {
-                if (it.size != xAxisData.size) {
-                    throw Exception("The data size of bar must be equal to the x-axis data size.")
+                check(it.size == xAxisData.size) {
+                    "The data size of bar must be equal to the x-axis data size."
                 }
                 checkIfDataIsNegative(it)
             }
         } else {
             val data = barParameters.map { it.data }
-            if (data.size != xAxisData.size) {
-                throw Exception("The data size of bar must be equal to the x-axis data size.")
+            check(data.size == xAxisData.size) {
+                "The data size of bar must be equal to the x-axis data size."
             }
             checkIfDataIsNegative(data)
         }
     } else {
         val data = linesParameters.map { it.data }
         data.forEach {
-            if (it.size != xAxisData.size) {
-                throw Exception("The data size of line must be equal to the x-axis data size.")
+            check(it.size == xAxisData.size) {
+                "The data size of line must be equal to the x-axis data size."
             }
             checkIfDataIsNegative(it)
         }
@@ -39,8 +39,6 @@ internal fun checkIfDataValid(
 
 internal fun checkIfDataIsNegative(data: List<Double>) {
     data.forEach {
-        if (it < 0.0) {
-            throw Exception("The data can't contains negative values.")
-        }
+        check(it >= 0.0) { "The data can't contain negative values." }
     }
 }

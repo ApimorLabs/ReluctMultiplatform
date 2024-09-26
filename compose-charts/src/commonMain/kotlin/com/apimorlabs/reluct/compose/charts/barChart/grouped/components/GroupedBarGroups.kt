@@ -24,7 +24,6 @@ internal fun DrawScope.drawGroupedBarGroups(
     animatedProgress: Animatable<Float, AnimationVector1D>,
     barCornerRadius: Dp
 ) {
-
     barsParameters.forEachIndexed { barIndex, bar ->
 
         bar.data.forEachIndexed { index, data ->

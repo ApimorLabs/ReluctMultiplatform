@@ -18,7 +18,6 @@ internal fun DrawScope.drawAxisData(
     scalarSteps: Int,
     unit: String
 ) {
-
     val labelsEndPoints = radarChartConfig.labelsPoints
     val nextStartPoints = radarChartConfig.polygonPoints.toMutableList()
     nextStartPoints.add(0, center)
@@ -27,7 +26,6 @@ internal fun DrawScope.drawAxisData(
     val scalarStep = scalarValue / (scalarSteps - 1)
     val textVerticalOffset = 20.toDp().toPx()
     val labelHeight = textMeasurer.measure(AnnotatedString("M")).size.height
-
 
     for (step in 0 until scalarSteps) {
         drawText(
@@ -50,11 +48,11 @@ internal fun DrawScope.drawAxisData(
                 labelsEndPoints[line].x - textMeasurer.measure(
                     AnnotatedString(
                         text = radarLabels[line],
-                    ), style = labelsStyle
+                    ),
+                    style = labelsStyle
                 ).size.width / 2,
                 labelsEndPoints[line].y - labelHeight / 2
             )
         )
     }
-
 }

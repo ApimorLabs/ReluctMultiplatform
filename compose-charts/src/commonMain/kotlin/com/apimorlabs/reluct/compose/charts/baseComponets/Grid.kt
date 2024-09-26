@@ -60,7 +60,7 @@ internal fun DrawScope.grid(
                     spacingY = spacingY,
                     yAxisRange = yAxisRange,
                     gridColor = gridColor,
-                    xEndLength = 38.dp.toPx(),
+                    // xEndLength = 38.dp.toPx(),
                     backgroundLineWidth = backgroundLineWidth,
                     showGridWithSpacer = showGridWithSpacer,
                     yTextLayoutResult = textSpace
@@ -76,7 +76,6 @@ internal fun DrawScope.grid(
                     yTextLayoutResult = textSpace
                 )
             }
-
         }
     }
 }
@@ -85,18 +84,17 @@ private fun DrawScope.drawHorizontalGrid(
     spacingY: Dp,
     yAxisRange: Int,
     gridColor: Color,
-    xEndLength: Float = 0f,
+    // xEndLength: Float = 0f,
     backgroundLineWidth: Float,
     showGridWithSpacer: Boolean,
     yTextLayoutResult: Int,
 ) {
-
     val xAxisMaxValue = size.width
     val yAxisList = mutableListOf<Float>()
 
     val textSpace = yTextLayoutResult - (yTextLayoutResult / 4)
 
-    (0..yAxisRange).forEach { i ->
+    for (i in 0..yAxisRange) {
         yAxisList.add(
             size.height.toDp()
                 .toPx() - (spacingY.toPx()) - i * (size.height.toDp() - spacingY).toPx() / yAxisRange
@@ -113,9 +111,7 @@ private fun DrawScope.drawHorizontalGrid(
             showGridWithSpacer = showGridWithSpacer
         )
     }
-
 }
-
 
 private fun DrawScope.drawVerticalGrid(
     xAxisDataSize: Int,
@@ -126,7 +122,7 @@ private fun DrawScope.drawVerticalGrid(
     yTextLayoutResult: Int,
     yEndLength: Dp = 10.5.toFloat().toDp()
 ) {
-    (0..xAxisDataSize).forEach { i ->
+    for (i in 0..xAxisDataSize) {
         val xLength = (i * xRegionWidth)
 
         drawGrid(
@@ -156,8 +152,11 @@ private fun DrawScope.drawGrid(
         end = Offset(xEnd, yEnd),
         strokeWidth = backgroundLineWidth,
         pathEffect = PathEffect.dashPathEffect(
-            if (showGridWithSpacer) floatArrayOf(16f, 16f)
-            else floatArrayOf(1f, 1f),
+            if (showGridWithSpacer) {
+                floatArrayOf(16f, 16f)
+            } else {
+                floatArrayOf(1f, 1f)
+            },
             0f
         )
     )

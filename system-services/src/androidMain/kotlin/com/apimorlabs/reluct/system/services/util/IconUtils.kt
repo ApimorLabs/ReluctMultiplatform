@@ -9,7 +9,6 @@ import com.apimorlabs.reluct.common.models.domain.appInfo.Icon
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 
-
 object IconUtils {
     fun ByteArray.toBitmap(): Bitmap {
         // Convert byte array to InputStream

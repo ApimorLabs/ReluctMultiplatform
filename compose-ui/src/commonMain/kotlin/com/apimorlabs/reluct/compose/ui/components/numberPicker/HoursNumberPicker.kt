@@ -27,7 +27,7 @@ data class AMPMHours(
 ) : Hours {
     enum class DayTime {
         AM,
-        PM;
+        PM
     }
 }
 

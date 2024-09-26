@@ -11,7 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -31,12 +35,14 @@ import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataIsNegative
 import com.apimorlabs.reluct.compose.charts.util.getPieChartMinValue
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 /**
  * Composable function to render a pie chart with an optional legend.
  *
- * @param modifier Modifier for configuring the layout and appearance of the pie chart.
  * @param pieChartData List of data for the pie chart, including labels and values.
+ * @param modifier Modifier for configuring the layout and appearance of the pie chart.
  * @param animation Animation specification for the pie chart transitions (default is a 3-second linear animation).
  * @param textRatioStyle TextStyle for configuring the appearance of ratio text labels (default font size is 12sp).
  * @param outerCircularColor Color of the outer circular border of the pie chart (default is Gray).
@@ -51,8 +57,8 @@ import com.apimorlabs.reluct.compose.charts.util.getPieChartMinValue
 
 @Composable
 fun PieChart(
+    pieChartData: ImmutableList<PieChartData>,
     modifier: Modifier = Modifier,
-    pieChartData: List<PieChartData>,
     animation: AnimationSpec<Float> = TweenSpec(durationMillis = 3000),
     textRatioStyle: TextStyle = TextStyle.Default.copy(fontSize = 12.sp),
     outerCircularColor: Color = Color.Gray,
@@ -61,22 +67,27 @@ fun PieChart(
     chartLabelType: ChartLabelType = ChartDefaultValues.chartLabelType,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
 ) {
-    var totalSum = 0.0f
-    val pieValueWithRatio = mutableListOf<Float>()
-    pieChartData.forEach {
-        totalSum += it.data.toFloat()
-    }
-    pieChartData.forEachIndexed { index, part ->
-        pieValueWithRatio.add(index, 360 * part.data.toFloat() / totalSum)
+    var totalSum by remember { mutableStateOf(0.0f) }
+    val pieValueWithRatio by remember(pieChartData) {
+        derivedStateOf {
+            persistentListOf<Float>().builder().apply {
+                pieChartData.forEachIndexed { index, part ->
+                    add(index, 360 * part.data.toFloat() / totalSum)
+                }
+            }.build()
+        }
     }
 
     val textMeasure = rememberTextMeasurer()
-
 
     checkIfDataIsNegative(data = pieChartData.map { it.data })
     val transitionProgress = remember(pieValueWithRatio) { Animatable(initialValue = 0F) }
 
     LaunchedEffect(pieChartData) {
+        pieChartData.forEach {
+            totalSum += it.data.toFloat()
+        }
+        checkIfDataIsNegative(data = pieChartData.map { it.data })
         transitionProgress.animateTo(1F, animationSpec = animation)
     }
 
@@ -92,7 +103,7 @@ fun PieChart(
                     descriptionStyle = descriptionStyle,
                     modifier = Modifier.fillMaxWidth().weight(0.5f)
                 )
-                drawPieChart(
+                DrawPieChart(
                     modifier = Modifier.weight(1.5f),
                     pieChartData = pieChartData,
                     textRatioStyle = textRatioStyle,
@@ -107,7 +118,7 @@ fun PieChart(
             }
 
             LegendPosition.BOTTOM -> {
-                drawPieChart(
+                DrawPieChart(
                     modifier = Modifier.weight(1.5f),
                     pieChartData = pieChartData,
                     textRatioStyle = textRatioStyle,
@@ -128,7 +139,7 @@ fun PieChart(
             }
 
             else -> {
-                drawPieChart(
+                DrawPieChart(
                     modifier = Modifier.weight(1.5f),
                     pieChartData = pieChartData,
                     textRatioStyle = textRatioStyle,
@@ -143,21 +154,20 @@ fun PieChart(
             }
         }
     }
-
 }
 
 @Composable
-private fun drawPieChart(
-    modifier: Modifier = Modifier,
-    pieChartData: List<PieChartData>,
+private fun DrawPieChart(
+    pieChartData: ImmutableList<PieChartData>,
     textRatioStyle: TextStyle,
     outerCircularColor: Color,
     ratioLineColor: Color,
-    pieValueWithRatio: MutableList<Float>,
+    pieValueWithRatio: ImmutableList<Float>,
     totalSum: Float,
     transitionProgress: Animatable<Float, AnimationVector1D>,
     chartLabelType: ChartLabelType,
     textMeasure: TextMeasurer,
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -179,12 +189,11 @@ private fun drawPieChart(
                     pieChart = ChartTypes.PIE_CHART,
                     chartLabelType = chartLabelType
                 )
-                //draw outer circle
+                // draw outer circle
                 draPieCircle(
                     circleColor = outerCircularColor,
                     radiusRatioCircle = (minValue / 2) + (arcWidth / 1.5f)
                 )
-
-            })
-
+            }
+    )
 }

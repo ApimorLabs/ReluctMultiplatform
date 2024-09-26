@@ -11,6 +11,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import com.apimorlabs.reluct.compose.charts.radarChart.model.NetLinesStyle
 import com.apimorlabs.reluct.compose.charts.radarChart.model.Polygon
+import kotlinx.collections.immutable.ImmutableList
 
 /**
  * Composable function to render a radar chart with configurable radar labels, net lines, and polygons.
@@ -29,22 +30,20 @@ import com.apimorlabs.reluct.compose.charts.radarChart.model.Polygon
  */
 @Composable
 fun RadarChart(
-    radarLabels: List<String>,
+    radarLabels: ImmutableList<String>,
     labelsStyle: TextStyle,
     netLinesStyle: NetLinesStyle,
     scalarSteps: Int,
     scalarValue: Double,
     scalarValuesStyle: TextStyle,
-    polygons: List<Polygon>,
+    polygons: ImmutableList<Polygon>,
     modifier: Modifier = Modifier
 ) {
-
     val textMeasurer = rememberTextMeasurer()
 
     validateRadarChartConfiguration(radarLabels, scalarValue, polygons, scalarSteps)
 
     Canvas(modifier = modifier) {
-
         val labelWidth = measureMaxLabelWidth(radarLabels, labelsStyle, textMeasurer)
         val radius = (size.minDimension / 2) - (labelWidth + 10.toDp().toPx())
         val labelRadius = (size.minDimension / 2) - (labelWidth / 2)
@@ -75,9 +74,7 @@ fun RadarChart(
             scalarSteps,
             polygons[0].unit
         )
-
     }
-
 }
 
 private fun validateRadarChartConfiguration(
@@ -110,6 +107,7 @@ private fun DrawScope.measureMaxLabelWidth(
     return textMeasurer.measure(
         AnnotatedString(
             text = radarLabels.maxByOrNull { it.length } ?: "",
-        ), style = labelsStyle
+        ),
+        style = labelsStyle
     ).size.width.toDp().toPx()
 }

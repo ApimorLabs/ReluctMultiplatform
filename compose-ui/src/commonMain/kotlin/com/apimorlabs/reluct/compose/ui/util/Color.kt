@@ -21,7 +21,7 @@ fun String.toColor(): Color {
     return try {
         Color(colorString.toColorInt())
     } catch (e: Exception) {
-        //Logger.d("Color error: ${e.message}")
+        println("Color error: ${e.message}")
         Color.White
     }
 }

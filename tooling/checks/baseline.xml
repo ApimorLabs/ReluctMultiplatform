@@ -7,51 +7,65 @@
     <ID>CommentSpacing:build.gradle.kts$//Projects</ID>
     <ID>EmptyFunctionBlock:GoalsDaoImplTest.kt$GoalsDaoImplTest${ }</ID>
     <ID>EmptyFunctionBlock:TasksDaoImplTest.kt$TasksDaoImplTest${ }</ID>
-    <ID>FinalNewline:Android.kt$work.racka.reluct.extensions.Android.kt</ID>
-    <ID>FinalNewline:ComposeExtensions.kt$work.racka.reluct.extensions.ComposeExtensions.kt</ID>
-    <ID>FinalNewline:FakeGoalsDao.kt$work.racka.reluct.data.source.database.dao.goals.FakeGoalsDao.kt</ID>
-    <ID>FinalNewline:FakeTasksDao.kt$work.racka.reluct.data.source.database.dao.tasks.FakeTasksDao.kt</ID>
-    <ID>FinalNewline:GetDatabaseWrapper.android.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.android.kt</ID>
-    <ID>FinalNewline:GetDatabaseWrapper.desktop.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.desktop.kt</ID>
-    <ID>FinalNewline:GetDatabaseWrapper.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.kt</ID>
-    <ID>FinalNewline:GoalsDaoImplTest.kt$work.racka.reluct.data.source.database.dao.goals.GoalsDaoImplTest.kt</ID>
-    <ID>FinalNewline:GoalsTestData.kt$work.racka.reluct.data.source.testData.GoalsTestData.kt</ID>
-    <ID>FinalNewline:KmpExtensions.kt$work.racka.reluct.extensions.KmpExtensions.kt</ID>
-    <ID>FinalNewline:Kotlin.kt$work.racka.reluct.extensions.Kotlin.kt</ID>
-    <ID>FinalNewline:TasksDaoImplTest.kt$work.racka.reluct.data.source.database.dao.tasks.TasksDaoImplTest.kt</ID>
-    <ID>FinalNewline:TasksTestData.kt$work.racka.reluct.data.source.testData.TasksTestData.kt</ID>
-    <ID>FinalNewline:Versions.kt$work.racka.reluct.extensions.Versions.kt</ID>
-    <ID>FinalNewline:VersionsCatalog.kt$work.racka.reluct.extensions.VersionsCatalog.kt</ID>
+    <ID>FinalNewline:Android.kt$com.apimorlabs.reluct.extensions.Android.kt</ID>
+    <ID>FinalNewline:ComposeExtensions.kt$com.apimorlabs.reluct.extensions.ComposeExtensions.kt</ID>
+    <ID>FinalNewline:FakeGoalsDao.kt$com.apimorlabs.reluct.data.source.database.dao.goals.FakeGoalsDao.kt</ID>
+    <ID>FinalNewline:FakeTasksDao.kt$com.apimorlabs.reluct.data.source.database.dao.tasks.FakeTasksDao.kt</ID>
+    <ID>FinalNewline:GetDatabaseWrapper.android.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.android.kt</ID>
+    <ID>FinalNewline:GetDatabaseWrapper.desktop.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.desktop.kt</ID>
+    <ID>FinalNewline:GetDatabaseWrapper.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.kt</ID>
+    <ID>FinalNewline:GoalsDaoImplTest.kt$com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDaoImplTest.kt</ID>
+    <ID>FinalNewline:GoalsTestData.kt$com.apimorlabs.reluct.data.source.testData.GoalsTestData.kt</ID>
+    <ID>FinalNewline:KmpExtensions.kt$com.apimorlabs.reluct.extensions.KmpExtensions.kt</ID>
+    <ID>FinalNewline:Kotlin.kt$com.apimorlabs.reluct.extensions.Kotlin.kt</ID>
+    <ID>FinalNewline:TasksDaoImplTest.kt$com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDaoImplTest.kt</ID>
+    <ID>FinalNewline:TasksTestData.kt$com.apimorlabs.reluct.data.source.testData.TasksTestData.kt</ID>
+    <ID>FinalNewline:TestData.kt$com.apimorlabs.reluct.domain.util.TestData.kt</ID>
+    <ID>FinalNewline:Versions.kt$com.apimorlabs.reluct.extensions.Versions.kt</ID>
+    <ID>FinalNewline:VersionsCatalog.kt$com.apimorlabs.reluct.extensions.VersionsCatalog.kt</ID>
     <ID>FinalNewline:build.gradle.kts$.build.gradle.kts</ID>
     <ID>FinalNewline:settings.gradle.kts$.settings.gradle.kts</ID>
+    <ID>ImportOrdering:ComposeMultiplatformAppPlugin.kt$import com.android.build.api.dsl.ApplicationExtension import org.gradle.api.Plugin import org.gradle.api.Project import org.gradle.kotlin.dsl.configure import org.gradle.kotlin.dsl.get import org.gradle.kotlin.dsl.getByType import org.jetbrains.compose.ComposeExtension import org.jetbrains.compose.desktop.DesktopExtension import org.jetbrains.compose.desktop.application.dsl.JvmApplicationDistributions import org.jetbrains.compose.desktop.application.dsl.TargetFormat import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension import com.apimorlabs.reluct.extensions.Versions import com.apimorlabs.reluct.extensions.android import com.apimorlabs.reluct.extensions.configureAndroid import com.apimorlabs.reluct.extensions.configureAndroidCompose import com.apimorlabs.reluct.extensions.configureKMP import com.apimorlabs.reluct.extensions.libs import java.io.File import kotlin.jvm.optionals.getOrNull</ID>
+    <ID>ImportOrdering:ComposeMultiplatformLibPlugin.kt$import com.android.build.api.dsl.LibraryExtension import org.gradle.api.Plugin import org.gradle.api.Project import org.gradle.kotlin.dsl.configure import org.gradle.kotlin.dsl.get import org.gradle.kotlin.dsl.getByType import org.jetbrains.compose.ComposeExtension import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension import com.apimorlabs.reluct.extensions.Versions import com.apimorlabs.reluct.extensions.android import com.apimorlabs.reluct.extensions.configureAndroid import com.apimorlabs.reluct.extensions.configureAndroidCompose import com.apimorlabs.reluct.extensions.configureKMP import com.apimorlabs.reluct.extensions.libs import kotlin.jvm.optionals.getOrNull</ID>
+    <ID>ImportOrdering:DetektConventionPlugin.kt$import io.gitlab.arturbosch.detekt.Detekt import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask import io.gitlab.arturbosch.detekt.extensions.DetektExtension import io.gitlab.arturbosch.detekt.report.ReportMergeTask import org.gradle.api.JavaVersion import org.gradle.api.Plugin import org.gradle.api.Project import org.gradle.kotlin.dsl.apply import org.gradle.kotlin.dsl.dependencies import org.gradle.kotlin.dsl.getByType import org.gradle.kotlin.dsl.withType import com.apimorlabs.reluct.extensions.libs import kotlin.jvm.optionals.getOrNull</ID>
+    <ID>ImportOrdering:FakeGoalsDao.kt$import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.MutableStateFlow import kotlinx.coroutines.flow.asStateFlow import kotlinx.coroutines.flow.firstOrNull import kotlinx.coroutines.flow.transform import kotlinx.coroutines.flow.update import com.apimorlabs.reluct.data.source.database.models.GoalDbObject import com.apimorlabs.reluct.data.source.testData.GoalsTestData</ID>
+    <ID>ImportOrdering:FakeTasksDao.kt$import kotlinx.coroutines.flow.Flow import kotlinx.coroutines.flow.MutableStateFlow import kotlinx.coroutines.flow.asStateFlow import kotlinx.coroutines.flow.transform import kotlinx.coroutines.flow.update import com.apimorlabs.reluct.data.source.database.models.TaskDbObject import com.apimorlabs.reluct.data.source.database.models.TaskLabelDbObject import com.apimorlabs.reluct.data.source.testData.TasksTestData</ID>
+    <ID>ImportOrdering:GoalsDaoImplTest.kt$import kotlinx.coroutines.Dispatchers import kotlinx.coroutines.ExperimentalCoroutinesApi import kotlinx.coroutines.test.StandardTestDispatcher import kotlinx.coroutines.test.setMain import com.apimorlabs.reluct.data.source.di.getDatabaseWrapper import kotlin.test.AfterTest import kotlin.test.BeforeTest</ID>
+    <ID>ImportOrdering:KotlinMultiplatformLibPlugin.kt$import com.android.build.api.dsl.LibraryExtension import org.gradle.api.Plugin import org.gradle.api.Project import org.gradle.kotlin.dsl.configure import org.gradle.kotlin.dsl.get import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension import com.apimorlabs.reluct.extensions.Versions import com.apimorlabs.reluct.extensions.android import com.apimorlabs.reluct.extensions.configureAndroid import com.apimorlabs.reluct.extensions.configureKMP import com.apimorlabs.reluct.extensions.libs import kotlin.jvm.optionals.getOrNull</ID>
+    <ID>ImportOrdering:TasksDaoImplTest.kt$import app.cash.turbine.test import kotlinx.coroutines.Dispatchers import kotlinx.coroutines.ExperimentalCoroutinesApi import kotlinx.coroutines.flow.firstOrNull import kotlinx.coroutines.flow.take import kotlinx.coroutines.launch import kotlinx.coroutines.test.StandardTestDispatcher import kotlinx.coroutines.test.runTest import kotlinx.coroutines.test.setMain import com.apimorlabs.reluct.data.source.di.getDatabaseWrapper import com.apimorlabs.reluct.data.source.testData.TasksTestData import kotlin.test.*</ID>
+    <ID>ImportOrdering:TasksTestData.kt$import kotlinx.datetime.Clock import kotlinx.datetime.DatePeriod import kotlinx.datetime.LocalDate import kotlinx.datetime.LocalDateTime import kotlinx.datetime.TimeZone import kotlinx.datetime.plus import kotlinx.datetime.toLocalDateTime import com.apimorlabs.reluct.data.source.database.models.TaskDbObject import com.apimorlabs.reluct.data.source.database.models.TaskLabelDbObject</ID>
     <ID>KdocWrapping:DesktopHapticFeedback.kt$DesktopHapticFeedback$/** ACTION **/</ID>
     <ID>MayBeConst:Versions.kt$Versions$val DESKTOP_PACKAGE_NAME = "Reluct"</ID>
     <ID>MayBeConst:Versions.kt$Versions$val DESKTOP_VERSION = "1.0.0"</ID>
     <ID>MayBeConst:Versions.kt$Versions$val MIN_SDK = 26</ID>
-    <ID>MayBeConst:Versions.kt$Versions$val PACKAGE_NAME = "work.racka.reluct"</ID>
+    <ID>MayBeConst:Versions.kt$Versions$val PACKAGE_NAME = "com.apimorlabs.reluct"</ID>
     <ID>MayBeConst:Versions.kt$Versions$val TARGET_SDK = 34</ID>
     <ID>MayBeConst:Versions.kt$Versions$val VERSION_CODE = 1</ID>
     <ID>MayBeConst:Versions.kt$Versions$val VERSION_NAME = "1.0.0"</ID>
-    <ID>NewLineAtEndOfFile:Android.kt$work.racka.reluct.extensions.Android.kt</ID>
-    <ID>NewLineAtEndOfFile:ComposeExtensions.kt$work.racka.reluct.extensions.ComposeExtensions.kt</ID>
-    <ID>NewLineAtEndOfFile:FakeGoalsDao.kt$work.racka.reluct.data.source.database.dao.goals.FakeGoalsDao.kt</ID>
-    <ID>NewLineAtEndOfFile:FakeTasksDao.kt$work.racka.reluct.data.source.database.dao.tasks.FakeTasksDao.kt</ID>
-    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.android.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.android.kt</ID>
-    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.desktop.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.desktop.kt</ID>
-    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.kt$work.racka.reluct.data.source.di.GetDatabaseWrapper.kt</ID>
-    <ID>NewLineAtEndOfFile:GoalsDaoImplTest.kt$work.racka.reluct.data.source.database.dao.goals.GoalsDaoImplTest.kt</ID>
-    <ID>NewLineAtEndOfFile:GoalsTestData.kt$work.racka.reluct.data.source.testData.GoalsTestData.kt</ID>
-    <ID>NewLineAtEndOfFile:KmpExtensions.kt$work.racka.reluct.extensions.KmpExtensions.kt</ID>
-    <ID>NewLineAtEndOfFile:Kotlin.kt$work.racka.reluct.extensions.Kotlin.kt</ID>
-    <ID>NewLineAtEndOfFile:TasksDaoImplTest.kt$work.racka.reluct.data.source.database.dao.tasks.TasksDaoImplTest.kt</ID>
-    <ID>NewLineAtEndOfFile:TasksTestData.kt$work.racka.reluct.data.source.testData.TasksTestData.kt</ID>
-    <ID>NewLineAtEndOfFile:Versions.kt$work.racka.reluct.extensions.Versions.kt</ID>
-    <ID>NewLineAtEndOfFile:VersionsCatalog.kt$work.racka.reluct.extensions.VersionsCatalog.kt</ID>
+    <ID>ModifierReused:DateTimePills.kt$DateTimeDialog( modifier = modifier, isVisible = showDatePicker.value, properties = MultiplatformDialogProperties(desktopWindowConfig = dateDesktopWindowConfig), onCloseDialog = onCloseDialogs, shape = shape, onPositiveButtonClicked = { // Update Date datePickerState.selectedDateMillis?.let { millis -&gt; dateTime = Instant.fromEpochMilliseconds(millis) .toLocalDateTime(TimeZone.currentSystemDefault()) onLocalDateTimeChange(dateTime) } }, content = { DatePicker(state = datePickerState, showModeToggle = true) } )</ID>
+    <ID>ModifierReused:DateTimePills.kt$DateTimeDialog( modifier = modifier, isVisible = showTimePicker.value, properties = MultiplatformDialogProperties(desktopWindowConfig = timeDesktopWindowConfig), onCloseDialog = onCloseDialogs, shape = shape, onPositiveButtonClicked = { // Update Time dateTime = LocalDateTime( dateTime.year, dateTime.monthNumber, dateTime.dayOfMonth, timePickerState.hour, timePickerState.minute, ) onLocalDateTimeChange(dateTime) }, content = { TimePicker(state = timePickerState) } )</ID>
+    <ID>MultipleEmitters:DateTimePills.kt$DateAndTimeMaterialDialogs</ID>
+    <ID>MultipleEmitters:DateTimePills.kt$DateTimePills</ID>
+    <ID>NewLineAtEndOfFile:Android.kt$com.apimorlabs.reluct.extensions.Android.kt</ID>
+    <ID>NewLineAtEndOfFile:ComposeExtensions.kt$com.apimorlabs.reluct.extensions.ComposeExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:FakeGoalsDao.kt$com.apimorlabs.reluct.data.source.database.dao.goals.FakeGoalsDao.kt</ID>
+    <ID>NewLineAtEndOfFile:FakeTasksDao.kt$com.apimorlabs.reluct.data.source.database.dao.tasks.FakeTasksDao.kt</ID>
+    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.android.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.android.kt</ID>
+    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.desktop.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.desktop.kt</ID>
+    <ID>NewLineAtEndOfFile:GetDatabaseWrapper.kt$com.apimorlabs.reluct.data.source.di.GetDatabaseWrapper.kt</ID>
+    <ID>NewLineAtEndOfFile:GoalsDaoImplTest.kt$com.apimorlabs.reluct.data.source.database.dao.goals.GoalsDaoImplTest.kt</ID>
+    <ID>NewLineAtEndOfFile:GoalsTestData.kt$com.apimorlabs.reluct.data.source.testData.GoalsTestData.kt</ID>
+    <ID>NewLineAtEndOfFile:KmpExtensions.kt$com.apimorlabs.reluct.extensions.KmpExtensions.kt</ID>
+    <ID>NewLineAtEndOfFile:Kotlin.kt$com.apimorlabs.reluct.extensions.Kotlin.kt</ID>
+    <ID>NewLineAtEndOfFile:TasksDaoImplTest.kt$com.apimorlabs.reluct.data.source.database.dao.tasks.TasksDaoImplTest.kt</ID>
+    <ID>NewLineAtEndOfFile:TasksTestData.kt$com.apimorlabs.reluct.data.source.testData.TasksTestData.kt</ID>
+    <ID>NewLineAtEndOfFile:TestData.kt$com.apimorlabs.reluct.domain.util.TestData.kt</ID>
+    <ID>NewLineAtEndOfFile:Versions.kt$com.apimorlabs.reluct.extensions.Versions.kt</ID>
+    <ID>NewLineAtEndOfFile:VersionsCatalog.kt$com.apimorlabs.reluct.extensions.VersionsCatalog.kt</ID>
     <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
     <ID>NewLineAtEndOfFile:settings.gradle.kts$.settings.gradle.kts</ID>
     <ID>NoBlankLineBeforeRbrace:ComposeMultiplatformAppPlugin.kt$ComposeMultiplatformAppPlugin$ </ID>
     <ID>NoBlankLineBeforeRbrace:ComposeMultiplatformLibPlugin.kt$ComposeMultiplatformLibPlugin$ </ID>
-    <ID>NoBlankLineBeforeRbrace:build.gradle.kts$ </ID>
     <ID>NoConsecutiveBlankLines:ComposeExtensions.kt$ </ID>
     <ID>NoConsecutiveBlankLines:ComposeMultiplatformLibPlugin.kt$ </ID>
     <ID>NoConsecutiveBlankLines:ComposeMultiplatformLibPlugin.kt$ComposeMultiplatformLibPlugin$ </ID>
@@ -61,16 +75,20 @@
     <ID>NoEmptyFirstLineInMethodBlock:ComposeExtensions.kt$ </ID>
     <ID>NoEmptyFirstLineInMethodBlock:ComposeMultiplatformAppPlugin.kt$ComposeMultiplatformAppPlugin$ </ID>
     <ID>UnusedPrivateProperty:build.gradle.kts$val androidMain by getting { dependencies { implementation(libs.koin.android) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val androidMain by getting { dependencies { implementation(libs.sqldelight.android.driver) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val androidMain by getting { dependencies { implementation(libs.palette) implementation(libs.sqldelight.android.driver) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val androidMain by getting { dependencies { implementation(libs.savedstate) implementation(libs.koin.androidx.workmanager) implementation(libs.androidx.workmanager) } }</ID>
     <ID>UnusedPrivateProperty:build.gradle.kts$val androidUnitTest by getting { dependencies { implementation(libs.sqldelight.sqlite.driver) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":data-model")) // Normal deps implementation(libs.kotlinx.serialization.core) implementation(libs.coroutines.core) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":data-model")) // Normal deps } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":data-model")) implementation(project(":data-source")) // Normal deps implementation(libs.koin.compose) implementation(libs.koin.compose.viewmodel) implementation(libs.lifecycle.viewmodel) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":data-model")) implementation(project(":data-source")) implementation(project(":domain")) implementation(project(":features")) implementation(project(":system-services")) // Normal deps implementation(libs.koin.compose) implementation(libs.koin.compose.viewmodel) implementation(libs.lifecycle.viewmodel) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":common-models")) // Normal deps implementation(libs.kotlinx.serialization.core) implementation(libs.coroutines.core) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":common-models")) implementation(project(":compose-charts")) // Normal deps api(libs.kmpalette.core) api(libs.kmpalette.extensions.bytearray) implementation(compose.components.resources) implementation(compose.materialIconsExtended) implementation(compose.animation) implementation(compose.animationGraphics) implementation(libs.coroutines.core) implementation(libs.sketch.compose) implementation(libs.sketch.compose.resources) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":common-models")) implementation(project(":compose-ui")) implementation(project(":data-source")) implementation(project(":domain")) implementation(project(":system-services")) // Normal deps implementation(libs.coroutines.core) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":common-models")) implementation(project(":data-source")) implementation(project(":domain")) implementation(project(":features")) implementation(project(":system-services")) // Normal deps implementation(libs.koin.compose) implementation(libs.koin.compose.viewmodel) implementation(libs.lifecycle.viewmodel) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { //Projects implementation(project(":common-models")) implementation(project(":data-source")) implementation(project(":system-services")) // Normal deps implementation(libs.coroutines.core) } }</ID>
     <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { implementation(libs.kotlinx.serialization.core) api(libs.kotlinx.date.time) api(libs.kotlinx.collections.immutable) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { implementation(project(":common")) } }</ID>
-    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { implementation(project(":data-model")) implementation(libs.kotlinx.serialization.core) implementation(libs.coroutines.core) implementation(libs.sqldelight.runtime) implementation(libs.sqldelight.coroutines) implementation(libs.multiplatform.settings.core) implementation(libs.multiplatform.settings.noArg) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { implementation(project(":common")) implementation(project(":compose-ui")) implementation(project(":compose-charts")) implementation(compose.materialIconsExtended) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonMain by getting { dependencies { implementation(project(":common-models")) implementation(libs.kotlinx.serialization.core) implementation(libs.coroutines.core) implementation(libs.sqldelight.runtime) implementation(libs.sqldelight.coroutines) implementation(libs.multiplatform.settings.core) implementation(libs.multiplatform.settings.noArg) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val commonTest by getting { dependencies { implementation(libs.koin.test) implementation(libs.coroutines.test) implementation(libs.turbine.test) implementation(kotlin("test")) } }</ID>
     <ID>UnusedPrivateProperty:build.gradle.kts$val commonTest by getting { dependencies { implementation(libs.koin.test) implementation(libs.coroutines.test) implementation(libs.turbine.test) implementation(libs.multiplatform.settings.test) implementation(kotlin("test")) } }</ID>
+    <ID>UnusedPrivateProperty:build.gradle.kts$val desktopMain by getting { dependencies { implementation(libs.coroutines.swing) } }</ID>
     <ID>UnusedPrivateProperty:build.gradle.kts$val desktopMain by getting { dependencies { implementation(libs.sqldelight.sqlite.driver) } }</ID>
   </CurrentIssues>
 </SmellBaseline>

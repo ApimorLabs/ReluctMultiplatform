@@ -11,7 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -35,13 +39,14 @@ import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataIsNegative
 import com.apimorlabs.reluct.compose.charts.util.getPieChartMinValue
-import kotlin.math.min
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 /**
  * Composable function to render a donut chart with an optional legend.
  *
- * @param modifier Modifier for configuring the layout and appearance of the donut chart.
  * @param pieChartData List of data for the donut chart, including labels and values.
+ * @param modifier Modifier for configuring the layout and appearance of the donut chart.
  * @param centerTitle Title displayed in the center of the donut chart.
  * @param centerTitleStyle TextStyle for configuring the appearance of the center title.
  * @param animation Animation specification for the donut chart transitions (default is a 3-second linear animation).
@@ -58,8 +63,8 @@ import kotlin.math.min
  */
 @Composable
 fun DonutChart(
+    pieChartData: ImmutableList<PieChartData>,
     modifier: Modifier = Modifier,
-    pieChartData: List<PieChartData>,
     centerTitle: String = "",
     centerTitleStyle: TextStyle = TextStyle.Default,
     animation: AnimationSpec<Float> = TweenSpec(durationMillis = 3000),
@@ -71,15 +76,16 @@ fun DonutChart(
     chartLabelType: ChartLabelType = ChartDefaultValues.chartLabelType,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
 ) {
-    var totalSum = 0.0f
-    val pieValueWithRatio = mutableListOf<Float>()
-    pieChartData.forEach {
-        totalSum += it.data.toFloat()
+    var totalSum by remember { mutableStateOf(0.0f) }
+    val pieValueWithRatio by remember(pieChartData) {
+        derivedStateOf {
+            persistentListOf<Float>().builder().apply {
+                pieChartData.forEachIndexed { index, part ->
+                    add(index, 360 * part.data.toFloat() / totalSum)
+                }
+            }.build()
+        }
     }
-    pieChartData.forEachIndexed { index, part ->
-        pieValueWithRatio.add(index, 360 * part.data.toFloat() / totalSum)
-    }
-
 
     val textMeasure = rememberTextMeasurer()
     val textLayoutResult: TextLayoutResult = textMeasure.measure(
@@ -87,10 +93,13 @@ fun DonutChart(
     )
     val textSize = textLayoutResult.size
 
-    checkIfDataIsNegative(data = pieChartData.map { it.data })
     val transitionProgress = remember(pieValueWithRatio) { Animatable(initialValue = 0F) }
 
     LaunchedEffect(pieChartData) {
+        pieChartData.forEach {
+            totalSum += it.data.toFloat()
+        }
+        checkIfDataIsNegative(data = pieChartData.map { it.data })
         transitionProgress.animateTo(1F, animationSpec = animation)
     }
 
@@ -106,7 +115,7 @@ fun DonutChart(
                     descriptionStyle = descriptionStyle,
                     modifier = Modifier.fillMaxWidth().weight(0.5f)
                 )
-                drawDonutChart(
+                DrawDonutChart(
                     modifier = Modifier.weight(1.5f),
                     textMeasure = textMeasure,
                     pieChartData = pieChartData,
@@ -125,7 +134,7 @@ fun DonutChart(
             }
 
             LegendPosition.BOTTOM -> {
-                drawDonutChart(
+                DrawDonutChart(
                     modifier = Modifier.weight(1.5f),
                     textMeasure = textMeasure,
                     pieChartData = pieChartData,
@@ -149,7 +158,7 @@ fun DonutChart(
             }
 
             LegendPosition.DISAPPEAR -> {
-                drawDonutChart(
+                DrawDonutChart(
                     modifier = Modifier.weight(1.5f),
                     textMeasure = textMeasure,
                     pieChartData = pieChartData,
@@ -167,28 +176,25 @@ fun DonutChart(
                 )
             }
         }
-
-
     }
-
 }
 
 @Composable
-private fun drawDonutChart(
-    modifier: Modifier = Modifier,
+private fun DrawDonutChart(
     textMeasure: TextMeasurer,
-    pieChartData: List<PieChartData>,
+    pieChartData: ImmutableList<PieChartData>,
+    textSize: IntSize,
+    pieValueWithRatio: ImmutableList<Float>,
+    totalSum: Float,
+    transitionProgress: Animatable<Float, AnimationVector1D>,
+    chartLabelType: ChartLabelType,
+    modifier: Modifier = Modifier,
     centerTitle: String = "",
     centerTitleStyle: TextStyle = TextStyle.Default,
     textRatioStyle: TextStyle = TextStyle.Default.copy(fontSize = 12.sp),
     outerCircularColor: Color = Color.Gray,
     innerCircularColor: Color = Color.Gray,
     ratioLineColor: Color = Color.Gray,
-    textSize: IntSize,
-    pieValueWithRatio: MutableList<Float>,
-    totalSum: Float,
-    transitionProgress: Animatable<Float, AnimationVector1D>,
-    chartLabelType: ChartLabelType
 ) {
     Box(
         modifier = modifier.fillMaxSize()
@@ -220,18 +226,16 @@ private fun drawDonutChart(
                     pieChart = ChartTypes.DONUT_CHART,
                     chartLabelType = chartLabelType
                 )
-                //draw outer circle
+                // draw outer circle
                 draPieCircle(
                     circleColor = outerCircularColor,
                     radiusRatioCircle = (minValue / 2) + (arcWidth / 1.5f)
                 )
-                //draw inner circle
+                // draw inner circle
                 draPieCircle(
                     circleColor = innerCircularColor,
                     radiusRatioCircle = (minValue / 2) - (arcWidth / 1.5f)
                 )
-
             }
     )
-
 }

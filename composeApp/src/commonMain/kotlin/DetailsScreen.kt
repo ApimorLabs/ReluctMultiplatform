@@ -26,10 +26,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
+private val listOfPeople = listOf(
+    "Robinson",
+    "Gray",
+    "Luis",
+    "Daniel",
+    "Jose",
+    "Juan"
+)
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DetailsScreen(
-    listOfPeople: List<String>,
     onGoBack: () -> Unit,
     modifier: Modifier = Modifier,
     onNavigateToMeeting: () -> Unit = {},

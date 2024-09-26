@@ -14,10 +14,12 @@ import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartLabelType
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineType
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 internal object ChartDefaultValues {
 
-    val lineParameters: List<LineParameters> = listOf(
+    val lineParameters: ImmutableList<LineParameters> = listOf(
         LineParameters(
             label = "revenue",
             data = emptyList(),
@@ -25,23 +27,23 @@ internal object ChartDefaultValues {
             lineType = LineType.CURVED_LINE,
             lineShadow = true,
         )
-    )
+    ).toImmutableList()
 
-    val gBarParameters: List<GBarParameters> = listOf(
+    val gBarParameters: ImmutableList<GBarParameters> = listOf(
         GBarParameters(
             dataName = "revenue",
             data = emptyList(),
             barColor = Color.Blue,
         )
-    )
+    ).toImmutableList()
 
-    val barParameters: List<BarParameters> = listOf(
+    val barParameters: ImmutableList<BarParameters> = listOf(
         BarParameters(
             dataName = "revenue",
             data = 0.0,
             barColor = Color.Blue,
         )
-    )
+    ).toImmutableList()
 
     val barWidth = 30.dp
     val spaceBetweenBars = 10.dp

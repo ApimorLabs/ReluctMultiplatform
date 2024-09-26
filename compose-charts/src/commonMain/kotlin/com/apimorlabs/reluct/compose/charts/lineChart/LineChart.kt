@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -24,6 +22,8 @@ import com.apimorlabs.reluct.compose.charts.baseComponets.model.GridOrientation
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 
 /**
  * Composable function to render a line chart with optional legends.
@@ -55,9 +55,9 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 @Composable
 fun LineChart(
     modifier: Modifier = Modifier,
-    linesParameters: List<LineParameters> = ChartDefaultValues.lineParameters,
+    linesParameters: ImmutableList<LineParameters> = ChartDefaultValues.lineParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
-    xAxisData: List<String> = emptyList(),
+    xAxisData: ImmutableList<String> = persistentListOf(),
     isGrid: Boolean = ChartDefaultValues.IS_SHOW_GRID,
     barWidthPx: Dp = ChartDefaultValues.backgroundLineWidth,
     animateChart: Boolean = ChartDefaultValues.ANIMATED_CHART,
@@ -74,9 +74,7 @@ fun LineChart(
     gridOrientation: GridOrientation = ChartDefaultValues.gridOrientation,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition
 ) {
-    val clickedPoints = remember { mutableStateListOf<Pair<Float, Float>>() }
-
-    Box(modifier.wrapContentHeight()) {
+    Box(modifier = modifier.wrapContentHeight()) {
         Column {
             when (legendPosition) {
                 LegendPosition.TOP -> {
@@ -85,7 +83,6 @@ fun LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-
                         items(linesParameters) { details ->
                             ChartDescription(
                                 chartColor = details.lineColor,
@@ -96,10 +93,13 @@ fun LineChart(
                     }
 
                     ChartContent(
-                        modifier = if (chartRatio == 0f) Modifier.padding(top = 16.dp)
-                            .wrapContentSize()
-                        else Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
-                            .fillMaxSize(),
+                        modifier = if (chartRatio == 0f) {
+                            Modifier.padding(top = 16.dp)
+                                .wrapContentSize()
+                        } else {
+                            Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
+                                .fillMaxSize()
+                        },
                         linesParameters = linesParameters,
                         gridColor = gridColor,
                         xAxisData = xAxisData,
@@ -113,21 +113,19 @@ fun LineChart(
                         showXAxis = showXAxis,
                         showYAxis = showYAxis,
                         specialChart = oneLineChart,
-                        onChartClick = { x, y ->
-                            clickedPoints.add(x to y)
-                        },
-                        clickedPoints = clickedPoints,
                         gridOrientation = gridOrientation
                     )
                 }
 
                 LegendPosition.BOTTOM -> {
-
                     ChartContent(
-                        modifier = if (chartRatio == 0f) Modifier.padding(top = 16.dp)
-                            .wrapContentSize().weight(1f)
-                        else Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
-                            .fillMaxSize().weight(1f),
+                        modifier = if (chartRatio == 0f) {
+                            Modifier.padding(top = 16.dp)
+                                .wrapContentSize().weight(1f)
+                        } else {
+                            Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
+                                .fillMaxSize().weight(1f)
+                        },
                         linesParameters = linesParameters,
                         gridColor = gridColor,
                         xAxisData = xAxisData,
@@ -141,10 +139,6 @@ fun LineChart(
                         showXAxis = showXAxis,
                         showYAxis = showYAxis,
                         specialChart = oneLineChart,
-                        onChartClick = { x, y ->
-                            clickedPoints.add(x to y)
-                        },
-                        clickedPoints = clickedPoints,
                         gridOrientation = gridOrientation
                     )
                     LazyRow(
@@ -152,7 +146,6 @@ fun LineChart(
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-
                         items(linesParameters) { details ->
                             ChartDescription(
                                 chartColor = details.lineColor,
@@ -161,15 +154,17 @@ fun LineChart(
                             )
                         }
                     }
-
                 }
 
                 LegendPosition.DISAPPEAR -> {
                     ChartContent(
-                        modifier = if (chartRatio == 0f) Modifier.padding(top = 16.dp)
-                            .wrapContentSize()
-                        else Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
-                            .fillMaxSize(),
+                        modifier = if (chartRatio == 0f) {
+                            Modifier.padding(top = 16.dp)
+                                .wrapContentSize()
+                        } else {
+                            Modifier.padding(top = 16.dp).aspectRatio(chartRatio)
+                                .fillMaxSize()
+                        },
                         linesParameters = linesParameters,
                         gridColor = gridColor,
                         xAxisData = xAxisData,
@@ -183,15 +178,10 @@ fun LineChart(
                         showXAxis = showXAxis,
                         showYAxis = showYAxis,
                         specialChart = oneLineChart,
-                        onChartClick = { x, y ->
-                            clickedPoints.add(x to y)
-                        },
-                        clickedPoints = clickedPoints,
                         gridOrientation = gridOrientation
                     )
                 }
             }
-
         }
     }
 }

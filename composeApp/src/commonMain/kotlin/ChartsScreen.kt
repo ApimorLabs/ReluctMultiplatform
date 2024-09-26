@@ -33,7 +33,6 @@ fun ChartsScreen(
     onGoBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     var isBarChartSelected by remember { mutableStateOf(true) }
 
     Scaffold(
@@ -158,10 +157,8 @@ private fun BarChartSample() {
     )
 }
 
-
 @Composable
 private fun DonutChartSample() {
-
     val testPieChartData: List<PieChartData> = listOf(
         PieChartData(
             partName = "WhatsApp",

@@ -75,7 +75,7 @@ internal fun DialogContentHolder(
             .fillMaxWidth()
             .clipToBounds()
             .wrapContentHeight()
-                then modifier,
+            then modifier,
         shape = shape,
         color = containerColor
     ) {

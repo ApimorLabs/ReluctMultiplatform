@@ -94,5 +94,5 @@ internal fun customTypography() = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
     )
-    */
+     */
 )

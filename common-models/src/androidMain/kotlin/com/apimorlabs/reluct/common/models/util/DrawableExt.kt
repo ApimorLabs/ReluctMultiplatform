@@ -5,11 +5,9 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.Log
-import kotlinx.serialization.builtins.ByteArraySerializer
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.nio.ByteBuffer
-
 
 fun Drawable.getBitmap(): Bitmap? =
     try {
@@ -33,7 +31,6 @@ fun Drawable.getBitmap(): Bitmap? =
  * @return result byte array
  */
 fun Bitmap.toByteArrayUncompressed(): ByteArray {
-    val s = ByteArray(size = this.byteCount)
     val byteBuffer = ByteBuffer.allocate(this.byteCount)
     this.copyPixelsToBuffer(byteBuffer)
     byteBuffer.rewind()

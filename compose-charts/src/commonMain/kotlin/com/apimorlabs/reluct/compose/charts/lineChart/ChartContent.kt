@@ -1,6 +1,5 @@
 package com.apimorlabs.reluct.compose.charts.lineChart
 
-
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -30,16 +30,16 @@ import com.apimorlabs.reluct.compose.charts.lineChart.components.drawQuarticLine
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineType
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataValid
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun ChartContent(
-    modifier: Modifier,
-    linesParameters: List<LineParameters>,
+    linesParameters: ImmutableList<LineParameters>,
     gridColor: Color,
-    xAxisData: List<String>,
+    xAxisData: ImmutableList<String>,
     isShowGrid: Boolean,
     barWidthPx: Dp,
     animateChart: Boolean,
@@ -50,12 +50,12 @@ internal fun ChartContent(
     showXAxis: Boolean,
     showYAxis: Boolean,
     specialChart: Boolean,
-    onChartClick: (Float, Float) -> Unit,
-    clickedPoints: MutableList<Pair<Float, Float>>,
     gridOrientation: GridOrientation,
+    modifier: Modifier = Modifier,
 ) {
-
     val textMeasure = rememberTextMeasurer()
+
+    val clickedPoints = remember { mutableStateListOf<Pair<Float, Float>>() }
 
     val animatedProgress = remember {
         if (animateChart) Animatable(0f) else Animatable(1f)
@@ -73,7 +73,7 @@ internal fun ChartContent(
             .fillMaxSize()
             .pointerInput(Unit) {
                 detectTapGestures { offset ->
-                    onChartClick(offset.x, offset.y)
+                    clickedPoints.add(offset.x to offset.y)
                 }
             }
     ) {
@@ -107,9 +107,8 @@ internal fun ChartContent(
         )
 
         if (specialChart) {
-            if (linesParameters.size >= 2) {
-                throw Exception("Special case must contain just one line")
-            }
+            check(linesParameters.size < 2) { "Special case must contain just one line" }
+
             linesParameters.forEach { line ->
                 drawQuarticLineWithShadow(
                     line = line,
@@ -123,7 +122,6 @@ internal fun ChartContent(
                     xRegionWidth = xRegionWidth,
                     textMeasure
                 )
-
             }
         } else {
             if (linesParameters.size >= 2) {
@@ -131,7 +129,6 @@ internal fun ChartContent(
             }
             linesParameters.forEach { line ->
                 if (line.lineType == LineType.DEFAULT_LINE) {
-
                     drawDefaultLineWithShadow(
                         line = line,
                         lowerValue = lowerValue.toFloat(),
@@ -143,7 +140,6 @@ internal fun ChartContent(
                         textMeasure = textMeasure,
                         xRegionWidth = xRegionWidth
                     )
-
                 } else {
                     drawQuarticLineWithShadow(
                         line = line,
@@ -157,16 +153,13 @@ internal fun ChartContent(
                         xRegionWidth = xRegionWidth,
                         textMeasure
                     )
-
                 }
             }
         }
-
     }
 
     LaunchedEffect(linesParameters, animateChart) {
         if (animateChart) {
-
             collectToSnapShotFlow(linesParameters) {
                 upperValue = it.getUpperValue()
                 lowerValue = it.getLowerValue()

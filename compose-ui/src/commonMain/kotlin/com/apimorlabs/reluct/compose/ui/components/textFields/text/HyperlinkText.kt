@@ -54,7 +54,7 @@ fun HyperlinkText(
                         textDecoration = linkTextDecoration,
                         shadow = textStyle.shadow,
 
-                        ),
+                    ),
                     start = 0,
                     end = fullText.lastIndex
                 )
@@ -80,7 +80,7 @@ fun HyperlinkText(
                                         textDecoration = linkTextDecoration,
                                         shadow = textStyle.shadow,
 
-                                        )
+                                    )
                                 )
                             )
                         ) {

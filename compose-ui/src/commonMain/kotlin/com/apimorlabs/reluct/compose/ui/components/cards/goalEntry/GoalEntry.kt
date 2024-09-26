@@ -87,7 +87,7 @@ fun GoalEntry(
         modifier = Modifier
             .clip(shape)
             .background(containerColor)
-                then modifier,
+            then modifier,
         contentAlignment = Alignment.Center
     ) {
         ReluctDescriptionCard(

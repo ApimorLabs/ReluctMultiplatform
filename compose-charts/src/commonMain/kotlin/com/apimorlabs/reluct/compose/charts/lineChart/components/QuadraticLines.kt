@@ -51,10 +51,13 @@ internal fun DrawScope.drawQuarticLineWithShadow(
         }
         clipRect(right = size.width * animatedProgress.value) {
             drawPath(
-                path = fillPath, brush = Brush.verticalGradient(
+                path = fillPath,
+                brush = Brush.verticalGradient(
                     colors = listOf(
-                        line.lineColor.copy(alpha = .3f), Color.Transparent
-                    ), endY = (size.height.toDp() - spacingY).toPx()
+                        line.lineColor.copy(alpha = .3f),
+                        Color.Transparent
+                    ),
+                    endY = (size.height.toDp() - spacingY).toPx()
                 )
             )
         }
@@ -93,21 +96,25 @@ fun DrawScope.drawLineAsQuadratic(
 
         val xFirstPoint = (textSpace * 1.5.toFloat().toDp()) + index * xRegionWidth
         val xSecondPoint =
-            (textSpace * 1.5.toFloat().toDp()) + (index + checkLastIndex(
-                lineParameter.data,
-                index
-            )) * xRegionWidth
+            (textSpace * 1.5.toFloat().toDp()) + (
+                index + checkLastIndex(
+                    lineParameter.data,
+                    index
+                )
+                ) * xRegionWidth
 
-        val yFirstPoint = (height.toPx()
-                + 11.dp.toPx()
-                - spacingY.toPx()
-                - (firstRatio * (size.height.toDp() - spacingY).toPx())
-                )
-        val ySecondPoint = (height.toPx()
-                + 11.dp.toPx()
-                - spacingY.toPx()
-                - (secondRatio * (size.height.toDp() - spacingY).toPx())
-                )
+        val yFirstPoint = (
+            height.toPx() +
+                11.dp.toPx() -
+                spacingY.toPx() -
+                (firstRatio * (size.height.toDp() - spacingY).toPx())
+            )
+        val ySecondPoint = (
+            height.toPx() +
+                11.dp.toPx() -
+                spacingY.toPx() -
+                (secondRatio * (size.height.toDp() - spacingY).toPx())
+            )
 
         val tolerance = 20.dp.toPx()
         val savedClicks =
@@ -128,7 +135,6 @@ fun DrawScope.drawLineAsQuadratic(
                     animatedProgress = animatedProgress
                 )
             }
-
         }
 
         if (index == 0) {
@@ -166,8 +172,9 @@ fun DrawScope.drawLineAsQuadratic(
 }
 
 private fun checkLastIndex(data: List<Double>, index: Int): Int {
-    return if (data[index] == data[data.lastIndex])
+    return if (data[index] == data[data.lastIndex]) {
         0
-    else
+    } else {
         1
+    }
 }

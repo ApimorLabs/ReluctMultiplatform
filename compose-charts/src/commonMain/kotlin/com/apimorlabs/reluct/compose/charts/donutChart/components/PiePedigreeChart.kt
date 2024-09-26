@@ -42,11 +42,11 @@ internal fun DrawScope.drawPedigreeChart(
             progress = transitionProgress.value
         )
         val arcWithoutAnimation = calculateAngle(
-            dataLength = pieChartData[index].data.toFloat(), totalLength = totalSum
+            dataLength = pieChartData[index].data.toFloat(),
+            totalLength = totalSum
         )
         val angleInRadians = (startArcWithoutAnimation + arcWithoutAnimation / 2).degreeToAngle
         if (pieChart == ChartTypes.PIE_CHART) {
-
             val arcOffset = Offset(center.x - (minValue / 2), center.y - (minValue / 2))
             scale(1.3f) {
                 drawArc(
@@ -78,7 +78,6 @@ internal fun DrawScope.drawPedigreeChart(
 
                 drawLines(ratioLineColor, lineStart, lineEnd, secondLineEnd)
 
-
                 val textOffset =
                     getTextOffsetByRegion(regionSign, lineEnd.x, secondLineEnd.y, arcWidth)
 
@@ -92,7 +91,6 @@ internal fun DrawScope.drawPedigreeChart(
 
             startArc += arcWithAnimation
             startArcWithoutAnimation += arcWithoutAnimation
-
         } else {
             val arcOffset = Offset(center.x - (minValue / 2), center.y - (minValue / 2))
             drawArc(
@@ -101,7 +99,8 @@ internal fun DrawScope.drawPedigreeChart(
                 sweepAngle = arcWithAnimation,
                 useCenter = false,
                 style = Stroke(
-                    arcWidth, cap = StrokeCap.Butt
+                    arcWidth,
+                    cap = StrokeCap.Butt
                 ),
                 size = Size(minValue, minValue),
                 topLeft = arcOffset

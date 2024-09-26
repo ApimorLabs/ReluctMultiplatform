@@ -53,7 +53,6 @@ internal fun DateTimePills(
     hasError: Boolean = false,
     errorText: String = "",
 ) {
-
     val pillContainerColor by animateColorAsState(
         targetValue = if (hasError) {
             MaterialTheme.colorScheme.error

@@ -1,6 +1,5 @@
 package com.apimorlabs.reluct.compose.ui.theme
 
-
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DarkMode
@@ -108,5 +107,5 @@ enum class Theme(
         themeName = "Dark Theme",
         icon = Icons.Outlined.DarkMode,
         themeValue = 2
-    );
+    )
 }

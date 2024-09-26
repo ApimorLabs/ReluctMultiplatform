@@ -30,7 +30,6 @@ internal fun DrawScope.drawDefaultLineWithShadow(
     textMeasure: TextMeasurer,
     xRegionWidth: Dp,
 ) {
-
     val strokePathOfDefaultLine = drawLineAsDefault(
         lineParameter = line,
         lowerValue = lowerValue,
@@ -50,7 +49,8 @@ internal fun DrawScope.drawDefaultLineWithShadow(
         }
         clipRect(right = size.width * animatedProgress.value) {
             drawPath(
-                path = fillPath, brush = Brush.verticalGradient(
+                path = fillPath,
+                brush = Brush.verticalGradient(
                     colors = listOf(line.lineColor.copy(alpha = .3f), Color.Transparent),
                     endY = (size.height.toDp() - spacingY).toPx()
                 )
@@ -89,7 +89,6 @@ private fun DrawScope.drawLineAsDefault(
         val tolerance = 20.dp.toPx()
         val savedClicks =
             clickedOnThisPoint(clickedPoints, startXPoint.toPx(), startYPoint, tolerance)
-
 
         if (savedClicks) {
             if (lastClickedPoint != null) {
