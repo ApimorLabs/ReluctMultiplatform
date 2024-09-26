@@ -27,6 +27,9 @@ import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.donutChart.DonutChart
 import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartLabelType
 import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun ChartsScreen(
@@ -98,7 +101,7 @@ private fun RadioGroup(
 
 @Composable
 private fun BarChartSample() {
-    val testBarParameters: List<BarParameters> = listOf(
+    val testBarParameters: ImmutableList<BarParameters> = persistentListOf(
         BarParameters(
             dataName = "Mon",
             data = 23.5,
@@ -132,7 +135,7 @@ private fun BarChartSample() {
     )
     val xAxisData by remember {
         derivedStateOf {
-            testBarParameters.map { it.dataName }
+            testBarParameters.map { it.dataName }.toImmutableList()
         }
     }
 
@@ -159,7 +162,7 @@ private fun BarChartSample() {
 
 @Composable
 private fun DonutChartSample() {
-    val testPieChartData: List<PieChartData> = listOf(
+    val testPieChartData: ImmutableList<PieChartData> = persistentListOf(
         PieChartData(
             partName = "WhatsApp",
             data = 500.0,

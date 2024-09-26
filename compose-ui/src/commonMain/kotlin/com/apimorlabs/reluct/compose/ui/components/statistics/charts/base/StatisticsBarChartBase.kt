@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
 import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.BarChart
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 internal fun StatisticsBarChartBase(
@@ -21,7 +22,7 @@ internal fun StatisticsBarChartBase(
     selectedBarColor: Color = MaterialTheme.colorScheme.primary,
 ) {
     val onColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
-    val xAxisData by remember { derivedStateOf { bars.map { it.dataName } } }
+    val xAxisData by remember { derivedStateOf { bars.map { it.dataName }.toImmutableList() } }
     BarChart(
         modifier = modifier,
         chartParameters = bars,

@@ -93,7 +93,7 @@ fun DonutChart(
     )
     val textSize = textLayoutResult.size
 
-    val transitionProgress = remember(pieValueWithRatio) { Animatable(initialValue = 0F) }
+    val transitionProgress = remember(pieChartData) { Animatable(initialValue = 0F) }
 
     LaunchedEffect(pieChartData) {
         pieChartData.forEach {
