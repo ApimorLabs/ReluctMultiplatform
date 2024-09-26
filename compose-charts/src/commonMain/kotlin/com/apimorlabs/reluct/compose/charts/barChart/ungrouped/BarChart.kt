@@ -40,7 +40,7 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
  * @param xAxisDrawLocation Flag to determine where to draw X-axis line labels (default is [LabelValueDrawer.DrawLocation.XAxis]).
  * @param barsSpacingFactor The factor by which the bars are spaced. Should be between 0.0f - 1f (default is 0.1).
  * @param legendPosition Position of the legend within the chart (default is [LegendPosition.TOP]).
- * @param barCornerRadius radius of the bar corner in the chart (default is zero).
+ * @param barCornerRadius radius of the bar corner in the chart (default is 10dp).
  *
  * @see BarParameters
  * @see LegendPosition
