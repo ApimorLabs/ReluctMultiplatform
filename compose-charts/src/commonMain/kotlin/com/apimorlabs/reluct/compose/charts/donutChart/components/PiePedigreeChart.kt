@@ -40,7 +40,6 @@ internal fun DrawScope.drawPedigreeChart(
             totalLength = totalSum,
             progress = transitionProgress.value
         )
-        println("Arch angle: $arcWithAnimation, Data: ${pieChartData[index].data}, Progress: ${transitionProgress.value}")
         val arcWithoutAnimation = calculateAngle(
             dataLength = pieChartData[index].data.toFloat(),
             totalLength = totalSum
@@ -138,7 +137,6 @@ internal fun DrawScope.drawPedigreeChart(
 
             startArc += arcWithAnimation
             startArcWithoutAnimation += arcWithoutAnimation
-            println("Getting Values: $startArc")
         }
     }
 }

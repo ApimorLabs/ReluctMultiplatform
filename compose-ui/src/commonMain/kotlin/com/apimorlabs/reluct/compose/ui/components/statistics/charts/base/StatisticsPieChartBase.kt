@@ -1,5 +1,6 @@
 package com.apimorlabs.reluct.compose.ui.components.statistics.charts.base
 
+import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -51,7 +52,8 @@ fun StatisticsPieChartBase(
                 innerCircularColor = lineColor,
                 ratioLineColor = lineColor,
                 legendPosition = LegendPosition.DISAPPEAR,
-                chartLabelType = chartLabelType
+                chartLabelType = chartLabelType,
+                animation = TweenSpec(500)
             )
         }
     }

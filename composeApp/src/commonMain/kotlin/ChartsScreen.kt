@@ -1,3 +1,4 @@
+import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -212,6 +213,7 @@ private fun DonutChartSample() {
         innerCircularColor = Color.Gray,
         ratioLineColor = Color.LightGray,
         legendPosition = LegendPosition.DISAPPEAR,
-        chartLabelType = ChartLabelType.NONE
+        chartLabelType = ChartLabelType.NONE,
+        animation = TweenSpec(500)
     )
 }
