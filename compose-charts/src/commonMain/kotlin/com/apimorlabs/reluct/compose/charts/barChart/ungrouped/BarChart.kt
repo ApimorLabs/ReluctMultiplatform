@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
 import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.components.BarChartContent
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.LabelValueDrawer
 import com.apimorlabs.reluct.compose.charts.baseComponets.ChartDescription
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
@@ -25,20 +26,19 @@ import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
  * @param chartParameters List of BarParameters describing the data for the bar chart.
  * @param gridColor Color of the grid lines (default is Gray).
  * @param xAxisData List of labels for the X-axis.
- * @param isShowGrid Flag to determine whether to display grid lines (default is true).
  * @param animateChart Flag to enable chart animations (default is true).
- * @param showGridWithSpacer Flag to add background spacing when showing grid lines (default is true).
  * @param descriptionStyle TextStyle for configuring the appearance of chart description (legend) text.
  * @param yAxisStyle TextStyle for configuring the appearance of the Y-axis labels.
  * @param xAxisStyle TextStyle for configuring the appearance of the X-axis labels.
  * @param horizontalArrangement Horizontal arrangement for legend items (default is [Arrangement.Center]).
  * @param backgroundLineWidth Width of the background grid lines (default is 1.0).
- * @param yAxisRange Range of values for the Y-axis (default is 0 to 100).
  * @param showXAxis Flag to determine whether to display the X-axis (default is true).
  * @param showYAxis Flag to determine whether to display the Y-axis (default is true).
- * @param barWidth Width of the bars in the chart (default is automatic).
- * @param spaceBetweenBars Space between bars within the same group (default is automatic).
- * @param spaceBetweenGroups Space between groups of bars (default is automatic).
+ * @param showXAxisLabels Flag to determine whether to display the X-axis labels (default is true).
+ * @param showYAxisLabels Flag to determine whether to display the Y-axis labels (default is true).
+ * @param showIntervalLines Flag to determine whether to display the Interval lines for Y-axis labels (default is false).
+ * @param xAxisDrawLocation Flag to determine where to draw X-axis line labels (default is [LabelValueDrawer.DrawLocation.XAxis]).
+ * @param barsSpacingFactor The factor by which the bars are spaced. Should be between 0.0f - 1f (default is 0.1).
  * @param legendPosition Position of the legend within the chart (default is [LegendPosition.TOP]).
  * @param barCornerRadius radius of the bar corner in the chart (default is zero).
  *
@@ -51,20 +51,19 @@ fun BarChart(
     chartParameters: List<BarParameters> = ChartDefaultValues.barParameters,
     gridColor: Color = ChartDefaultValues.gridColor,
     xAxisData: List<String> = emptyList(),
-    isShowGrid: Boolean = ChartDefaultValues.IS_SHOW_GRID,
     animateChart: Boolean = ChartDefaultValues.ANIMATED_CHART,
-    showGridWithSpacer: Boolean = ChartDefaultValues.SHOW_BACKGROUND_WITH_SPACER,
     descriptionStyle: TextStyle = ChartDefaultValues.descriptionDefaultStyle,
     yAxisStyle: TextStyle = ChartDefaultValues.axesStyle,
     xAxisStyle: TextStyle = ChartDefaultValues.axesStyle,
     horizontalArrangement: Arrangement.Horizontal = ChartDefaultValues.headerArrangement,
     backgroundLineWidth: Float = ChartDefaultValues.backgroundLineWidth.value,
-    yAxisRange: Int = ChartDefaultValues.yAxisRange,
     showXAxis: Boolean = ChartDefaultValues.showXAxis,
     showYAxis: Boolean = ChartDefaultValues.showyAxis,
-    barWidth: Dp = ChartDefaultValues.barWidth,
-    spaceBetweenBars: Dp = ChartDefaultValues.spaceBetweenBars,
-    spaceBetweenGroups: Dp = ChartDefaultValues.spaceBetweenGroups,
+    showXAxisLabels: Boolean = ChartDefaultValues.showXAxisLabel,
+    showYAxisLabels: Boolean = ChartDefaultValues.showYAxisLabel,
+    showIntervalLines: Boolean = ChartDefaultValues.showIntervalLines,
+    xAxisDrawLocation: LabelValueDrawer.DrawLocation = ChartDefaultValues.xAxisDrawLocation,
+    barsSpacingFactor: Float = ChartDefaultValues.barsSpacingFactor,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
     barCornerRadius: Dp = ChartDefaultValues.barCornerRadius,
     selectedBarColor: Color = ChartDefaultValues.selectedBarColor,
@@ -94,21 +93,20 @@ fun BarChart(
                     barsParameters = chartParameters,
                     gridColor = gridColor,
                     xAxisData = xAxisData,
-                    isShowGrid = isShowGrid,
                     animateChart = animateChart,
-                    showGridWithSpacer = showGridWithSpacer,
                     yAxisStyle = yAxisStyle,
                     xAxisStyle = xAxisStyle,
                     backgroundLineWidth = backgroundLineWidth,
-                    yAxisRange = yAxisRange,
                     showXAxis = showXAxis,
                     showYAxis = showYAxis,
-                    barWidth = barWidth,
-                    spaceBetweenBars = spaceBetweenBars,
-                    spaceBetweenGroups = spaceBetweenGroups,
+                    barsSpacingFactor = barsSpacingFactor,
                     barCornerRadius = barCornerRadius,
                     selectedBarColor = selectedBarColor,
                     selectedBarIndex = selectedBarIndex,
+                    showXAxisLabels = showXAxisLabels,
+                    showYAxisLabels = showYAxisLabels,
+                    showIntervalLines = showIntervalLines,
+                    xAxisLabelDrawLocation = xAxisDrawLocation,
                     onBarClicked = onBarClicked
                 )
             }
@@ -118,22 +116,21 @@ fun BarChart(
                     barsParameters = chartParameters,
                     gridColor = gridColor,
                     xAxisData = xAxisData,
-                    isShowGrid = isShowGrid,
                     animateChart = animateChart,
-                    showGridWithSpacer = showGridWithSpacer,
                     yAxisStyle = yAxisStyle,
                     xAxisStyle = xAxisStyle,
                     backgroundLineWidth = backgroundLineWidth,
-                    yAxisRange = yAxisRange,
                     showXAxis = showXAxis,
                     showYAxis = showYAxis,
-                    barWidth = barWidth,
-                    spaceBetweenBars = spaceBetweenBars,
-                    spaceBetweenGroups = spaceBetweenGroups,
+                    barsSpacingFactor = barsSpacingFactor,
                     modifier = Modifier.weight(1f),
                     barCornerRadius = barCornerRadius,
                     selectedBarColor = selectedBarColor,
                     selectedBarIndex = selectedBarIndex,
+                    showXAxisLabels = showXAxisLabels,
+                    showYAxisLabels = showYAxisLabels,
+                    showIntervalLines = showIntervalLines,
+                    xAxisLabelDrawLocation = xAxisDrawLocation,
                     onBarClicked = onBarClicked
                 )
 
@@ -159,21 +156,20 @@ fun BarChart(
                     barsParameters = chartParameters,
                     gridColor = gridColor,
                     xAxisData = xAxisData,
-                    isShowGrid = isShowGrid,
                     animateChart = animateChart,
-                    showGridWithSpacer = showGridWithSpacer,
                     yAxisStyle = yAxisStyle,
                     xAxisStyle = xAxisStyle,
                     backgroundLineWidth = backgroundLineWidth,
-                    yAxisRange = yAxisRange,
                     showXAxis = showXAxis,
                     showYAxis = showYAxis,
-                    barWidth = barWidth,
-                    spaceBetweenBars = spaceBetweenBars,
-                    spaceBetweenGroups = spaceBetweenGroups,
+                    barsSpacingFactor = barsSpacingFactor,
                     barCornerRadius = barCornerRadius,
                     selectedBarColor = selectedBarColor,
                     selectedBarIndex = selectedBarIndex,
+                    showXAxisLabels = showXAxisLabels,
+                    showYAxisLabels = showYAxisLabels,
+                    showIntervalLines = showIntervalLines,
+                    xAxisLabelDrawLocation = xAxisDrawLocation,
                     onBarClicked = onBarClicked
                 )
 

@@ -8,8 +8,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
 import com.apimorlabs.reluct.compose.charts.barChart.model.GBarParameters
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.LabelValueDrawer
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.GridOrientation
 import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
+import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartLabelType
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineParameters
 import com.apimorlabs.reluct.compose.charts.lineChart.model.LineType
 
@@ -43,6 +45,7 @@ internal object ChartDefaultValues {
 
     val barWidth = 30.dp
     val spaceBetweenBars = 10.dp
+    const val barsSpacingFactor = 0.1f
     val spaceBetweenGroups = 40.dp
     const val IS_SHOW_GRID = true
     val gridColor = Color.Gray
@@ -66,8 +69,13 @@ internal object ChartDefaultValues {
     const val specialChart = false
     const val showXAxis = true
     const val showyAxis = true
+    const val showXAxisLabel = true
+    const val showYAxisLabel = true
+    const val showIntervalLines = false
+    val xAxisDrawLocation = LabelValueDrawer.DrawLocation.XAxis
 
     val gridOrientation = GridOrientation.HORIZONTAL
     val legendPosition = LegendPosition.DISAPPEAR
-    val barCornerRadius = 0.dp
+    val chartLabelType = ChartLabelType.PERCENTAGE
+    val barCornerRadius = 10.dp
 }

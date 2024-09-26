@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -51,6 +50,10 @@ fun App() {
                             Button(onClick = { controller.navigate("details") }) {
                                 Text(text = "Details")
                             }
+                            Spacer(Modifier.padding(16.dp))
+                            Button(onClick = { controller.navigate("charts") }) {
+                                Text(text = "Charts")
+                            }
                         }
                     }
                 }
@@ -72,6 +75,18 @@ fun App() {
                             "Jose",
                             "Juan"
                         ),
+                        onGoBack = { controller.popBackStack() }
+                    )
+                }
+
+                composable(
+                    route = "charts",
+                    enterTransition = { scaleInEnterTransition() },
+                    exitTransition = { scaleOutExitTransition() },
+                    popEnterTransition = { scaleInPopEnterTransition() },
+                    popExitTransition = { scaleOutPopExitTransition() }
+                ) {
+                    ChartsScreen(
                         onGoBack = { controller.popBackStack() }
                     )
                 }

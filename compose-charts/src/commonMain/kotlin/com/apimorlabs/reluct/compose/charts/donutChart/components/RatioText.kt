@@ -10,14 +10,14 @@ import androidx.compose.ui.text.style.TextOverflow
 
 internal fun DrawScope.ratioText(
     textMeasurer: TextMeasurer,
-    ratio: Int,
+    ratioText: String,
     textRatioStyle: TextStyle,
     topLeft: Offset,
 ) {
     drawContext.canvas.nativeCanvas.apply {
         drawText(
             textMeasurer = textMeasurer,
-            text = "${ratio}%",
+            text = ratioText,
             style = textRatioStyle,
             topLeft = topLeft,
             overflow = TextOverflow.Visible

@@ -7,6 +7,7 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(project(":compose-ui"))
+                implementation(project(":compose-charts"))
                 implementation(compose.materialIconsExtended)
             }
         }

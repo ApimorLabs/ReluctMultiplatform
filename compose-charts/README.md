@@ -8,24 +8,16 @@ Currently supported platforms are <strong>Desktop</strong> <strong>Android</stro
 </div>
 
 ## **NOTE**
-- This is a chart library by [TheChance101](https://github.com/TheChance101/AAY-chart)
 
-- It is embedded in this project so that it is easier to maintain and fix bugs.
+- This is a modification of the chart library
+  by [TheChance101](https://github.com/TheChance101/AAY-chart)
+
+- It is embedded in this project so that it is easier to maintain, add features and fix bugs.
 
 - The developer has not updated the library since 28th Sep 2023 as the time of writing this on 12th
   Sep 2024
 
 - I have added an UNGROUPED bar chart separate from the grouped one for my needs
-
-## How to use?
-
-Add dependency in your module `build.gradle`
-
-```kotlin
-dependencies {
-    implementation("io.github.thechance101:chart:$latest_release")
-}
-```
 
 ## Examples
 
@@ -133,7 +125,7 @@ fun GroupedBarChartSample() {
 }
 ```
 
-3. Show Un-Grouped Bar Chart in Jetpack Compose:
+3. Show Un-Grouped Bar Chart that is clickable in Jetpack Compose:
 
 ```kotlin
 @Composable
@@ -157,25 +149,30 @@ fun BarChartSample() {
         ),
     )
 
+    val xAxisData by remember {
+        derivedStateOf {
+            testBarParameters.map { it.dataName }
+        }
+    }
+
+    val selectedBarColor = Color.Blue
+    // Initialize with `null` if you don't need a default selection
+    val selectedBarIndex = remember { mutableStateOf<Int?>(null) }
+    val labelColor = MaterialTheme.colorScheme.onSurface
+
     Box(Modifier.fillMaxSize()) {
         BarChart(
             chartParameters = testBarParameters,
             gridColor = Color.DarkGray,
-            xAxisData = listOf("January", "June", "December"),
-            isShowGrid = true,
+            xAxisData = xAxisData,
             animateChart = true,
-            showGridWithSpacer = true,
-            yAxisStyle = TextStyle(
-                fontSize = 14.sp,
-                color = Color.DarkGray,
-            ),
-            xAxisStyle = TextStyle(
-                fontSize = 14.sp,
-                color = Color.DarkGray,
-                fontWeight = FontWeight.W400
-            ),
-            yAxisRange = 15,
-            barWidth = 20.dp
+            showYAxis = false,
+            showYAxisLabels = false,
+            yAxisStyle = MaterialTheme.typography.labelMedium.copy(labelColor),
+            xAxisStyle = MaterialTheme.typography.labelMedium.copy(color = labelColor),
+            selectedBarColor = selectedBarColor,
+            selectedBarIndex = selectedBarIndex.value,
+            onBarClicked = { index -> selectedBarIndex.value = index }
         )
     }
 }

@@ -29,10 +29,12 @@ import com.apimorlabs.reluct.compose.charts.donutChart.components.PieChartDescri
 import com.apimorlabs.reluct.compose.charts.donutChart.components.draPieCircle
 import com.apimorlabs.reluct.compose.charts.donutChart.components.drawCenterText
 import com.apimorlabs.reluct.compose.charts.donutChart.components.drawPedigreeChart
+import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartLabelType
 import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartTypes
 import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataIsNegative
+import com.apimorlabs.reluct.compose.charts.util.getPieChartMinValue
 import kotlin.math.min
 
 /**
@@ -48,6 +50,7 @@ import kotlin.math.min
  * @param outerCircularColor Color of the outer circular border of the donut chart (default is Gray).
  * @param innerCircularColor Color of the inner circular area of the donut chart (default is Gray).
  * @param ratioLineColor Color of the lines connecting ratio labels to chart segments (default is Gray).
+ * @param chartLabelType Type of label shown next to the chart segments (default is ChartLabelType.PERCENTAGE).
  * @param legendPosition Position of the legend within the chart (default is [LegendPosition.TOP]).
  *
  * @see PieChartData
@@ -65,6 +68,7 @@ fun DonutChart(
     outerCircularColor: Color = Color.Gray,
     innerCircularColor: Color = Color.Gray,
     ratioLineColor: Color = Color.Gray,
+    chartLabelType: ChartLabelType = ChartDefaultValues.chartLabelType,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
 ) {
     var totalSum = 0.0f
@@ -115,7 +119,8 @@ fun DonutChart(
                     textSize = textSize,
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
-                    transitionProgress = transitionProgress
+                    transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType
                 )
             }
 
@@ -133,7 +138,8 @@ fun DonutChart(
                     textSize = textSize,
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
-                    transitionProgress = transitionProgress
+                    transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType
                 )
                 PieChartDescriptionComposable(
                     pieChartData = pieChartData,
@@ -156,7 +162,8 @@ fun DonutChart(
                     textSize = textSize,
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
-                    transitionProgress = transitionProgress
+                    transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType
                 )
             }
         }
@@ -181,15 +188,14 @@ private fun drawDonutChart(
     pieValueWithRatio: MutableList<Float>,
     totalSum: Float,
     transitionProgress: Animatable<Float, AnimationVector1D>,
+    chartLabelType: ChartLabelType
 ) {
     Box(
         modifier = modifier.fillMaxSize()
             .drawBehind {
                 val canvasWidth = size.width
                 val canvasHeight = size.height
-                val minValue = min(canvasWidth, canvasHeight)
-                    .coerceAtMost(canvasHeight / 2)
-                    .coerceAtMost(canvasWidth / 2)
+                val minValue = getPieChartMinValue(chartLabelType, size)
                 val arcWidth = (size.minDimension.dp.toPx() * 0.13f).coerceAtMost(minValue / 4)
 
                 drawCenterText(
@@ -211,7 +217,8 @@ private fun drawDonutChart(
                     ratioLineColor = ratioLineColor,
                     arcWidth = arcWidth,
                     minValue = minValue,
-                    pieChart = ChartTypes.DONUT_CHART
+                    pieChart = ChartTypes.DONUT_CHART,
+                    chartLabelType = chartLabelType
                 )
                 //draw outer circle
                 draPieCircle(
@@ -223,7 +230,6 @@ private fun drawDonutChart(
                     circleColor = innerCircularColor,
                     radiusRatioCircle = (minValue / 2) - (arcWidth / 1.5f)
                 )
-
 
             }
     )

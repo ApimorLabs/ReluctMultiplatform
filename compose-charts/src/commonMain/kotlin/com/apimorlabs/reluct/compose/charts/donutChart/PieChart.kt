@@ -25,11 +25,12 @@ import com.apimorlabs.reluct.compose.charts.baseComponets.model.LegendPosition
 import com.apimorlabs.reluct.compose.charts.donutChart.components.PieChartDescriptionComposable
 import com.apimorlabs.reluct.compose.charts.donutChart.components.draPieCircle
 import com.apimorlabs.reluct.compose.charts.donutChart.components.drawPedigreeChart
+import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartLabelType
 import com.apimorlabs.reluct.compose.charts.donutChart.model.ChartTypes
 import com.apimorlabs.reluct.compose.charts.donutChart.model.PieChartData
 import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataIsNegative
-import kotlin.math.min
+import com.apimorlabs.reluct.compose.charts.util.getPieChartMinValue
 
 /**
  * Composable function to render a pie chart with an optional legend.
@@ -41,6 +42,7 @@ import kotlin.math.min
  * @param outerCircularColor Color of the outer circular border of the pie chart (default is Gray).
  * @param ratioLineColor Color of the lines connecting ratio labels to chart segments (default is Gray).
  * @param descriptionStyle TextStyle for configuring the appearance of the chart description (legend) text.
+ * @param chartLabelType Type of label shown next to the chart segments (default is ChartLabelType.PERCENTAGE).
  * @param legendPosition Position of the legend within the chart (default is [LegendPosition.TOP]).
  *
  * @see PieChartData
@@ -56,6 +58,7 @@ fun PieChart(
     outerCircularColor: Color = Color.Gray,
     ratioLineColor: Color = Color.Gray,
     descriptionStyle: TextStyle = TextStyle.Default,
+    chartLabelType: ChartLabelType = ChartDefaultValues.chartLabelType,
     legendPosition: LegendPosition = ChartDefaultValues.legendPosition,
 ) {
     var totalSum = 0.0f
@@ -98,6 +101,7 @@ fun PieChart(
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
                     transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType,
                     textMeasure = textMeasure
                 )
             }
@@ -112,6 +116,7 @@ fun PieChart(
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
                     transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType,
                     textMeasure = textMeasure
                 )
 
@@ -132,6 +137,7 @@ fun PieChart(
                     pieValueWithRatio = pieValueWithRatio,
                     totalSum = totalSum,
                     transitionProgress = transitionProgress,
+                    chartLabelType = chartLabelType,
                     textMeasure = textMeasure
                 )
             }
@@ -150,16 +156,13 @@ private fun drawPieChart(
     pieValueWithRatio: MutableList<Float>,
     totalSum: Float,
     transitionProgress: Animatable<Float, AnimationVector1D>,
+    chartLabelType: ChartLabelType,
     textMeasure: TextMeasurer,
 ) {
     Box(
         modifier = modifier.fillMaxSize()
             .drawBehind {
-                val canvasWidth = size.width
-                val canvasHeight = size.height
-                val minValue = min(canvasWidth, canvasHeight)
-                    .coerceAtMost(canvasHeight / 2)
-                    .coerceAtMost(canvasWidth / 2)
+                val minValue = getPieChartMinValue(chartLabelType, size)
                 val arcWidth =
                     (size.minDimension.dp.toPx() * 0.13f).coerceAtMost(minValue / 4)
 
@@ -173,7 +176,8 @@ private fun drawPieChart(
                     ratioLineColor = ratioLineColor,
                     arcWidth = arcWidth,
                     minValue = minValue,
-                    pieChart = ChartTypes.PIE_CHART
+                    pieChart = ChartTypes.PIE_CHART,
+                    chartLabelType = chartLabelType
                 )
                 //draw outer circle
                 draPieCircle(

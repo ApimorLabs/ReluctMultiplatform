@@ -5,13 +5,8 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -21,22 +16,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.apimorlabs.reluct.compose.charts.barChart.model.BarParameters
-import com.apimorlabs.reluct.compose.charts.baseComponets.baseChartContainer
-import com.apimorlabs.reluct.compose.charts.baseComponets.xAxisDrawing
-import com.apimorlabs.reluct.compose.charts.util.ChartDefaultValues.specialChart
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.BarChartUtils.axisAreas
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.BarChartUtils.barDrawableArea
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.BarChartUtils.forEachWithArea
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.BarDrawer
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.LabelValueDrawer
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.XAxisDrawer
+import com.apimorlabs.reluct.compose.charts.barChart.ungrouped.helpers.YAxisDrawer
 import com.apimorlabs.reluct.compose.charts.util.checkIfDataValid
-import com.apimorlabs.reluct.compose.charts.util.formatToThousandsMillionsBillions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,18 +42,17 @@ internal fun BarChartContent(
     barsParameters: List<BarParameters>,
     gridColor: Color,
     xAxisData: List<String>,
-    isShowGrid: Boolean,
     animateChart: Boolean,
-    showGridWithSpacer: Boolean,
     yAxisStyle: TextStyle,
     xAxisStyle: TextStyle,
     backgroundLineWidth: Float,
-    yAxisRange: Int,
+    showIntervalLines: Boolean,
     showXAxis: Boolean,
     showYAxis: Boolean,
-    barWidth: Dp,
-    spaceBetweenBars: Dp,
-    spaceBetweenGroups: Dp,
+    showXAxisLabels: Boolean,
+    showYAxisLabels: Boolean,
+    xAxisLabelDrawLocation: LabelValueDrawer.DrawLocation,
+    barsSpacingFactor: Float,
     barCornerRadius: Dp,
     selectedBarColor: Color,
     selectedBarIndex: Int?,
@@ -65,7 +60,8 @@ internal fun BarChartContent(
     modifier: Modifier = Modifier,
 ) {
 
-    val textMeasure = rememberTextMeasurer()
+    val xAxisTextMeasure = rememberTextMeasurer()
+    val yAxisTextMeasure = rememberTextMeasurer()
 
     val animatedProgress = remember(barsParameters) {
         if (animateChart) Animatable(0f) else Animatable(1f)
@@ -76,120 +72,144 @@ internal fun BarChartContent(
     var lowerValue by rememberSaveable {
         mutableStateOf(barsParameters.getLowerValue())
     }
-    var maxWidth by remember { mutableStateOf(0.dp) }
-    var yTextLayoutResult by remember { mutableStateOf(0.dp) }
-    var maxHeight by remember { mutableStateOf(0f) }
-    var xRegionWidthWithoutSpacing by remember { mutableStateOf(0.dp) }
-    var xRegionWidth by remember { mutableStateOf(0.dp) }
-
-    //initial height set at 0.dp
-    var boxWidth by remember { mutableStateOf(0.dp) }
-    var boxHeight by remember { mutableStateOf(0.dp) }
 
     // Index and Offset of each bar
     val barAreas = remember(barsParameters) {
         mutableMapOf<Int, Rect>()
     }
 
-    // get local density from composable
-    val density = LocalDensity.current
+    // Drawers
+    val xAxisDrawer = remember(gridColor, backgroundLineWidth) {
+        XAxisDrawer(
+            axisLineColor = gridColor,
+            axisLineThickness = backgroundLineWidth.dp,
+            xAxisStyle = xAxisStyle,
+        )
+    }
+    val labelDrawer = remember(xAxisLabelDrawLocation, xAxisTextMeasure) {
+        LabelValueDrawer(
+            drawLocation = xAxisLabelDrawLocation,
+            textMeasure = xAxisTextMeasure,
+            labelStyle = xAxisStyle,
+        )
+    }
+    val yAxisDrawer = remember(gridColor, backgroundLineWidth, yAxisTextMeasure) {
+        YAxisDrawer(
+            textMeasure = yAxisTextMeasure,
+            yAxisStyle = yAxisStyle,
+            axisLineThickness = backgroundLineWidth.dp,
+            axisLineColor = gridColor
+        )
+    }
+    val barDrawer = remember(barCornerRadius) {
+        BarDrawer(cornerRadius = barCornerRadius)
+    }
 
     checkIfDataValid(xAxisData = xAxisData, barParameters = barsParameters)
-    Box(modifier = modifier.fillMaxSize().onGloballyPositioned {
-        boxWidth = with(density) {
-            it.size.width.toDp()
-        }
-        boxHeight = with(density) {
-            it.size.height.toDp()
-        }
-    }
-    ) {
+    Box(modifier = modifier) {
         Canvas(
-            modifier = Modifier.fillMaxSize()
-        ) {
-
-            val spacingY = (boxHeight / 10)
-            xRegionWidth =
-                ((barWidth + spaceBetweenBars) * barsParameters.size) + spaceBetweenGroups
-            xRegionWidthWithoutSpacing = xRegionWidth - spaceBetweenGroups
-            maxWidth = (xRegionWidth * xAxisData.size) - spaceBetweenGroups
-            maxHeight = boxHeight.toPx() - spacingY.toPx() + 10.dp.toPx()
-
-            baseChartContainer(
-                xAxisData = xAxisData,
-                textMeasure = textMeasure,
-                upperValue = upperValue.toFloat(),
-                lowerValue = lowerValue.toFloat(),
-                isShowGrid = isShowGrid,
-                backgroundLineWidth = backgroundLineWidth,
-                gridColor = gridColor,
-                showGridWithSpacer = showGridWithSpacer,
-                spacingY = spacingY,
-                yAxisStyle = yAxisStyle,
-                xAxisStyle = xAxisStyle,
-                yAxisRange = yAxisRange,
-                showXAxis = showXAxis,
-                showYAxis = showYAxis,
-                isFromBarChart = true,
-                xRegionWidth = xRegionWidth
-            )
-        }
-
-        Box(
-            modifier = Modifier.fillMaxSize()
-                .padding(start = yTextLayoutResult + (yTextLayoutResult / 2))
-                .horizontalScroll(rememberScrollState())
-        ) {
-
-            Canvas(
-                modifier = Modifier.width(maxWidth).fillMaxHeight()
-                    .pointerInput(Unit) {
-                        // Detect taps on bars
-                        detectTapGestures(
-                            onTap = { offset ->
-                                barAreas.forEach { (index, rect) ->
-                                    if (rect.contains(offset)) {
-                                        onBarClicked(index)
-                                    }
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectTapGestures(
+                        onTap = { offset ->
+                            barAreas.forEach { (index, rect) ->
+                                if (rect.contains(offset)) {
+                                    onBarClicked(index)
                                 }
                             }
+                        }
+                    )
+                }
+                .drawBehind {
+                    val (xAxisArea, yAxisArea) = axisAreas(
+                        totalSize = size,
+                        withYAxisLabels = showYAxisLabels,
+                        xAxisDrawer = xAxisDrawer,
+                        labelDrawer = labelDrawer
+                    )
+                    val barDrawableArea = barDrawableArea(xAxisArea)
+
+                    // Draw yAxis line.
+                    if (showYAxis) {
+                        yAxisDrawer
+                            .drawAxisLine(
+                                drawScope = this,
+                                drawableArea = yAxisArea
+                            )
+                    }
+
+                    // Draw Interval lines
+                    if (showIntervalLines) {
+                        xAxisDrawer.drawIntervalLines(
+                            drawScope = this,
+                            drawableArea = barDrawableArea
                         )
                     }
-            ) {
-                yTextLayoutResult = textMeasure.measure(
-                    text = AnnotatedString(
-                        upperValue.toFloat().formatToThousandsMillionsBillions()
-                    ),
-                ).size.width.toDp()
 
-                drawBarGroups(
-                    barsParameters = barsParameters,
-                    upperValue = upperValue,
-                    barWidth = barWidth,
-                    xRegionWidth = xRegionWidth,
-                    spaceBetweenBars = spaceBetweenBars,
-                    maxWidth = maxWidth,
-                    height = maxHeight.dp,
-                    animatedProgress = animatedProgress,
-                    barCornerRadius = barCornerRadius,
-                    selectedBarColor = selectedBarColor,
-                    selectedBarIndex = selectedBarIndex,
-                    provideBarAreas = { area ->
-                        barAreas.apply {
-                            clear()
-                            putAll(area)
-                        }
+                    // Draw xAxis line.
+                    if (showXAxis) {
+                        xAxisDrawer.drawAxisLine(
+                            drawScope = this,
+                            drawableArea = xAxisArea
+                        )
                     }
-                )
 
-                xAxisDrawing(
-                    xAxisData = xAxisData,
-                    textMeasure = textMeasure,
-                    xAxisStyle = xAxisStyle,
-                    specialChart = specialChart,
-                    xRegionWidth = xRegionWidth,
-                    xRegionWidthWithoutSpacing = xRegionWidthWithoutSpacing,
-                    height = maxHeight.dp,
+                    // Draw each bar.
+                    barsParameters.forEachWithArea(
+                        this,
+                        barDrawableArea,
+                        animatedProgress.value,
+                        labelDrawer,
+                        barsSpacingFactor
+                    ) { barArea, bar, index ->
+                        barAreas[index] = barArea
+                        barDrawer.drawBar(
+                            drawScope = this,
+                            barArea = barArea,
+                            bar = bar,
+                            selected = (index == selectedBarIndex),
+                            selectedBarColor = selectedBarColor
+                        )
+                    }
+                }
+        ) {
+            /**
+             *  Typically we could draw everything here, but because of the lack of canvas.drawText
+             *  APIs we have to use Android's `nativeCanvas` which seems to be drawn behind
+             *  Compose canvas.
+             */
+            val (xAxisArea, yAxisArea) = axisAreas(
+                totalSize = size,
+                withYAxisLabels = showYAxisLabels,
+                xAxisDrawer = xAxisDrawer,
+                labelDrawer = labelDrawer
+            )
+            val barDrawableArea = barDrawableArea(xAxisArea)
+            val spacingY = yAxisArea.height.toDp() / 10
+
+            if (showXAxisLabels) {
+                barsParameters.forEachWithArea(
+                    this,
+                    barDrawableArea,
+                    animatedProgress.value,
+                    labelDrawer,
+                    barsSpacingFactor
+                ) { barArea, bar, _ ->
+                    labelDrawer.drawLabel(
+                        drawScope = this,
+                        label = bar.dataName,
+                        barArea = barArea,
+                    )
+                }
+            }
+
+            if (showYAxisLabels) {
+                yAxisDrawer.drawAxisLabels(
+                    drawScope = this,
+                    minValue = lowerValue,
+                    maxValue = upperValue,
+                    spacing = spacingY
                 )
             }
         }
@@ -207,7 +227,7 @@ internal fun BarChartContent(
             delay(400)
             animatedProgress.animateTo(
                 targetValue = 1f,
-                animationSpec = tween(durationMillis = 1000, easing = LinearEasing)
+                animationSpec = tween(durationMillis = 500, easing = LinearEasing)
             )
         }
     }
