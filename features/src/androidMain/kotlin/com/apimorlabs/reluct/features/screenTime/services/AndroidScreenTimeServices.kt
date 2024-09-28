@@ -14,7 +14,11 @@ import com.apimorlabs.reluct.features.R
 import com.apimorlabs.reluct.features.screenTime.permissions.UsageAccessPermission
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.mapLatest
 
 internal class AndroidScreenTimeServices(
     private val context: Context,
@@ -72,8 +76,7 @@ internal class AndroidScreenTimeServices(
     }
 
     private fun appStatsNotification(context: Context, app: AppUsageStats): Notification {
-        val uriString =
-            "AppScreenTimeStatsDestination.appScreenTimeDeepLink(app.appUsageInfo.packageName)"
+        val uriString = ScreenTimeLink.appScreenTimeDeepLink(app.appUsageInfo.packageName)
         val intent = Intent(
             Intent.ACTION_VIEW,
             uriString.toUri()
