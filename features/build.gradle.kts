@@ -14,6 +14,7 @@ kotlin {
                 implementation(project(":system-services"))
 
                 // Normal deps
+                implementation(compose.materialIconsExtended)
                 implementation(libs.coroutines.core)
             }
         }
