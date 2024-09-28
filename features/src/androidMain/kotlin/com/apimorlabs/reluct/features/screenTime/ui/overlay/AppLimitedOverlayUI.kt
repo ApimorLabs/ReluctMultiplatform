@@ -155,7 +155,7 @@ internal fun AppLimitedOverlayUI(
                     weeklyTotalScreenTime = { uiState.weeklyData.formattedTotalTime },
                     selectedDayIndex = { uiState.selectedInfo.selectedDay },
                     onBarClicked = { viewModel.selectDay(it) },
-                    weekUpdateButton = { /** No Button **/ }
+                    weekUpdateButton = { /* No Button */ }
                 )
             }
 
