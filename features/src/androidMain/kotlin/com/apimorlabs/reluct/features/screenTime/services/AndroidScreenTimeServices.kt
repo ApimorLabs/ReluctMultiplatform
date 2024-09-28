@@ -65,7 +65,7 @@ internal class AndroidScreenTimeServices(
                 // Check if the app doesn't violate limits
                 // Check if the app doesn't violate limits
                 val limitParamChecks = (isFocusModeOn && appLimits.isADistractingAp) ||
-                        appLimits.isPaused || appPastLimit
+                    appLimits.isPaused || appPastLimit
                 if (!appLimits.overridden && limitParamChecks) {
                     ScreenTimeServices.BlockState.Blocked(appLimits.appInfo.packageName)
                 } else {
