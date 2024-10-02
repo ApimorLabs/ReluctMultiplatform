@@ -7,6 +7,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":common"))
+                implementation(project(":common-models"))
                 implementation(project(":compose-ui"))
                 implementation(project(":features"))
                 implementation(compose.materialIconsExtended)
