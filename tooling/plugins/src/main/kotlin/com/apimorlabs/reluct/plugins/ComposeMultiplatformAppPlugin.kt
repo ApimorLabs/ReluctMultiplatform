@@ -79,7 +79,7 @@ class ComposeMultiplatformAppPlugin : Plugin<Project> {
         with(composeExt) {
             with(extensions.getByType<DesktopExtension>()) {
                 application {
-                    mainClass = "MainKt"
+                    mainClass = "com.apimorlabs.reluct.MainKt"
 
                     // Put your icons in ./tooling/desktop/icons/launcher
                     val iconsRoot = rootProject.file("tooling/desktop/icons/launcher")
