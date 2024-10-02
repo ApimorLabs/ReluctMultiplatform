@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.compose.multiplatform.app)
+    alias(libs.plugins.kotlinSeriazation)
 }
 kotlin {
     sourceSets {
@@ -7,8 +8,9 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(project(":compose-ui"))
-                implementation(project(":compose-charts"))
+                implementation(project(":features"))
                 implementation(compose.materialIconsExtended)
+                implementation(libs.kotlinx.serialization.core)
             }
         }
 
