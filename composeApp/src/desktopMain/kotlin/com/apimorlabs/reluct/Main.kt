@@ -1,3 +1,5 @@
+package com.apimorlabs.reluct
+
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.apimorlabs.reluct.common.di.KoinMain

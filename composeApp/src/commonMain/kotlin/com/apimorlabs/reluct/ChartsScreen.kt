@@ -1,3 +1,5 @@
+package com.apimorlabs.reluct
+
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
