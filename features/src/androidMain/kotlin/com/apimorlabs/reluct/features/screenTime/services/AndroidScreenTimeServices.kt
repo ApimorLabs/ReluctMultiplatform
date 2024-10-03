@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.net.toUri
 import com.apimorlabs.reluct.common.models.domain.usageStats.AppUsageStats
@@ -51,10 +52,15 @@ internal class AndroidScreenTimeServices(
             .getCurrentAppStats(getAppUsageInfo, context).mapLatest { stats ->
                 // Update Our Notification
                 val notification = appStatsNotification(context, stats)
-                notificationManager.notify(
-                    ScreenTimeServiceNotification.NOTIFICATION_ID,
-                    notification
-                )
+                if (notificationManager.areNotificationsEnabled()) {
+                    notificationManager.notify(
+                        ScreenTimeServiceNotification.NOTIFICATION_ID,
+                        notification
+                    )
+                } else {
+                    Toast.makeText(context, "Please enable notifications!", Toast.LENGTH_SHORT)
+                        .show()
+                }
 
                 val currentDuration = stats.appUsageInfo.timeInForeground
                 val isFocusModeOn = manageFocusMode.isFocusModeOn.first()
@@ -63,9 +69,8 @@ internal class AndroidScreenTimeServices(
                     (currentDuration >= appLimits.timeLimit && appLimits.timeLimit != 0L)
 
                 // Check if the app doesn't violate limits
-                // Check if the app doesn't violate limits
                 val limitParamChecks = (isFocusModeOn && appLimits.isADistractingAp) ||
-                    appLimits.isPaused || appPastLimit
+                        appLimits.isPaused || appPastLimit
                 if (!appLimits.overridden && limitParamChecks) {
                     ScreenTimeServices.BlockState.Blocked(appLimits.appInfo.packageName)
                 } else {
@@ -76,7 +81,7 @@ internal class AndroidScreenTimeServices(
     }
 
     private fun appStatsNotification(context: Context, app: AppUsageStats): Notification {
-        val uriString = ScreenTimeLink.appScreenTimeDeepLink(app.appUsageInfo.packageName)
+        val uriString = ScreenTimeLink.deepLink(app.appUsageInfo.packageName)
         val intent = Intent(
             Intent.ACTION_VIEW,
             uriString.toUri()

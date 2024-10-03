@@ -14,8 +14,15 @@ import com.apimorlabs.reluct.features.screenTime.statistics.AppScreenTimeStatsVi
 import com.apimorlabs.reluct.features.screenTime.ui.overlay.AppLimitedOverlayView
 import com.apimorlabs.reluct.features.screenTime.ui.overlay.LimitsOverlayParams
 import com.apimorlabs.reluct.features.screenTime.ui.overlay.OverlayLifecycleOwner
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 import org.koin.core.component.inject
@@ -88,11 +95,11 @@ internal class ScreenTimeLimitService : Service(), KoinComponent {
                 overlayView = viewModel?.let { vm ->
                     AppLimitedOverlayView(
                         applicationContext,
-                        /*viewModel = vm,
+                        viewModel = vm,
                         exit = {
                             goHome()
                             removeOverlayView()
-                        }*/
+                        }
                     ).getView()
                 }
                 overlayLifecycleOwner.attachToView(overlayView)
