@@ -103,12 +103,12 @@ internal fun ScreenTimeStatisticsUI(
     val showAppTimeLimitDialog = remember { mutableStateOf(false) }
 
     // Permission Manager
-    var permManager: PermissionsManager? = remember { null }
-    GetPermissionsManager(onPermissionsManager = { permManager = it })
+    val permManager = remember { mutableStateOf<PermissionsManager?>(null) }
+    GetPermissionsManager(onPermissionsManager = { permManager.value = it })
 
     PermissionCheckHandler {
-        if (!usagePermissionGranted.value && permManager != null) {
-            usagePermissionGranted.value = permManager?.checkUsageAccessPermission() ?: false
+        if (!usagePermissionGranted.value && permManager.value != null) {
+            usagePermissionGranted.value = permManager.value?.checkUsageAccessPermission() ?: false
             getUsageData(usagePermissionGranted.value)
         }
     }
@@ -221,7 +221,10 @@ internal fun ScreenTimeStatisticsUI(
         }
 
         // Go To Usage Access Dialog
-        UsagePermissionDialog(openDialog = openDialog, onClose = { openDialog.value = false })
+        UsagePermissionDialog(
+            permManager = permManager,
+            openDialog = openDialog,
+            onClose = { openDialog.value = false })
 
         // App Time Limit Dialog
         ShowAppTimeLimitDialog(

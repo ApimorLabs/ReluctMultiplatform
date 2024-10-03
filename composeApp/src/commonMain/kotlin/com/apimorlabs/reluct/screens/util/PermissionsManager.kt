@@ -12,9 +12,19 @@ interface PermissionsManager {
     fun openAppNotificationSettings()
 
     fun requestUsageAccessPermission()
+
+    fun isNotificationPermissionRequired(): Boolean
+
+    fun requestOverlayPermission(msgTxt: String)
+
+    fun requestScheduleAlarmsPermission()
+
+    fun requestNotificationPermission()
 }
 
 @Composable
 expect fun GetPermissionsManager(
     onPermissionsManager: (PermissionsManager) -> Unit
 )
+
+

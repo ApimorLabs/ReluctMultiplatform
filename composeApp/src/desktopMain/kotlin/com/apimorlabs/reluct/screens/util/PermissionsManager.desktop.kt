@@ -19,6 +19,19 @@ class PermissionsManagerDesktop : PermissionsManager {
         return
     }
 
+    override fun isNotificationPermissionRequired(): Boolean = false
+
+    override fun requestOverlayPermission(msgTxt: String) {
+        return
+    }
+
+    override fun requestScheduleAlarmsPermission() {
+        return
+    }
+
+    override fun requestNotificationPermission() {
+        return
+    }
 }
 
 @Composable

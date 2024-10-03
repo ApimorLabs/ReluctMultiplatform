@@ -96,12 +96,12 @@ internal fun DashboardOverviewUI(
     val openDialog = remember { mutableStateOf(false) }
 
     // Permission Manager
-    var permManager: PermissionsManager? = remember { null }
-    GetPermissionsManager(onPermissionsManager = { permManager = it })
+    val permManager = remember { mutableStateOf<PermissionsManager?>(null) }
+    GetPermissionsManager(onPermissionsManager = { permManager.value = it })
 
     PermissionCheckHandler {
-        if (!usagePermissionGranted && permManager != null) {
-            usagePermissionGranted = permManager?.checkUsageAccessPermission() ?: false
+        if (!usagePermissionGranted && permManager.value != null) {
+            usagePermissionGranted = permManager.value?.checkUsageAccessPermission() ?: false
             getUsageData(usagePermissionGranted)
         }
     }
@@ -210,7 +210,10 @@ internal fun DashboardOverviewUI(
 
     // Permission Dialog
     // Go To Usage Access Dialog
-    UsagePermissionDialog(openDialog = openDialog, onClose = { openDialog.value = false })
+    UsagePermissionDialog(
+        permManager = permManager,
+        openDialog = openDialog,
+        onClose = { openDialog.value = false })
 }
 
 @OptIn(ExperimentalFoundationApi::class)
