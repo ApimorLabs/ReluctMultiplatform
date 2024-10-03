@@ -26,5 +26,3 @@ interface PermissionsManager {
 expect fun GetPermissionsManager(
     onPermissionsManager: (PermissionsManager) -> Unit
 )
-
-

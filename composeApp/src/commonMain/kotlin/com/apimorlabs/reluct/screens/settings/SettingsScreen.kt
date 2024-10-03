@@ -32,7 +32,6 @@ fun SettingsScreen(
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
     val events = viewModel.events.collectAsStateWithLifecycle(initialValue = SettingsEvents.Nothing)
 
-
     HandleEvents(
         eventsState = events,
         snackbarHostState = snackbarHostState,

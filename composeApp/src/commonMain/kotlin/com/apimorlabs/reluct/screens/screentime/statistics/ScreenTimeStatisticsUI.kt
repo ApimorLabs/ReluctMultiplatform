@@ -224,7 +224,8 @@ internal fun ScreenTimeStatisticsUI(
         UsagePermissionDialog(
             permManager = permManager,
             openDialog = openDialog,
-            onClose = { openDialog.value = false })
+            onClose = { openDialog.value = false }
+        )
 
         // App Time Limit Dialog
         ShowAppTimeLimitDialog(

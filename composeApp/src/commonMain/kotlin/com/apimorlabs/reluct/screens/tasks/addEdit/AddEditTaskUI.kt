@@ -102,7 +102,6 @@ internal fun AddEditTaskUI(
         if (canGoBack) onBackClicked() else openDialog.value = true
     }
 
-
     Scaffold(
         modifier = modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
@@ -202,7 +201,7 @@ internal fun AddEditTaskUI(
                 onGoBack = { goBackAttempt(canGoBack) },
                 onEditLabels = {
                     showBottomSheet = true
-                    //scope.launch { modalSheetState.expand() }
+                    // scope.launch { modalSheetState.expand() }
                 }
             )
         }
@@ -291,7 +290,6 @@ private fun getTitles(
     val discardTaskTitle = stringResource(Res.string.discard_task)
 
     return remember {
-
         derivedStateOf {
             when (val goalState = modifyTaskStateProvider()) {
                 is ModifyTaskState.Data -> {

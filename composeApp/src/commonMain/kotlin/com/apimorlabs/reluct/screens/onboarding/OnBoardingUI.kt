@@ -39,7 +39,6 @@ fun OnBoardingUI(
     onBoardingComplete: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     // Permission Manager
     val permManager = remember { mutableStateOf<PermissionsManager?>(null) }
     GetPermissionsManager(onPermissionsManager = { permManager.value = it })

@@ -119,7 +119,7 @@ internal fun PendingTasksUI(
                 modifier = Modifier.padding(bottom = mainScaffoldPadding.calculateBottomPadding()),
                 isLoadingProvider = {
                     uiState.value is PendingTasksState.Loading && uiState.value.tasksData.isEmpty() &&
-                            uiState.value.overdueTasksData.isEmpty()
+                        uiState.value.overdueTasksData.isEmpty()
                 }
             )
 
@@ -127,8 +127,8 @@ internal fun PendingTasksUI(
             FullEmptyTasksIndicator(
                 showAnimationProvider = {
                     uiState.value !is PendingTasksState.Loading &&
-                            uiState.value.overdueTasksData.isEmpty() &&
-                            uiState.value.tasksData.isEmpty()
+                        uiState.value.overdueTasksData.isEmpty() &&
+                        uiState.value.tasksData.isEmpty()
                 },
                 modifier = Modifier.padding(bottom = mainScaffoldPadding.calculateBottomPadding())
             )
@@ -165,7 +165,7 @@ private fun PendingTasksLazyList(
     val isLoading = remember {
         derivedStateOf {
             uiState.value is PendingTasksState.Loading && uiState.value.tasksData.isNotEmpty() &&
-                    uiState.value.overdueTasksData.isNotEmpty()
+                uiState.value.overdueTasksData.isNotEmpty()
         }
     }
     val showData = remember {

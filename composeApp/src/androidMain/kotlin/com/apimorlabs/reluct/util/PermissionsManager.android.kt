@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.screens.util
+package com.apimorlabs.reluct.util
 
 import android.Manifest
 import android.app.Activity
@@ -17,12 +17,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
-import com.apimorlabs.reluct.util.PermissionsManager
 
 class PermissionsManagerAndroid(private val context: Context) : PermissionsManager {
     override fun checkUsageAccessPermission(): Boolean {
         val appOps: AppOpsManager = context.getSystemService(Context.APP_OPS_SERVICE)
-                as AppOpsManager
+            as AppOpsManager
         val mode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             appOps.unsafeCheckOpNoThrow(
                 AppOpsManager.OPSTR_GET_USAGE_STATS,

@@ -22,7 +22,6 @@ internal fun UsagePermissionDialog(
     onClose: () -> Unit
 ) {
     if (openDialog.value) {
-
         AlertDialog(
             onDismissRequest = onClose,
             title = {

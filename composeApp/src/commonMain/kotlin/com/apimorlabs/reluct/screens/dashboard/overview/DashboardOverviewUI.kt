@@ -213,7 +213,8 @@ internal fun DashboardOverviewUI(
     UsagePermissionDialog(
         permManager = permManager,
         openDialog = openDialog,
-        onClose = { openDialog.value = false })
+        onClose = { openDialog.value = false }
+    )
 }
 
 @OptIn(ExperimentalFoundationApi::class)

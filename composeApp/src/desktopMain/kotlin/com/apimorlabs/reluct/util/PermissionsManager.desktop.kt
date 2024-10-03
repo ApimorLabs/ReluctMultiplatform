@@ -1,9 +1,8 @@
-package com.apimorlabs.reluct.screens.util
+package com.apimorlabs.reluct.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import com.apimorlabs.reluct.util.PermissionsManager
 
 class PermissionsManagerDesktop : PermissionsManager {
     override fun checkUsageAccessPermission(): Boolean = true
