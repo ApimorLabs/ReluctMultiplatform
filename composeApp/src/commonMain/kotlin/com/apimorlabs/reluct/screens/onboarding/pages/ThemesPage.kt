@@ -25,7 +25,7 @@ import com.apimorlabs.reluct.compose.ui.themes_desc_text
 import com.apimorlabs.reluct.compose.ui.themes_text
 import com.apimorlabs.reluct.screens.settings.components.ThemeSelectCard
 import com.apimorlabs.reluct.screens.settings.components.getThemes
-import com.apimorlabs.reluct.screens.util.BackPressHandler
+import com.apimorlabs.reluct.util.BackPressHandler
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

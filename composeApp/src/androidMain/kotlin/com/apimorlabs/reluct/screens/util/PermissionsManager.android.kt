@@ -17,6 +17,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
+import com.apimorlabs.reluct.util.PermissionsManager
 
 class PermissionsManagerAndroid(private val context: Context) : PermissionsManager {
     override fun checkUsageAccessPermission(): Boolean {

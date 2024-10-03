@@ -32,9 +32,9 @@ import com.apimorlabs.reluct.compose.ui.usage_access_desc_text
 import com.apimorlabs.reluct.compose.ui.usage_access_text
 import com.apimorlabs.reluct.compose.ui.usage_permissions_rationale_dialog_text
 import com.apimorlabs.reluct.screens.onboarding.components.PermissionStatusCard
-import com.apimorlabs.reluct.screens.util.BackPressHandler
-import com.apimorlabs.reluct.screens.util.PermissionCheckHandler
-import com.apimorlabs.reluct.screens.util.PermissionsManager
+import com.apimorlabs.reluct.util.BackPressHandler
+import com.apimorlabs.reluct.util.PermissionCheckHandler
+import com.apimorlabs.reluct.util.PermissionsManager
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

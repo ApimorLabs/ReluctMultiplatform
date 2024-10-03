@@ -51,9 +51,9 @@ import com.apimorlabs.reluct.features.goals.states.ActiveGoalsState
 import com.apimorlabs.reluct.features.goals.states.GoalsListState
 import com.apimorlabs.reluct.screens.goals.components.EmptyGoalsIndicator
 import com.apimorlabs.reluct.screens.goals.components.NewGoalSheet
-import com.apimorlabs.reluct.screens.util.BottomBarVisibilityHandler
-import com.apimorlabs.reluct.screens.util.FetchMoreDataHandler
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.BottomBarVisibilityHandler
+import com.apimorlabs.reluct.util.FetchMoreDataHandler
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 

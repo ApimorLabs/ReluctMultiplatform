@@ -32,7 +32,7 @@ import com.apimorlabs.reluct.compose.ui.terms_of_service_hyperlink_url
 import com.apimorlabs.reluct.compose.ui.theme.Dimens
 import com.apimorlabs.reluct.features.onboarding.states.OnBoardingPages
 import com.apimorlabs.reluct.features.onboarding.states.OnBoardingState
-import com.apimorlabs.reluct.screens.util.PermissionsManager
+import com.apimorlabs.reluct.util.PermissionsManager
 import kotlinx.collections.immutable.persistentListOf
 import org.jetbrains.compose.resources.stringResource
 

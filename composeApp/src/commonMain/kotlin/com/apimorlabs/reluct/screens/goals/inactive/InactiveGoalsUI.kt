@@ -47,7 +47,7 @@ import com.apimorlabs.reluct.compose.ui.util.rememberScrollContext
 import com.apimorlabs.reluct.features.goals.states.GoalsListState
 import com.apimorlabs.reluct.screens.goals.active.NewGoalDialog
 import com.apimorlabs.reluct.screens.goals.components.EmptyGoalsIndicator
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 

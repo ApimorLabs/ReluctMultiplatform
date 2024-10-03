@@ -12,7 +12,7 @@ import com.apimorlabs.reluct.compose.ui.ok
 import com.apimorlabs.reluct.compose.ui.open_settings_dialog_title
 import com.apimorlabs.reluct.compose.ui.theme.Shapes
 import com.apimorlabs.reluct.compose.ui.usage_permissions_rationale_dialog_text
-import com.apimorlabs.reluct.screens.util.PermissionsManager
+import com.apimorlabs.reluct.util.PermissionsManager
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

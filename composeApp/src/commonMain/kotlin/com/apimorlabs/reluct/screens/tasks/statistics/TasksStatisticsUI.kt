@@ -53,7 +53,7 @@ import com.apimorlabs.reluct.features.tasks.states.DailyTasksState
 import com.apimorlabs.reluct.features.tasks.states.TasksStatisticsState
 import com.apimorlabs.reluct.features.tasks.states.WeeklyTasksState
 import com.apimorlabs.reluct.screens.tasks.components.getWeeklyTasksBarChartData
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

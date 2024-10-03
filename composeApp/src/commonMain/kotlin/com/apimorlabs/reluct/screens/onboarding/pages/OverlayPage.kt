@@ -38,9 +38,9 @@ import com.apimorlabs.reluct.compose.ui.theme.Shapes
 import com.apimorlabs.reluct.compose.ui.turn_on_app_blocking_text
 import com.apimorlabs.reluct.screens.onboarding.components.PermissionStatusCard
 import com.apimorlabs.reluct.screens.screentime.components.LimitsSwitchCard
-import com.apimorlabs.reluct.screens.util.BackPressHandler
-import com.apimorlabs.reluct.screens.util.PermissionCheckHandler
-import com.apimorlabs.reluct.screens.util.PermissionsManager
+import com.apimorlabs.reluct.util.BackPressHandler
+import com.apimorlabs.reluct.util.PermissionCheckHandler
+import com.apimorlabs.reluct.util.PermissionsManager
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

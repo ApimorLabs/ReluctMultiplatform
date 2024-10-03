@@ -51,7 +51,7 @@ import com.apimorlabs.reluct.features.tasks.states.TasksStatisticsState
 import com.apimorlabs.reluct.features.tasks.states.WeeklyTasksState
 import com.apimorlabs.reluct.screens.screentime.components.ShowAppTimeLimitDialog
 import com.apimorlabs.reluct.screens.screentime.components.getWeeklyDeviceScreenTimeChartData
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalFoundationApi::class)

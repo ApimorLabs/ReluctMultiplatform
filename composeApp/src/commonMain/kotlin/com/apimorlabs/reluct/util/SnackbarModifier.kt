@@ -1,4 +1,4 @@
-package com.apimorlabs.reluct.screens.util
+package com.apimorlabs.reluct.util
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.navigationBarsPadding

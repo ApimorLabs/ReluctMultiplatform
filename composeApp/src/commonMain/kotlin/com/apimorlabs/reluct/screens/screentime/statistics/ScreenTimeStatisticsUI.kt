@@ -58,10 +58,10 @@ import com.apimorlabs.reluct.screens.screentime.components.ScreenTimeWeekSelecto
 import com.apimorlabs.reluct.screens.screentime.components.ShowAppTimeLimitDialog
 import com.apimorlabs.reluct.screens.screentime.components.UsagePermissionDialog
 import com.apimorlabs.reluct.screens.screentime.components.getWeeklyDeviceScreenTimeChartData
-import com.apimorlabs.reluct.screens.util.GetPermissionsManager
-import com.apimorlabs.reluct.screens.util.PermissionCheckHandler
-import com.apimorlabs.reluct.screens.util.PermissionsManager
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.GetPermissionsManager
+import com.apimorlabs.reluct.util.PermissionCheckHandler
+import com.apimorlabs.reluct.util.PermissionsManager
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

@@ -26,8 +26,8 @@ import com.apimorlabs.reluct.screens.onboarding.pages.PermissionsPage
 import com.apimorlabs.reluct.screens.onboarding.pages.ThemesPage
 import com.apimorlabs.reluct.screens.onboarding.pages.UsageAccessPage
 import com.apimorlabs.reluct.screens.onboarding.pages.WelcomePage
-import com.apimorlabs.reluct.screens.util.GetPermissionsManager
-import com.apimorlabs.reluct.screens.util.PermissionsManager
+import com.apimorlabs.reluct.util.GetPermissionsManager
+import com.apimorlabs.reluct.util.PermissionsManager
 
 @Composable
 fun OnBoardingUI(

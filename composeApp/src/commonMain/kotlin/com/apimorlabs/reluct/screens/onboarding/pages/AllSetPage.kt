@@ -21,7 +21,7 @@ import com.apimorlabs.reluct.compose.ui.all_set_text
 import com.apimorlabs.reluct.compose.ui.components.cards.headers.ListGroupHeadingHeader
 import com.apimorlabs.reluct.compose.ui.confirmed_phone_hand
 import com.apimorlabs.reluct.compose.ui.theme.Dimens
-import com.apimorlabs.reluct.screens.util.BackPressHandler
+import com.apimorlabs.reluct.util.BackPressHandler
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

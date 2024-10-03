@@ -60,7 +60,7 @@ import com.apimorlabs.reluct.features.goals.states.AddEditGoalState
 import com.apimorlabs.reluct.features.goals.states.GoalAppsState
 import com.apimorlabs.reluct.features.goals.states.ModifyGoalState
 import com.apimorlabs.reluct.screens.screentime.components.ManageAppsDialog
-import com.apimorlabs.reluct.screens.util.BackPressHandler
+import com.apimorlabs.reluct.util.BackPressHandler
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

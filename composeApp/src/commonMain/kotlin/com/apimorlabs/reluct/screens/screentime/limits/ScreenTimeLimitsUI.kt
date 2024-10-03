@@ -62,8 +62,8 @@ import com.apimorlabs.reluct.screens.screentime.components.AppNameEntry
 import com.apimorlabs.reluct.screens.screentime.components.LimitsDetailsCard
 import com.apimorlabs.reluct.screens.screentime.components.LimitsSwitchCard
 import com.apimorlabs.reluct.screens.screentime.components.ManageAppsDialog
-import com.apimorlabs.reluct.screens.util.BottomBarVisibilityHandler
-import com.apimorlabs.reluct.screens.util.getSnackbarModifier
+import com.apimorlabs.reluct.util.BottomBarVisibilityHandler
+import com.apimorlabs.reluct.util.getSnackbarModifier
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.decodeToImageBitmap
 import org.jetbrains.compose.resources.stringResource

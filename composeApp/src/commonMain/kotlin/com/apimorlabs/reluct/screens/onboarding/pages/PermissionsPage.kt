@@ -21,7 +21,7 @@ import com.apimorlabs.reluct.compose.ui.permissions_desc_text
 import com.apimorlabs.reluct.compose.ui.permissions_text
 import com.apimorlabs.reluct.compose.ui.permissions_unlock
 import com.apimorlabs.reluct.compose.ui.theme.Dimens
-import com.apimorlabs.reluct.screens.util.BackPressHandler
+import com.apimorlabs.reluct.util.BackPressHandler
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
