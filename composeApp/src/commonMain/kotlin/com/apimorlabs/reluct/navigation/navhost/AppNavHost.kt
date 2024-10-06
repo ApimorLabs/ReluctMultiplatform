@@ -250,7 +250,7 @@ private fun HandleRouteChecks(
 ) {
     LaunchedEffect(settingsCheck.value) {
         settingsCheck.value?.let { check ->
-            if (check.isOnBoardingDone && !check.showChangeLog) {
+            if (check.isOnBoardingDone && (!check.showChangeLog || check.loginSkipped)) {
                 // Everything is ok. Go to Dashboard
                 navController.navigate(DashBoardDestinations) {
                     popUpTo(CHECKING_ROUTE) { inclusive = true }

@@ -4,7 +4,7 @@ data class SettingsCheck(
     val isOnBoardingDone: Boolean,
     val showChangeLog: Boolean,
     // val accountCheck: AccountCheck?,
-    //val loginSkipped: Boolean
+    val loginSkipped: Boolean
 )
 /*
 data class AccountCheck(

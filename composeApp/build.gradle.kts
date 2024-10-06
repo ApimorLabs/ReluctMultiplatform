@@ -22,6 +22,14 @@ kotlin {
                 implementation(libs.coroutines.swing)
             }
         }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.splash.screen.core)
+                implementation(libs.androidx.workmanager)
+                implementation(libs.koin.androidx.workmanager)
+            }
+        }
     }
 }
 android {
