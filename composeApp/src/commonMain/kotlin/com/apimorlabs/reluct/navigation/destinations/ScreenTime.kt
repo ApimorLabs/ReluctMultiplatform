@@ -10,7 +10,7 @@ object ScreenTimeStatsDestination
 object ScreenTimeLimitsDestination
 
 @Serializable
-object AppScreenTimeStatsDestination
+data class AppScreenTimeStatsDestination(val packageName: String?)
 
 object AppScreenTimeStatsLink {
     const val DEEP_LINK = "${AppURI.BASE_URI}/screen_time_stats"

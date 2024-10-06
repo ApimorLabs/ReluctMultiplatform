@@ -52,6 +52,7 @@ sketch = "4.0.0-alpha08"
 coil-image = "2.1.0"
 accompanist = "0.27.0"
 androidx-workmanager = "2.9.0"
+haze = "0.9.0-beta02"
 
 # Preference
 multiplatform-settings = "1.1.1"
@@ -157,6 +158,8 @@ palette = { module = "androidx.palette:palette-ktx", version.ref = "palette" }
 androidx_workmanager = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-workmanager" }
 androidx_workmanager_multiprocess = { module = "androidx.work:work-multiprocess", version.ref = "androidx-workmanager" }
 androidx_workmanager_testing = { module = "androidx.work:work-testing", version.ref = "androidx-workmanager" }
+chrisbanes_haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+chrisbanes_haze_materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 
 # Network (KTOR)
 ktor_client_core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }

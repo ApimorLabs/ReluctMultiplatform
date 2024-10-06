@@ -4,13 +4,13 @@ import com.apimorlabs.reluct.common.models.util.AppURI
 import kotlinx.serialization.Serializable
 
 @Serializable
-object InactiveGoalsDestination
+data object InactiveGoalsDestination
 
 @Serializable
-object ActiveGoalsDestination
+data object ActiveGoalsDestination
 
 @Serializable
-data class AddEditGoalDestination(val goalId: String?, val defaultGoalIndex: Int = -1)
+data class AddEditGoalDestination(val goalId: String?, val defaultGoalIndex: Int? = -1)
 
 object AddEditGoalLink {
     const val DEEP_LINK = "${AppURI.BASE_URI}/add_edit_goal"

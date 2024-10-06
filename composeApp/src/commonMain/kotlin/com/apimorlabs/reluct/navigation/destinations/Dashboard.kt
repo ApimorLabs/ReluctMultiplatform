@@ -3,7 +3,7 @@ package com.apimorlabs.reluct.navigation.destinations
 import kotlinx.serialization.Serializable
 
 @Serializable
-object DashboardOverviewDestination
+data object DashboardOverviewDestination
 
 @Serializable
-object DashboardStatsDestination
+data object DashboardStatsDestination

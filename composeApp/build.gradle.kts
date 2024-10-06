@@ -12,6 +12,8 @@ kotlin {
                 implementation(project(":features"))
                 implementation(compose.materialIconsExtended)
                 implementation(libs.kotlinx.serialization.core)
+                implementation(libs.chrisbanes.haze)
+                implementation(libs.chrisbanes.haze.materials)
             }
         }
 
