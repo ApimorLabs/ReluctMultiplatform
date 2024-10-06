@@ -6,9 +6,7 @@ import com.apimorlabs.reluct.features.onboarding.OnBoardingViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun OnBoardingScreen(
-    onNavigateToAuth: () -> Unit
-) {
+fun OnBoardingScreen() {
     val viewModel: OnBoardingViewModel = koinViewModel()
     val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -20,7 +18,7 @@ fun OnBoardingScreen(
         onToggleAppBlocking = viewModel::toggleAppBlocking,
         onBoardingComplete = {
             viewModel.onBoardingComplete()
-            onNavigateToAuth()
+            // Navigate to auth: Implement onNavigateToAuth()
         }
     )
 }

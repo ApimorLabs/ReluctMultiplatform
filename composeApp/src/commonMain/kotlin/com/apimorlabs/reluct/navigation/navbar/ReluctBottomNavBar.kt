@@ -57,8 +57,9 @@ private data class NavDestination<T>(
 )
 
 @Composable
-fun ReluctBottomNavBar(
+fun <T> ReluctBottomNavBar(
     navController: NavHostController,
+    startDestination: NavBarDestinations<T>,
     modifier: Modifier = Modifier,
 ) {
     // Title Texts
@@ -124,7 +125,10 @@ fun ReluctBottomNavBar(
                     )
                 },
                 onClick = {
-                    navController.navigateNavBarElements(route = item.destination.route, null)
+                    navController.navigateNavBarElements(
+                        route = item.destination.route,
+                        startDestination.route
+                    )
                 }
             )
         }
