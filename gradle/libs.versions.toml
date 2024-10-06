@@ -1,7 +1,7 @@
 [versions]
 #Important
 kotlin = "2.0.0"
-compose-plugin = "1.7.0-alpha03"
+compose-plugin = "1.7.0-rc01"
 progurad-gradle = "7.3.0"
 agp = "8.3.0"
 moko-resources = "0.24.2"
@@ -29,14 +29,14 @@ androidx-splash-screen = "1.0.0"
 junit = "4.13.2"
 
 # Lifecycle
-androidx-lifecycle = "2.8.3"
+androidx-lifecycle = "2.8.4"
 androidx-lifecycle-viewmodel-compose = "2.8.3"
 androidx-savedstate = "1.2.1"
-jetbrains-androidx-lifecycle = "2.8.0"
+jetbrains-androidx-lifecycle = "2.8.2"
 
 # Navigation
 androidx-navigation = "2.8.0-beta05"
-jetbrains-androidx-navigation = "2.8.0-alpha09"
+jetbrains-androidx-navigation = "2.8.0-alpha10"
 
 # DI
 koin = "4.0.0-RC1"
