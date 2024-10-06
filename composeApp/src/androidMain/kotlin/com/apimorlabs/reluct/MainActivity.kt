@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
         }
         enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
         // Fix for three-button nav not properly going edge-to-edge.
-        // TODO: https://issuetracker.google.com/issues/298296168
+        // Issue: https://issuetracker.google.com/issues/298296168
         window.setFlags(LayoutParams.FLAG_LAYOUT_NO_LIMITS, LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 

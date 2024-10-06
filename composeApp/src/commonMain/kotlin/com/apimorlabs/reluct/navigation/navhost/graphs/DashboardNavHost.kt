@@ -63,7 +63,6 @@ internal fun DashboardNavHost(
     mainScaffoldPadding: PaddingValues,
     navController: NavHostController = rememberNavController(),
 ) {
-
     val destinations = rememberDashboardTabs()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination

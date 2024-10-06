@@ -52,8 +52,6 @@ sealed class TabDestinations<T>(val route: T) {
     @Serializable
     data object ScreenTimeLimits :
         TabDestinations<ScreenTimeLimitsDestination>(ScreenTimeLimitsDestination)
-
-
 }
 
 @Composable

@@ -24,7 +24,7 @@ internal object NavHelpers {
      * returns to start destination when you pop the current destination
      * Make [startDestination] null if you don't want to have a start destination
      */
-    fun <T: Any, V: Any> NavHostController.navigateNavBarElements(route: T, startDestination: V?) {
+    fun <T : Any, V : Any> NavHostController.navigateNavBarElements(route: T, startDestination: V?) {
         navigate(route) {
             popUpTo(graph.findStartDestination().id) {
                 saveState = true

@@ -50,7 +50,7 @@ private fun ReluctMainCompose(settings: GetSettings) {
  */
 private suspend fun getSettingsCheck(settings: GetSettings): SettingsCheck =
     withContext(Dispatchers.IO) {
-        val appVersionCode = 1//?: (BuildConfig.VERSION_CODE)
+        val appVersionCode = 1 // ?: (BuildConfig.VERSION_CODE)
         val loginSkipped = settings.loginSkipped.firstOrNull()
         val onBoardingShown = settings.onBoardingShown.firstOrNull()
         val savedVersionCode = settings.savedVersionCode.firstOrNull() ?: appVersionCode

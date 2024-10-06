@@ -69,7 +69,7 @@ fun AppNavHost(settingsCheck: State<SettingsCheck?>, modifier: Modifier = Modifi
 
     val mainPadding = PaddingValues(
         bottom = Dimens.ExtraLargePadding.size + Dimens.MediumPadding.size +
-                WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+            WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     )
 
     // Haze blur effect
