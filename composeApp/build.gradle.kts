@@ -12,12 +12,22 @@ kotlin {
                 implementation(project(":features"))
                 implementation(compose.materialIconsExtended)
                 implementation(libs.kotlinx.serialization.core)
+                implementation(libs.chrisbanes.haze)
+                implementation(libs.chrisbanes.haze.materials)
             }
         }
 
         val desktopMain by getting {
             dependencies {
                 implementation(libs.coroutines.swing)
+            }
+        }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.splash.screen.core)
+                implementation(libs.androidx.workmanager)
+                implementation(libs.koin.androidx.workmanager)
             }
         }
     }

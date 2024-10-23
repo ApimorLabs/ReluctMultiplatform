@@ -39,6 +39,9 @@ internal class MultiplatformSettingsImpl(
         _loginSkipped.tryEmit(readLoginSkipped())
     }
 
+    override fun getTheme(): Int = readThemeSettings()
+    override fun getOnBoardingShown(): Boolean = readOnBoardingShown()
+
     override fun saveThemeSettings(value: Int): Boolean {
         settings.putInt(key = Keys.THEME_OPTION, value = value)
         return _themeFlow.tryEmit(readThemeSettings())
